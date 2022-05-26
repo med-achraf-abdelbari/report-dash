@@ -32,6 +32,7 @@ import {AboutComponent} from './about/about.component';
     RouterModule,
     AppRoutingModule,
     HomeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
