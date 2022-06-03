@@ -8,7 +8,7 @@ import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
     {path: 'user-manual-data-input', component: ManualDataInputComponent},
-    {path: 'about', component: AboutComponent},
+    {path: 'public', loadChildren : () => import('src/app/shared/shared.module').then( m => m.SharedModule) },
     // { path: 'register',           component: SignupComponent },
     {path: 'landing', component: LandingComponent},
     // { path: 'login',          component: LoginComponent },

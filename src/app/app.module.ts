@@ -12,17 +12,14 @@ import {NavbarComponent} from './shared/navbar/navbar.component';
 import {FooterComponent} from './shared/footer/footer.component';
 import {HomeModule} from './home/home.module';
 import {LoginComponent} from './login/login.component';
-import {AboutComponent} from './about/about.component';
 import {StoreModule} from '@ngrx/store';
-import {sharedReducer} from './shared/state/reducers/shared.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
-import {SharedEffects} from './shared/state/effects/shared.effects';
+import {environment} from '../environments/environment';
 
 @NgModule({
-  // tslint:disable-next-line:max-line-length
-    declarations: [AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent, AboutComponent],
+    // tslint:disable-next-line:max-line-length
+    declarations: [AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent],
     imports: [
         BrowserModule,
         NgbModule,
@@ -30,13 +27,13 @@ import {SharedEffects} from './shared/state/effects/shared.effects';
         RouterModule,
         AppRoutingModule,
         HomeModule,
-        StoreModule.forRoot(sharedReducer),
-        EffectsModule.forRoot([SharedEffects]),
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({
-        name: 'drisk.it',
-        maxAge: 25,
-        logOnly: environment.production,
-    })
+            name: 'driskit',
+            maxAge: 25,
+            logOnly: environment.production,
+        })
     ],
     providers: [],
     bootstrap: [AppComponent]

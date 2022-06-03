@@ -14,3 +14,17 @@ export const getSettingsFailure = createAction(
     SHARED_ACTION_TYPES.GET_SETTINGS_FAILED,
     props<{ data: any }>()
 );
+
+export const getHelpSubmission = createAction(
+  SHARED_ACTION_TYPES.GET_HELP_SUBMISSION
+);
+
+export const getHelpSubmissionSuccess = createAction(
+    SHARED_ACTION_TYPES.GET_HELP_SUBMISSION_SUCCESS,
+    props<{ data: any }>()
+);
+
+export const getHelpSubmissionFailure = createAction(
+    SHARED_ACTION_TYPES.GET_HELP_SUBMISSION_FAILED,
+    props<{ data: any }>()
+);

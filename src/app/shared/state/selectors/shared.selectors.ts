@@ -7,3 +7,8 @@ export const selectSettings = createSelector(
     sharedState,
     (state: SharedState) => state?.settings
 );
+
+export const selectHelpSubmission = createSelector(
+    sharedState,
+    (state: SharedState) => state?.helpSubmission
+);
