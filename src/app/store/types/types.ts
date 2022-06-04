@@ -1,0 +1,10 @@
+export const mainFeatureKey = 'global';
+export const SHARED_ACTION_TYPES = {
+  SET_ACTIVE_INVITATION_DETAILS: `[${mainFeatureKey.toUpperCase()}] SET_ACTIVE_INVITATION_DETAILS`,
+  SET_ACTIVE_INVITATION_DETAILS_SUCCESS: `[${mainFeatureKey.toUpperCase()}] SET_ACTIVE_INVITATION_DETAILS_SUCCESS`,
+  SET_ACTIVE_INVITATION_DETAILS_FAILED: `[${mainFeatureKey.toUpperCase()}] SET_ACTIVE_INVITATION_DETAILS_FAILED`,
+
+  GET_PUID_DETAILS: `[${mainFeatureKey.toUpperCase()}] GET_PUID_DETAILS`,
+  GET_PUID_DETAILS_SUCCESS: `[${mainFeatureKey.toUpperCase()}] GET_PUID_DETAILS_SUCCESS`,
+  GET_PUID_DETAILS_FAILED: `[${mainFeatureKey.toUpperCase()}] GET_PUID_DETAILS_FAILED`,
+};

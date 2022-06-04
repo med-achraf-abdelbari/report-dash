@@ -1,5 +1,5 @@
 import {Action, createReducer, on} from '@ngrx/store';
-import {getHelpSubmissionSuccess, getSettings, getSettingsSuccess} from '../actions/shared.actions';
+import {getHelpSubmissionSuccess, getSettingsSuccess} from '../actions/shared.actions';
 import {ISettings} from '../../services/settings/settings.service';
 
 export interface SharedState {
@@ -9,7 +9,7 @@ export interface SharedState {
 
 export const initialState: SharedState = {
     settings: null,
-    helpSubmission : null
+    helpSubmission: null,
 };
 
 export const _sharedReducer = createReducer(

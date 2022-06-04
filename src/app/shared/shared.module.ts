@@ -32,7 +32,7 @@ import {PrivacyPolicyComponent} from '../privacy-policy/privacy-policy.component
     ]),
         CommonModule,
         StoreModule.forFeature(sharedFeatureKey, sharedReducer),
-        EffectsModule.forFeature([SharedEffects])
+        EffectsModule.forFeature([SharedEffects]),
     ]
 })
 export class SharedModule {

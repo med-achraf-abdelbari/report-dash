@@ -16,6 +16,7 @@ import {HelpSubmissionService} from '../../services/help-submission/help-submiss
     providedIn : 'root'
 })
 export class SharedEffects {
+
     getSettings$ = createEffect(() => this.actions$.pipe(ofType(getSettings), exhaustMap((action: any) => this.settingsService
         .getSettings()
         .pipe(map((response: ISettings) => {

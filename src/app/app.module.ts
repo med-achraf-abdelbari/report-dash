@@ -16,6 +16,10 @@ import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {environment} from '../environments/environment';
+import {GlobalEffects} from './store/effects/global-effects.service';
+import {globalReducer} from './store/reducers/globalReducer';
+import {mainFeatureKey} from './store/types/types';
+import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 
 @NgModule({
     // tslint:disable-next-line:max-line-length
@@ -27,8 +31,9 @@ import {environment} from '../environments/environment';
         RouterModule,
         AppRoutingModule,
         HomeModule,
-        StoreModule.forRoot({}),
-        EffectsModule.forRoot([]),
+        NgxSkeletonLoaderModule,
+        StoreModule.forRoot({[mainFeatureKey] : globalReducer}),
+        EffectsModule.forRoot([GlobalEffects]),
         StoreDevtoolsModule.instrument({
             name: 'driskit',
             maxAge: 25,

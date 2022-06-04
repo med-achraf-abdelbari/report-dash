@@ -1,8 +1,8 @@
-import { createAction, props } from '@ngrx/store';
-import { SHARED_ACTION_TYPES } from '../types/types';
+import {createAction, props} from '@ngrx/store';
+import {SHARED_ACTION_TYPES} from '../types/types';
 
 export const getSettings = createAction(
-  SHARED_ACTION_TYPES.GET_SETTINGS
+    SHARED_ACTION_TYPES.GET_SETTINGS
 );
 
 export const getSettingsSuccess = createAction(
@@ -16,7 +16,7 @@ export const getSettingsFailure = createAction(
 );
 
 export const getHelpSubmission = createAction(
-  SHARED_ACTION_TYPES.GET_HELP_SUBMISSION
+    SHARED_ACTION_TYPES.GET_HELP_SUBMISSION
 );
 
 export const getHelpSubmissionSuccess = createAction(
