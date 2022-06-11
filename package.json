@@ -33,6 +33,7 @@
     "moment": "^2.29.1",
     "ng2-nouislider": "1.8.3",
     "ngx-skeleton-loader": "^5.0.0",
+    "ngx-ui-loader": "^13.0.0",
     "nouislider": "14.6.3",
     "parse": "^3.4.2",
     "rxjs": "^7.5.5",

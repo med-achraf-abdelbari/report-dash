@@ -14,7 +14,7 @@
 }
 
 .navbar-brand {
-    min-width: 120px;
+    min-width: 150px;
     font-size: $font-size-sm;
     font-weight: 600;
     text-transform: uppercase;
@@ -25,7 +25,8 @@
         height: 38px;
     }
     .loader-logo span{
-        height: 40px;
+        height: 50px;
+        margin-bottom: 0!important;
     }
 }
 

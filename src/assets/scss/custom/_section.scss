@@ -483,9 +483,15 @@
 
 // Profile cover
 .section-profile-cover {
+    z-index: 0;
     height: 350px;
     background-size: cover;
     background-position: center center;
+    top: 120px;
+}
+
+section .container{
+    padding-top: 65px;
 }
 
 @include media-breakpoint-down(md) {

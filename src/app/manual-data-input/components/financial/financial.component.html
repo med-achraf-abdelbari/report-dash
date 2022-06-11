@@ -1,0 +1,341 @@
+<div class="w-100">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Financials</h2>
+    </div>
+    <div class="financial-row w-100 d-flex justify-content-between align-items-center">
+        <div class="metric-title"><span>Sales/turnover</span></div>
+        <div class="metric-values">
+            <div class="row">
+                <form action="" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Sales/turnover"
+                                   aria-label="Sales/turnover"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">£</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="add-value">
+            <ul class="nav nav-pills nav-pills-circle" id="tabs_2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link rounded-circle active" id="home-tab" data-toggle="tab"
+                       href="#tabs_2_1" role="tab" aria-controls="home" aria-selected="true">
+                        <span class="nav-link-icon d-block"><i class="ni ni-add"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="financial-row w-100 d-flex justify-content-between align-items-center">
+        <div class="metric-title"><span>Gross Profit</span></div>
+        <div class="metric-values">
+            <div class="row">
+                <form action="" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Sales/turnover"
+                                   aria-label="Sales/turnover"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">£</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="add-value">
+            <ul class="nav nav-pills nav-pills-circle" id="tabs_2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link rounded-circle active" id="home-tab" data-toggle="tab"
+                       href="#tabs_2_1" role="tab" aria-controls="home" aria-selected="true">
+                        <span class="nav-link-icon d-block"><i class="ni ni-add"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="financial-row w-100 d-flex justify-content-between align-items-center ">
+        <div class="metric-title"><span>Net Profit</span></div>
+        <div class="metric-values">
+            <div class="row">
+                <form action="" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Sales/turnover"
+                                   aria-label="Sales/turnover"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">£</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="add-value">
+            <ul class="nav nav-pills nav-pills-circle" id="tabs_2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link rounded-circle active" id="home-tab" data-toggle="tab"
+                       href="#tabs_2_1" role="tab" aria-controls="home" aria-selected="true">
+                        <span class="nav-link-icon d-block"><i class="ni ni-add"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="w-100">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Runway</h2>
+    </div>
+    <div class="">
+        <div class="question d-flex justify-content-start align-items-start">
+            <div class="question-title">
+                <span>Break-even point</span>
+            </div>
+            <div class="question-answer">
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           placeholder="Months"
+                           aria-label="Months"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">£</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           placeholder="Months from"
+                           aria-label="Months from"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">£</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question d-flex justify-content-start align-items-start">
+            <div class="question-title">
+                <span>Burn-rate [Now]</span>
+            </div>
+            <div class="question-answer">
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           placeholder="Burn rate now currency"
+                           aria-label="Burn rate now currency"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">£</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="question d-flex justify-content-start align-items-start">
+            <div class="question-title">
+                <span>Burn-rate [After next investment]</span>
+            </div>
+            <div class="question-answer">
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                           placeholder="Burn rate after currency"
+                           aria-label="Burn rate after currency"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">£</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Company shares</h2>
+        <span>Who have you given or allocated company shares to?</span>
+    </div>
+
+    <div class="question d-flex justify-content-start align-items-start">
+        <div class="question-title">
+            <span></span>
+        </div>
+        <div class="question-answer">
+            <div class="custom-control custom-checkbox mb-3">
+                <input class="custom-control-input" id="customCheck2" type="checkbox"
+                       checked="">
+                <label class="custom-control-label" for="customCheck2">Have you set aside shares
+                    for employees?</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="question d-flex justify-content-start align-items-start">
+        <div class="question-title">
+            <span>Current Shareholders&nbsp;</span>
+        </div>
+        <div class="question-answer">
+            <div *ngFor="let shareHolder of shareHolders; index as i " class="share-holder">
+                <form [formGroup]="shareHolders[i]">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                               placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Stake"
+                                   aria-label="Stake"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                               placeholder="Shares">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Ordinary</option>
+                            <option>Prefrence</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Voting</option>
+                            <option>Non Voting</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" id="exampleFormControlInput1"
+                               placeholder="date">
+                    </div>
+                </form>
+            </div>
+            <div class="w-100">
+                <span (click)="addShareHolder()">Add shareholder</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="w-100">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Previous Cash</h2>
+        <span>Specify here any cash that has come into the business.</span>
+    </div>
+
+    <div class="question d-flex justify-content-start align-items-start">
+        <div class="question-title">
+            <span>Previous Finance Injection&nbsp</span>
+        </div>
+        <div class="question-answer">
+            <div *ngFor="let previousC of previousCash; index as i " class="share-holder">
+                <form [formGroup]="previousCash[i]">
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="Equity investment">Equity investment</option>
+                            <option value="Crowdfunding">Crowdfunding</option>
+                            <option value="Grant">Grant</option>
+                            <option value="Loan">Loan</option>
+                            <option value="Convertible Loan">Convertible Loan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="exampleFormControlInput1"
+                               placeholder="Cap">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" id="exampleFormControlInput1"
+                               placeholder="date">
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Amount"
+                                   aria-label="Amount"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">£</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Equity given"
+                                   aria-label="Equity given"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="Equity investment">Yes</option>
+                            <option value="Crowdfunding">No</option>
+                            <option value="Grant">Not sure</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="w-100">
+                <span (click)="createPreviousCash()">Add more</span>
+            </div>
+        </div>
+    </div>
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Accounting method</h2>
+    </div>
+
+    <div class="question d-flex justify-content-start align-items-start">
+        <div class="question-title">
+            <span>Is your accounting type</span>
+        </div>
+        <div class="question-answer">
+            <div class="custom-control custom-checkbox mb-3">
+                <input class="custom-control-input" id="customCheck2" type="checkbox"
+                       checked="">
+                <label class="custom-control-label" for="customCheck2">Accrual</label>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-3">
+                <input class="custom-control-input" id="customCheck2" type="checkbox"
+                       checked="">
+                <label class="custom-control-label" for="customCheck2">Cash</label>
+            </div>
+
+            <div class="custom-control custom-checkbox mb-3">
+                <input class="custom-control-input" id="customCheck2" type="checkbox"
+                       checked="">
+                <label class="custom-control-label" for="customCheck2">D'ont know</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
+        <h2>Additional notes</h2>
+    </div>
+
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any other founder notes or comments to be written here"></textarea>
+
+</div>

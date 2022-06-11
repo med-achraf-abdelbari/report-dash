@@ -4,11 +4,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
 import {ManualDataInputComponent} from './manual-data-input/manual-data-input.component';
 import {LandingComponent} from './landing/landing.component';
-import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
     {path: 'user-manual-data-input', component: ManualDataInputComponent},
-    {path: 'public', loadChildren : () => import('src/app/shared/shared.module').then( m => m.SharedModule) },
+    {path: 'public', loadChildren: () => import('src/app/shared/shared.module').then(m => m.SharedModule)},
     // { path: 'register',           component: SignupComponent },
     {path: 'landing', component: LandingComponent},
     // { path: 'login',          component: LoginComponent },

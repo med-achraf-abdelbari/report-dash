@@ -34,7 +34,7 @@
     border: 0;
   }
 
-  // Customize the `:focus` state to imitate native WebKit styles.
+  // Customize the `:focus` store to imitate native WebKit styles.
   @include form-control-focus();
 
   // Placeholder

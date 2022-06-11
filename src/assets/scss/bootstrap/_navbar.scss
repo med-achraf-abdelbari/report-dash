@@ -16,6 +16,9 @@
 // other navbar variations.
 
 .navbar {
+  height: 120px;
+  background: white!important;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.2)!important;
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
@@ -104,7 +107,7 @@
   align-items: center;
 }
 
-// Button for toggling the navbar when in its collapsed state
+// Button for toggling the navbar when in its collapsed store
 .navbar-toggler {
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;

@@ -5,7 +5,7 @@ import {filter, Subscription} from 'rxjs';
 import {ParseHttpClientService} from './shared/services/http-client/parse-http-client.service';
 import {SettingsService} from './shared/services/settings/settings.service';
 import {Store} from '@ngrx/store';
-import {getSettings} from './shared/state/actions/shared.actions';
+import {getSettings} from './shared/store/actions/shared.actions';
 
 let didScroll;
 let lastScrollTop = 0;
