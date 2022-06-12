@@ -22,11 +22,13 @@ import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {lOADER_CONFIG} from './core/config/loader.config';
 import { FinancialComponent } from './manual-data-input/components/financial/financial.component';
+import { InnovationComponent } from './manual-data-input/components/innovation/innovation.component';
+import { MarketingComponent } from './manual-data-input/components/marketing/marketing.component';
 
 
 @NgModule({
     // tslint:disable-next-line:max-line-length
-    declarations: [AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent, FinancialComponent],
+    declarations: [AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent, FinancialComponent, InnovationComponent, MarketingComponent],
     imports: [
         BrowserModule,
         NgbModule,

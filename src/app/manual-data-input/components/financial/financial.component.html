@@ -2,7 +2,7 @@
     <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
         <h2>Financials</h2>
     </div>
-    <div class="financial-row w-100 d-flex justify-content-between align-items-center">
+    <div class="financial-row w-100">
         <div class="metric-title"><span>Sales/turnover</span></div>
         <div class="metric-values">
             <div class="row">
@@ -32,7 +32,7 @@
             </ul>
         </div>
     </div>
-    <div class="financial-row w-100 d-flex justify-content-between align-items-center">
+    <div class="financial-row w-100 ">
         <div class="metric-title"><span>Gross Profit</span></div>
         <div class="metric-values">
             <div class="row">
@@ -62,7 +62,7 @@
             </ul>
         </div>
     </div>
-    <div class="financial-row w-100 d-flex justify-content-between align-items-center ">
+    <div class="financial-row w-100 ">
         <div class="metric-title"><span>Net Profit</span></div>
         <div class="metric-values">
             <div class="row">
@@ -99,7 +99,7 @@
         <h2>Runway</h2>
     </div>
     <div class="">
-        <div class="question d-flex justify-content-start align-items-start">
+        <div class="question">
             <div class="question-title">
                 <span>Break-even point</span>
             </div>
@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
-        <div class="question d-flex justify-content-start align-items-start">
+        <div class="question ">
             <div class="question-title">
                 <span>Burn-rate [Now]</span>
             </div>
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="question d-flex justify-content-start align-items-start">
+        <div class="question ">
             <div class="question-title">
                 <span>Burn-rate [After next investment]</span>
             </div>
@@ -160,37 +160,32 @@
 </div>
 
 <div class="w-100">
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
-        <h2>Company shares</h2>
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
+        <h2 class="w-100 text-left">Company shares</h2>
         <span>Who have you given or allocated company shares to?</span>
     </div>
 
-    <div class="question d-flex justify-content-start align-items-start">
-        <div class="question-title">
-            <span></span>
-        </div>
-        <div class="question-answer">
-            <div class="custom-control custom-checkbox mb-3">
-                <input class="custom-control-input" id="customCheck2" type="checkbox"
-                       checked="">
-                <label class="custom-control-label" for="customCheck2">Have you set aside shares
-                    for employees?</label>
-            </div>
+    <div class="w-100 d-flex">
+        <div class="custom-control custom-checkbox mb-3">
+            <input class="custom-control-input" id="customCheck2" type="checkbox"
+                   checked="">
+            <label class="custom-control-label" for="customCheck2">Have you set aside shares
+                for employees?</label>
         </div>
     </div>
 
-    <div class="question d-flex justify-content-start align-items-start">
+    <div class="question">
         <div class="question-title">
             <span>Current Shareholders&nbsp;</span>
         </div>
-        <div class="question-answer">
+        <div style="grid-column: span 8;">
             <div *ngFor="let shareHolder of shareHolders; index as i " class="share-holder">
-                <form [formGroup]="shareHolders[i]">
-                    <div class="form-group">
+                <form [formGroup]="shareHolders[i]" style="display: grid;grid-template-columns: repeat(4 , 1fr);">
+                    <div class="form-group  px-2">
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  px-2">
                         <div class="input-group">
                             <input type="text" class="form-control"
                                    placeholder="Stake"
@@ -201,29 +196,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  px-2">
                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                placeholder="Shares">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  px-2">
                         <select class="form-control">
                             <option>Ordinary</option>
                             <option>Prefrence</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  px-2">
                         <select class="form-control">
                             <option>Voting</option>
                             <option>Non Voting</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group  px-2">
                         <select class="form-control">
                             <option>Yes</option>
                             <option>No</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <input type="date" class="form-control" id="exampleFormControlInput1"
                                placeholder="date">
                     </div>
@@ -238,19 +233,19 @@
 
 
 <div class="w-100">
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
-        <h2>Previous Cash</h2>
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
+        <h2 class="w-100 text-left">Previous Cash</h2>
         <span>Specify here any cash that has come into the business.</span>
     </div>
 
-    <div class="question d-flex justify-content-start align-items-start">
-        <div class="question-title">
+    <div class="question ">
+        <div class="question-title text-left">
             <span>Previous Finance Injection&nbsp</span>
         </div>
-        <div class="question-answer">
+        <div style="grid-column: span 8;">
             <div *ngFor="let previousC of previousCash; index as i " class="share-holder">
-                <form [formGroup]="previousCash[i]">
-                    <div class="form-group">
+                <form [formGroup]="previousCash[i]"  style="display: grid;grid-template-columns: repeat(4 , 1fr);">
+                    <div class="form-group px-2">
                         <select class="form-control">
                             <option value="Equity investment">Equity investment</option>
                             <option value="Crowdfunding">Crowdfunding</option>
@@ -259,15 +254,15 @@
                             <option value="Convertible Loan">Convertible Loan</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <input type="number" class="form-control" id="exampleFormControlInput1"
                                placeholder="Cap">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <input type="date" class="form-control" id="exampleFormControlInput1"
                                placeholder="date">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <div class="input-group">
                             <input type="text" class="form-control"
                                    placeholder="Amount"
@@ -278,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <div class="input-group">
                             <input type="text" class="form-control"
                                    placeholder="Equity given"
@@ -289,7 +284,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group px-2">
                         <select class="form-control">
                             <option value="Equity investment">Yes</option>
                             <option value="Crowdfunding">No</option>
@@ -307,7 +302,7 @@
         <h2>Accounting method</h2>
     </div>
 
-    <div class="question d-flex justify-content-start align-items-start">
+    <div class="question ">
         <div class="question-title">
             <span>Is your accounting type</span>
         </div>
@@ -336,6 +331,7 @@
         <h2>Additional notes</h2>
     </div>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Any other founder notes or comments to be written here"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+              placeholder="Any other founder notes or comments to be written here"></textarea>
 
 </div>

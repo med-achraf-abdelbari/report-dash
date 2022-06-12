@@ -1,0 +1,45 @@
+.question{
+  display: flex;
+}
+
+.question-radio{
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.q{
+  display: grid;
+  grid-template-columns: repeat(12 , 1fr);
+}
+
+.question-title{
+  grid-column: span 8;
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+}
+
+.question-choise
+{
+  grid-column: span 4;
+  grid-template-columns: repeat(3 , 1fr);
+  display: grid;
+}
+
+.option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-option{
+  grid-column: span 3;
+
+  select{
+    width: 70%;
+    margin: 20px;
+  }
+}
+
+

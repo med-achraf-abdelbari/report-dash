@@ -1,7 +1,47 @@
+h2{
+  line-height: 45px!important;
+}
+
 .section-title{
   width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
   padding: 10px 0;
+}
+.financial-row, .question{
+  display: grid;
+  grid-template-columns: repeat(12 , 1fr);
+}
+
+.metric-title{
+  grid-column: span 2;
+  display: flex;
+  justify-content:  start;
+}
+
+.metric-values{
+  grid-column: span 9;
+}
+
+.add-value{
+  grid-column: span 1;
+  display: flex;
+  justify-content: end;
+}
+
+.question-title{
+  grid-column: span 4;
+  display: flex;
+  justify-content: start;
+}
+
+.question-answer{
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(4 , 1fr);
+
+  .input-group{
+    padding: 7.5px!important;
+  }
 }
