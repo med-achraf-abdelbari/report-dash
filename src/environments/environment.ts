@@ -9,7 +9,8 @@ export const environment = {
     javascriptKey: 'VKiyLKo650OIUAmOC1tfT38tpE6Q8gdjtyfBnglt',
     serverURL: 'https://parseapi.back4app.com/',
   },
-  feedURL: 'https://driskit.b4a.app/digest'
+  feedURL: 'https://driskit.b4a.app/digest',
+  integrationBackend : 'http://localhost:3000'
 };
 
 /*

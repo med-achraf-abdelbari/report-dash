@@ -21,9 +21,10 @@ import {mainFeatureKey} from './store/types/types';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {lOADER_CONFIG} from './core/config/loader.config';
-import { FinancialComponent } from './manual-data-input/components/financial/financial.component';
-import { InnovationComponent } from './manual-data-input/components/innovation/innovation.component';
-import { MarketingComponent } from './manual-data-input/components/marketing/marketing.component';
+import {FinancialComponent} from './manual-data-input/components/financial/financial.component';
+import {InnovationComponent} from './manual-data-input/components/innovation/innovation.component';
+import {MarketingComponent} from './manual-data-input/components/marketing/marketing.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MarketingComponent } from './manual-data-input/components/marketing/mar
         RouterModule,
         AppRoutingModule,
         NgxSkeletonLoaderModule,
+        HttpClientModule,
         NgxUiLoaderModule.forRoot(lOADER_CONFIG),
         StoreModule.forRoot({[mainFeatureKey]: globalReducer}),
         EffectsModule.forRoot([GlobalEffects]),
