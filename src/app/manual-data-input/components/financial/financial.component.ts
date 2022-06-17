@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-financial',
@@ -47,7 +47,7 @@ export class FinancialComponent implements OnInit {
     }
 
     addShareHolder() {
-        this.shareHolders.push(this.createShareholder());
+        (this.financialGroup.get('shareholders') as FormArray).controls.push(this.createShareholder());
     }
 
     createShareholder(): FormGroup {

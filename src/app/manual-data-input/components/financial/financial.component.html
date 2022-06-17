@@ -179,59 +179,61 @@
 
     <div class="w-100 d-flex">
         <div class="custom-control custom-checkbox mb-3">
-            <input class="custom-control-input"  type="checkbox"
-                   checked="">
-            <label class="custom-control-label" for="customCheck2">Have you set aside shares
-                for employees?</label>
+            <form [formGroup]="financialGroup">
+                <input formControlName="employeeShares" class="custom-control-input" id="hasShares"  type="checkbox" >
+                <label class="custom-control-label" for="hasShares">Have you set aside shares
+                    for employees?</label>
+            </form>
         </div>
     </div>
 
     <div class="question">
         <div class="question-title">
-            <span>Current Shareholders&nbsp;</span>
+            <span>Current Shareholders</span>
         </div>
         <div style="grid-column: span 8;">
-            <div *ngFor="let shareHolder of shareHolders; index as i " class="share-holder">
-                <form [formGroup]="shareHolders[i]" style="display: grid;grid-template-columns: repeat(4 , 1fr);">
+            <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i " class="share-holder">
+                <form [formGroup]="financialGroup.get('shareholders').controls[i]" style="display: grid;grid-template-columns: repeat(4 , 1fr);">
                     <div class="form-group  px-2">
-                        <input type="text" class="form-control" 
+                        <input type="text" class="form-control" formControlName="name"
                                placeholder="Name">
                     </div>
                     <div class="form-group  px-2">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                    placeholder="Stake"
                                    aria-label="Stake"
+                                   formControlName="stake"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <span class="input-group-text" >%</span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group  px-2">
-                        <input type="text" class="form-control" 
+                    <div class="form-group px-2">
+                        <input type="number" formControlName="shares" class="form-control"
                                placeholder="Shares">
                     </div>
-                    <div class="form-group  px-2">
-                        <select class="form-control">
-                            <option>Ordinary</option>
-                            <option>Prefrence</option>
+                    <div class="form-group px-2">
+                        <select formControlName="shareClass" class="form-control">
+                            <option value="0">Ordinary</option>
+                            <option value="1">Prefrence</option>
                         </select>
                     </div>
                     <div class="form-group  px-2">
-                        <select class="form-control">
-                            <option>Voting</option>
-                            <option>Non Voting</option>
+                        <select formControlName="voting" class="form-control">
+                            <option value="0">Voting</option>
+                            <option value="1">Non Voting</option>
                         </select>
                     </div>
                     <div class="form-group  px-2">
-                        <select class="form-control">
-                            <option>Yes</option>
-                            <option>No</option>
+                        <select formControlName="antiDilution" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                     </div>
                     <div class="form-group px-2">
-                        <input type="date" class="form-control" 
+                        <input formControlName="allocationDate" type="date" class="form-control"
                                placeholder="date">
                     </div>
                 </form>
