@@ -40,10 +40,10 @@ export class FinancialComponent implements OnInit {
 
     ngOnInit() {
         this.financialGroup = this.createFinancialControlGorup();
-        // this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
-        // this.salesFG.valueChanges.subscribe(() => {
-        //     console.log(this.salesFG);
-        // });
+        this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
+        this.financialGroup.valueChanges.subscribe(() => {
+            console.log(this.financialGroup);
+        });
     }
 
     addShareHolder() {

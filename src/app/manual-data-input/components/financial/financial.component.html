@@ -102,31 +102,37 @@
     <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
         <h2>Runway</h2>
     </div>
-    <div class="">
+    <form [formGroup]="financialGroup.get('runway')" class="">
         <div class="question">
             <div class="question-title">
                 <span>Break-even point</span>
             </div>
-            <div class="question-answer">
+            <form [formGroup]="financialGroup.get('runway').get('breakEven')" class="question-answer">
                 <div class="input-group">
-                    <input type="text" class="form-control"
+                    <input type="number" class="form-control"
                            placeholder="Months"
                            aria-label="Months"
+                           formControlName="months"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <span class="input-group-text" >£</span>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="text" class="form-control"
-                           placeholder="Months from"
-                           aria-label="Months from"
-                           aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <span class="input-group-text" >£</span>
-                    </div>
+                    <select formControlName="from" class="form-control">
+                        <option value=""  selected>Months from ...</option>
+                        <option value="now">months from now</option>
+                        <option value="investment">months from investment</option>
+                    </select>
+<!--                    <input type="text" class="form-control"-->
+<!--                           placeholder="Months from"-->
+<!--                           aria-label="Months from"-->
+<!--                           aria-describedby="basic-addon2">-->
+<!--                    <div class="input-group-append">-->
+<!--                        <span class="input-group-text" >£</span>-->
+<!--                    </div>-->
                 </div>
-            </div>
+            </form>
         </div>
         <div class="question ">
             <div class="question-title">
@@ -134,9 +140,10 @@
             </div>
             <div class="question-answer">
                 <div class="input-group">
-                    <input type="text" class="form-control"
+                    <input type="number" class="form-control"
                            placeholder="Burn rate now currency"
                            aria-label="Burn rate now currency"
+                           formControlName="burnRateNow"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <span class="input-group-text" >£</span>
@@ -150,9 +157,10 @@
             </div>
             <div class="question-answer">
                 <div class="input-group">
-                    <input type="text" class="form-control"
+                    <input type="number" class="form-control"
                            placeholder="Burn rate after currency"
                            aria-label="Burn rate after currency"
+                           formControlName="burnRateAfter"
                            aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <span class="input-group-text" >£</span>
@@ -160,7 +168,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <div class="w-100">
