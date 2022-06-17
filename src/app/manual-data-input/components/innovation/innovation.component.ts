@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-innovation',
@@ -72,12 +73,12 @@ export class InnovationComponent implements OnInit {
     ];
 
     designs = [
-        { name: 'Scoping', control: 'scoping' },
-        { name: 'Brief', control: 'brief' },
-        { name: 'Concept', control: 'concept' },
-        { name: 'Design', control: 'design' },
-        { name: 'Production', control: 'product' },
-        { name: 'Launch', control: 'launch' }
+        {name: 'Scoping', control: 'scoping'},
+        {name: 'Brief', control: 'brief'},
+        {name: 'Concept', control: 'concept'},
+        {name: 'Design', control: 'design'},
+        {name: 'Production', control: 'product'},
+        {name: 'Launch', control: 'launch'}
     ];
 
     designTypes = ['moodboard', 'storyboard', 'wireframe', 'brief'];
@@ -87,22 +88,22 @@ export class InnovationComponent implements OnInit {
             display: 'What assets do you generate?',
             type: 'group',
             controls: [
-                { display: 'reports', value: 'reports' },
-                { display: 'software code', value: 'code' },
-                { display: 'logo', value: 'logo' },
-                { display: 'designs', value: 'designs' },
-                { display: 'copy', value: 'copy' }
+                {display: 'reports', value: 'reports'},
+                {display: 'software code', value: 'code'},
+                {display: 'logo', value: 'logo'},
+                {display: 'designs', value: 'designs'},
+                {display: 'copy', value: 'copy'}
             ]
         },
         assetsOwned: {
             display: 'Have you registered any of the following?',
             type: 'group',
             controls: [
-                { display: 'Design', value: 'design' },
-                { display: 'Trade', value: 'trade' },
-                { display: 'Marks', value: 'marks' },
-                { display: 'Patents', value: 'patents' },
-                { display: 'Copyright', value: 'copyright' },
+                {display: 'Design', value: 'design'},
+                {display: 'Trade', value: 'trade'},
+                {display: 'Marks', value: 'marks'},
+                {display: 'Patents', value: 'patents'},
+                {display: 'Copyright', value: 'copyright'},
             ]
         },
         patentSearches: {
@@ -126,10 +127,79 @@ export class InnovationComponent implements OnInit {
         }
     };
 
-    constructor() {
+    innovationGroup: any;
+    private evidences: any;
+
+
+    constructor(private formBuilder: FormBuilder) {
     }
 
     ngOnInit(): void {
+        this.innovationGroup = this.createInnovationControlGroup();
+    }
+
+    createInnovationControlGroup(): FormGroup {
+
+        // Create evidence controls
+        const evidenceControls = {};
+        // this.evidences.forEach(ev => {
+        //     evidenceControls[ev.name] = {
+        //         value: null,
+        //         notes: null
+        //     };
+        // });
+
+        return this.formBuilder.group({
+
+            stageOfInnovation: [],
+            technologyReadiness: [],
+            innovationEvidence: this.formBuilder.group(evidenceControls),
+
+            areaOfImpact: this.formBuilder.group({
+                question1: [],
+                question2: [],
+                question3: [],
+                question4: [],
+                question5: [],
+                question6: [],
+                question7: [],
+                question8: [],
+                question9: [],
+
+                // ... add as many as required for the questions
+            }),
+
+            innovationAndIP: this.formBuilder.group({
+                assetsGenerated: new FormArray(
+                    this.ipAssets.assetsGenerated.controls.map(c => new FormControl(c.value))
+                ),
+                assetsOwned: new FormArray(
+                    this.ipAssets.assetsOwned.controls.map(c => new FormControl(c.value))
+                ),
+                patentSearches: [],
+                patentsApplied: new FormArray(
+                    this.ipAssets.patentsApplied.constrols.map(c => new FormControl(c.value))
+                ),
+                patentsPending: new FormArray(
+                    this.ipAssets.patentsPending.constrols.map(c => new FormControl(c.value))
+                ),
+                patentsGranted: new FormArray(
+                    this.ipAssets.patentsGranted.constrols.map(c => new FormControl(c.value))
+                ),
+            }),
+
+            design: this.formBuilder.group({
+                scoping: [],
+                brief: [],
+                concept: [],
+                design: [],
+                product: [],
+                launch: [],
+            }),
+
+            notes: [],
+
+        });
     }
 
 }
