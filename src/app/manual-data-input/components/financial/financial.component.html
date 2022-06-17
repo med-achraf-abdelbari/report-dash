@@ -6,13 +6,15 @@
         <div class="metric-title"><span>Sales/turnover</span></div>
         <div class="metric-values">
             <div class="row">
-                <form action="" class="d-flex flex-wrap">
-                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                <form [formGroup]="financialGroup.get('financial').get('sales')" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears; index as i" class="form-group mx-2">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                    placeholder="Sales/turnover"
                                    aria-label="Sales/turnover"
-                                   aria-describedby="basic-addon2">
+                                   aria-describedby="basic-addon2"
+                                   formControlName="year{{i+1}}"
+                                    >
                             <div class="input-group-append">
                                 <span class="input-group-text" >£</span>
                             </div>
@@ -36,12 +38,13 @@
         <div class="metric-title"><span>Gross Profit</span></div>
         <div class="metric-values">
             <div class="row">
-                <form action="" class="d-flex flex-wrap">
-                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                <form [formGroup]="financialGroup.get('financial').get('grossProfit')" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears ; index as i " class="form-group mx-2">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                    placeholder="Sales/turnover"
                                    aria-label="Sales/turnover"
+                                   formControlName="year{{i+1}}"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <span class="input-group-text">£</span>
@@ -66,12 +69,13 @@
         <div class="metric-title"><span>Net Profit</span></div>
         <div class="metric-values">
             <div class="row">
-                <form action="" class="d-flex flex-wrap">
-                    <div *ngFor="let year of financialYears" class="form-group mx-2">
+                <form [formGroup]="financialGroup.get('financial').get('netProfit')" class="d-flex flex-wrap">
+                    <div *ngFor="let year of financialYears ; index as i " class="form-group mx-2">
                         <div class="input-group">
-                            <input type="text" class="form-control"
+                            <input type="number" class="form-control"
                                    placeholder="Sales/turnover"
                                    aria-label="Sales/turnover"
+                                   formControlName="year{{i+1}}"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <span class="input-group-text" >£</span>

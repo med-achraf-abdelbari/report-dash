@@ -1,143 +1,148 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-financial',
-  templateUrl: './financial.component.html',
-  styleUrls: ['./financial.component.scss']
+    selector: 'app-financial',
+    templateUrl: './financial.component.html',
+    styleUrls: ['./financial.component.scss']
 })
 export class FinancialComponent implements OnInit {
 
-  financialYears = [new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2, new Date().getFullYear() - 3];
-  shareHolders: FormGroup[] = [
-    this.formBuilder.group({
-      name: [],
-      stake: [],
-      shares: [],
-      shareClass: [],
-      voting: [],
-      antiDilution: [],
-      allocationDate: [],
-    })
-  ];
-  previousCash: FormGroup[] = [
-    this.formBuilder.group({
-      type: [],
-      cap: [],
-      discount: [],
-      source: [],
-      date: [],
-      amount: [],
-      equityGiven: [],
-      charges: []
-    })
-  ];
-  financialGroup: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit() {
-    this.financialGroup = this.createFinancialControlGorup();
-  }
-
-  addShareHolder() {
-    this.shareHolders.push(this.createShareholder());
-  }
-
-  createShareholder(): FormGroup {
-    return this.formBuilder.group({
-      name: [],
-      stake: [],
-      shares: [],
-      shareClass: [],
-      voting: [],
-      antiDilution: [],
-      allocationDate: [],
-    });
-  }
-
-  createPreviousCash() {
-    this.previousCash.push(
+    financialYears = [new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2, new Date().getFullYear() - 3];
+    shareHolders: FormGroup[] = [
         this.formBuilder.group({
-          type: [],
-          cap: [],
-          discount: [],
-          source: [],
-          date: [],
-          amount: [],
-          equityGiven: [],
-          charges: []
+            name: [],
+            stake: [],
+            shares: [],
+            shareClass: [],
+            voting: [],
+            antiDilution: [],
+            allocationDate: [],
         })
-    );
-  }
-
-  createFinancialControlGorup(): FormGroup {
-
-    return this.formBuilder.group({
-
-      financial: this.formBuilder.group({
-        sales: this.formBuilder.group({
-          previous: [],
-          current: [],
-          year1: [],
-          year2: [],
-          year3: [],
-          year4: [],
-          year5: [],
-        }),
-        grossProfit: this.formBuilder.group({
-          previous: [],
-          current: [],
-          year1: [],
-          year2: [],
-          year3: [],
-          year4: [],
-          year5: [],
-        }),
-        netProfit: this.formBuilder.group({
-          previous: [],
-          current: [],
-          year1: [],
-          year2: [],
-          year3: [],
-          year4: [],
-          year5: [],
-        })
-      }),
-
-      runway: this.formBuilder.group({
-        breakEven: this.formBuilder.group({
-          months: [],
-          from: []
-        }),
-        burnRateNow: [],
-        burnRateAfter: []
-      }),
-
-      shareholders: this.formBuilder.array([
-        this.createShareholder()
-      ]),
-
-      previousCash: this.formBuilder.array([
+    ];
+    previousCash: FormGroup[] = [
         this.formBuilder.group({
-          type: [],
-          cap: [],
-          discount: [],
-          source: [],
-          date: [],
-          amount: [],
-          equityGiven: [],
-          charges: []
+            type: [],
+            cap: [],
+            discount: [],
+            source: [],
+            date: [],
+            amount: [],
+            equityGiven: [],
+            charges: []
         })
-      ]),
+    ];
+    financialGroup: any;
+    salesFG: any;
 
-      notes: new FormControl(),
-      employeeShares: [false],
-      accountingMethod: new FormControl(),
+    constructor(private formBuilder: FormBuilder) {
+    }
 
-    });
-  }
+    ngOnInit() {
+        this.financialGroup = this.createFinancialControlGorup();
+        // this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
+        // this.salesFG.valueChanges.subscribe(() => {
+        //     console.log(this.salesFG);
+        // });
+    }
+
+    addShareHolder() {
+        this.shareHolders.push(this.createShareholder());
+    }
+
+    createShareholder(): FormGroup {
+        return this.formBuilder.group({
+            name: [],
+            stake: [],
+            shares: [],
+            shareClass: [],
+            voting: [],
+            antiDilution: [],
+            allocationDate: [],
+        });
+    }
+
+    createPreviousCash() {
+        this.previousCash.push(
+            this.formBuilder.group({
+                type: [],
+                cap: [],
+                discount: [],
+                source: [],
+                date: [],
+                amount: [],
+                equityGiven: [],
+                charges: []
+            })
+        );
+    }
+
+    createFinancialControlGorup(): FormGroup {
+
+        return this.formBuilder.group({
+
+            financial: this.formBuilder.group({
+                sales: this.formBuilder.group({
+                    previous: [],
+                    current: [],
+                    year1: [],
+                    year2: [],
+                    year3: [],
+                    year4: [],
+                    year5: [],
+                }),
+                grossProfit: this.formBuilder.group({
+                    previous: [],
+                    current: [],
+                    year1: [],
+                    year2: [],
+                    year3: [],
+                    year4: [],
+                    year5: [],
+                }),
+                netProfit: this.formBuilder.group({
+                    previous: [],
+                    current: [],
+                    year1: [],
+                    year2: [],
+                    year3: [],
+                    year4: [],
+                    year5: [],
+                })
+            }),
+
+            runway: this.formBuilder.group({
+                breakEven: this.formBuilder.group({
+                    months: [],
+                    from: []
+                }),
+                burnRateNow: [],
+                burnRateAfter: []
+            }),
+
+            shareholders: this.formBuilder.array([
+                this.createShareholder()
+            ]),
+
+            previousCash: this.formBuilder.array([
+                this.formBuilder.group({
+                    type: [],
+                    cap: [],
+                    discount: [],
+                    source: [],
+                    date: [],
+                    amount: [],
+                    equityGiven: [],
+                    charges: []
+                })
+            ]),
+
+            notes: new FormControl(),
+            employeeShares: [false],
+            accountingMethod: new FormControl(),
+
+        });
+    }
 
 
 }
