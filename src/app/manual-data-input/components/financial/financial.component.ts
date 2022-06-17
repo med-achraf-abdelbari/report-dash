@@ -63,18 +63,7 @@ export class FinancialComponent implements OnInit {
     }
 
     createPreviousCash() {
-        this.previousCash.push(
-            this.formBuilder.group({
-                type: [],
-                cap: [],
-                discount: [],
-                source: [],
-                date: [],
-                amount: [],
-                equityGiven: [],
-                charges: []
-            })
-        );
+        (this.financialGroup.get('previousCash') as FormArray).controls.push(this.createShareholder());
     }
 
     createFinancialControlGorup(): FormGroup {

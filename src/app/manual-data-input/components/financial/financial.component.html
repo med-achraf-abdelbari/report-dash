@@ -239,7 +239,7 @@
                 </form>
             </div>
             <div class="w-100">
-                <span (click)="addShareHolder()">Add shareholder</span>
+                <button  class="btn btn-primary" (click)="addShareHolder()">Add shareholder</button>
             </div>
         </div>
     </div>
@@ -254,13 +254,13 @@
 
     <div class="question ">
         <div class="question-title text-left">
-            <span>Previous Finance Injection&nbsp</span>
+            <span>Previous Finance Injection</span>
         </div>
         <div style="grid-column: span 8;">
-            <div *ngFor="let previousC of previousCash; index as i " class="share-holder">
-                <form [formGroup]="previousCash[i]"  style="display: grid;grid-template-columns: repeat(4 , 1fr);">
+            <div *ngFor="let previousC of financialGroup.get('previousCash').controls; index as j " class="share-holder">
+                <form [formGroup]="financialGroup.get('previousCash').controls[j]"  style="display: grid;grid-template-columns: repeat(4 , 1fr);">
                     <div class="form-group px-2">
-                        <select class="form-control">
+                        <select formControlName="type" class="form-control">
                             <option value="Equity investment">Equity investment</option>
                             <option value="Crowdfunding">Crowdfunding</option>
                             <option value="Grant">Grant</option>
@@ -268,12 +268,43 @@
                             <option value="Convertible Loan">Convertible Loan</option>
                         </select>
                     </div>
-                    <div class="form-group px-2">
-                        <input type="number" class="form-control" 
-                               placeholder="Cap">
+                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'" class="form-group px-2">
+                        <div class="input-group">
+                            <input formControlName="cap" type="number" class="form-control"
+                                   placeholder="Cap"
+                                   aria-label="Cap"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" >£</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'" class="form-group px-2">
+                        <div class="input-group">
+                            <input type="number" class="form-control"
+                                   placeholder="Discount"
+                                   aria-label="Discount"
+                                   formControlName="discount"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" >%</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group px-2">
-                        <input type="date" class="form-control" 
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                   placeholder="Fund or Source"
+                                   aria-label="Fund or Source"
+                                   formControlName="source"
+                                   aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" >%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group px-2">
+                        <input formControlName="date" type="date" class="form-control"
                                placeholder="date">
                     </div>
                     <div class="form-group px-2">
@@ -281,6 +312,7 @@
                             <input type="text" class="form-control"
                                    placeholder="Amount"
                                    aria-label="Amount"
+                                   formControlName="amount"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <span class="input-group-text" >£</span>
@@ -292,6 +324,7 @@
                             <input type="text" class="form-control"
                                    placeholder="Equity given"
                                    aria-label="Equity given"
+                                   formControlName="equityGiven"
                                    aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <span class="input-group-text" >%</span>
@@ -299,7 +332,7 @@
                         </div>
                     </div>
                     <div class="form-group px-2">
-                        <select class="form-control">
+                        <select formControlName="charges" class="form-control">
                             <option value="Equity investment">Yes</option>
                             <option value="Crowdfunding">No</option>
                             <option value="Grant">Not sure</option>
@@ -308,7 +341,7 @@
                 </form>
             </div>
             <div class="w-100">
-                <span (click)="createPreviousCash()">Add more</span>
+                <button class="btn btn-primary" (click)="createPreviousCash()">Add more</button>
             </div>
         </div>
     </div>
@@ -320,32 +353,34 @@
         <div class="question-title">
             <span>Is your accounting type</span>
         </div>
-        <div class="question-answer">
+        <form [formGroup]="financialGroup" class="question-answer">
             <div class="custom-control custom-checkbox mb-3">
-                <input class="custom-control-input"  type="checkbox"
+                <input formControlName="accountingMethod" id="Accrual"  class="custom-control-input" [value]="'accrual'" type="checkbox"
                        checked="">
-                <label class="custom-control-label" for="customCheck2">Accrual</label>
+                <label class="custom-control-label" for="Accrual">Accrual</label>
             </div>
 
             <div class="custom-control custom-checkbox mb-3">
-                <input class="custom-control-input"  type="checkbox"
+                <input formControlName="accountingMethod" id="Cash" class="custom-control-input" [value]="'cash'"  type="checkbox"
                        checked="">
-                <label class="custom-control-label" for="customCheck2">Cash</label>
+                <label class="custom-control-label" for="Cash">Cash</label>
             </div>
 
             <div class="custom-control custom-checkbox mb-3">
-                <input class="custom-control-input"  type="checkbox"
+                <input formControlName="accountingMethod" id="D'ont know" [value]="null" class="custom-control-input" type="checkbox"
                        checked="">
-                <label class="custom-control-label" for="customCheck2">D'ont know</label>
+                <label class="custom-control-label" for="D'ont know">D'ont know</label>
             </div>
-        </div>
+        </form>
     </div>
 
     <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">
         <h2>Additional notes</h2>
     </div>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-              placeholder="Any other founder notes or comments to be written here"></textarea>
+    <form [formGroup]="financialGroup" class="w-100">
+        <textarea formControlName="notes" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                  placeholder="Any other founder notes or comments to be written here"></textarea>
+    </form>
 
 </div>
