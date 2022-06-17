@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-financial',
@@ -32,11 +32,13 @@ export class FinancialComponent implements OnInit {
       charges: []
     })
   ];
+  financialGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.financialGroup = this.createFinancialControlGorup();
   }
 
   addShareHolder() {
@@ -69,5 +71,73 @@ export class FinancialComponent implements OnInit {
         })
     );
   }
+
+  createFinancialControlGorup(): FormGroup {
+
+    return this.formBuilder.group({
+
+      financial: this.formBuilder.group({
+        sales: this.formBuilder.group({
+          previous: [],
+          current: [],
+          year1: [],
+          year2: [],
+          year3: [],
+          year4: [],
+          year5: [],
+        }),
+        grossProfit: this.formBuilder.group({
+          previous: [],
+          current: [],
+          year1: [],
+          year2: [],
+          year3: [],
+          year4: [],
+          year5: [],
+        }),
+        netProfit: this.formBuilder.group({
+          previous: [],
+          current: [],
+          year1: [],
+          year2: [],
+          year3: [],
+          year4: [],
+          year5: [],
+        })
+      }),
+
+      runway: this.formBuilder.group({
+        breakEven: this.formBuilder.group({
+          months: [],
+          from: []
+        }),
+        burnRateNow: [],
+        burnRateAfter: []
+      }),
+
+      shareholders: this.formBuilder.array([
+        this.createShareholder()
+      ]),
+
+      previousCash: this.formBuilder.array([
+        this.formBuilder.group({
+          type: [],
+          cap: [],
+          discount: [],
+          source: [],
+          date: [],
+          amount: [],
+          equityGiven: [],
+          charges: []
+        })
+      ]),
+
+      notes: new FormControl(),
+      employeeShares: [false],
+      accountingMethod: new FormControl(),
+
+    });
+  }
+
 
 }
