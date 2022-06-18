@@ -8,15 +8,15 @@
     <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
         <span>What is the key nature of your USP (Unique Selling Proposition)?</span>
     </div>
-    <div *ngFor="let product of products[0].kinds" class="col-sm-12 col-md-4">
+    <div *ngFor="let product of products[0].kinds; index as i" class="col-sm-12 col-md-4">
         <div class="row">
             <div class="col-2 d-flex justify-content-start align-items-center ">
-                <input class="form-control" formControlName="question1" id="question1"
-                       name="stage" style="max-width: 20px;box-shadow: none!important;"
+                <input class="form-control" formControlName="question1" [value]="product.title" id="question1{{i}}"
+                       style="max-width: 20px;box-shadow: none!important;"
                        type="radio">
             </div>
             <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                <label for="question1">{{product.title}}</label>
+                <label for="question1{{i}}">{{product.title}}</label>
             </div>
         </div>
     </div>
@@ -25,14 +25,14 @@
         <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
             <span>Customer interactions</span>
         </div>
-        <div *ngFor="let product of products[1].kinds" class="col-sm-12 col-md-4">
+        <div *ngFor="let product of products[1].kinds; index as i " class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input class="form-control" formControlName="question2" id="question2"
-                           name="stage" style="max-width: 20px;box-shadow: none!important;" type="checkbox">
+                    <input [value]="product.title" class="form-control" formControlName="question2" id="question2{{i}}"
+                           style="max-width: 20px;box-shadow: none!important;" type="checkbox">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question2">{{product.title}}</label>
+                    <label for="question2{{i}}">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -42,15 +42,15 @@
         <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
             <span>How do you sell</span>
         </div>
-        <div *ngFor="let product of products[2].kinds" class="col-sm-12 col-md-3">
+        <div *ngFor="let product of products[2].kinds ; index as i " class="col-sm-12 col-md-3">
             <div class="row">
                 <div class="col-6 d-flex justify-content-end align-items-center ">
-                    <input class="form-control" formControlName="question3" id="question3"
-                           name="stage" style="max-width: 20px;box-shadow: none!important;"
+                    <input class="form-control" formControlName="question3" id="question3{{i}}"
+                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
                            type="radio">
                 </div>
                 <div class="col-6 d-flex justify-content-center align-items-center text-left">
-                    <label for="question3">{{product.title}}</label>
+                    <label for="question3{{i}}">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -61,15 +61,15 @@
             <span class="w-100">How do you make money via any primary revenues</span>
             <span>Select any from the following to describe aspects of your business and/or revenue model.</span>
         </div>
-        <div *ngFor="let product of products[3].kinds" class="col-sm-12 col-md-4">
+        <div *ngFor="let product of products[3].kinds;index as i " class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input class="form-control" formControlName="question4" id="question4"
-                           name="stage" style="max-width: 20px;box-shadow: none!important;"
+                    <input class="form-control" formControlName="question4" id="question4{{i}}"
+                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
                            type="checkbox">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question4">{{product.title}}</label>
+                    <label for="question4{{i}}">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -79,15 +79,15 @@
         <div class="col-sm-12 d-flex justify-content-center align-items-center my-3 flex-wrap">
             <span class="w-100">How would you best describe the Business Model?</span>
         </div>
-        <div *ngFor="let product of products[4].kinds" class="col-sm-12 col-md-4">
+        <div *ngFor="let product of products[4].kinds; index as i " class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input class="form-control" formControlName="question5" id="question5"
-                           name="stage" style="max-width: 20px;box-shadow: none!important;"
+                    <input class="form-control" formControlName="question5" id="question5{{i}}"
+                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
                            type="radio">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question5">{{product.title}}</label>
+                    <label for="question5{{i}}">{{product.title}}</label>
                 </div>
             </div>
         </div>
