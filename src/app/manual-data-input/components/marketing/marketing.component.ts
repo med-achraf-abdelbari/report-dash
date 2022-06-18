@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-marketing',
@@ -9,9 +9,19 @@ import {FormBuilder} from '@angular/forms';
 export class MarketingComponent implements OnInit {
 
     markets = [
-        'What is the approximate financial size of your TAM?',
-        'What is the approximate financial size of your SAM?&nbsp;',
-        'What is the approximate financial size of your SOM?&nbsp;'];
+        {
+            title: 'What is the approximate financial size of your TAM?',
+            control: 'tam'
+        },
+        {
+            title: 'What is the approximate financial size of your SAM?',
+            control: 'sam'
+        },
+        {
+            title: 'What is the approximate financial size of your SOM?',
+            control: 'som'
+        },
+    ];
 
     marketingPrefrence = [
         this.formBuilder.group({
@@ -19,7 +29,6 @@ export class MarketingComponent implements OnInit {
             stake: []
         })
     ];
-
     socialPrefrence = [
         this.formBuilder.group({
             name: [],
@@ -113,6 +122,8 @@ export class MarketingComponent implements OnInit {
     ];
     public help: any;
 
+    marketingGroup: any;
+
     constructor(private formBuilder: FormBuilder) {
     }
 
@@ -121,20 +132,109 @@ export class MarketingComponent implements OnInit {
     }
 
     addMoreMarketingPrefrence() {
-        this.marketingPrefrence.push(this.formBuilder.group({
-            name: [],
-            stake: []
+        this.marketingGroup.get('performance').controls.push(this.formBuilder.group({
+            question: [],
+            answer: []
         }));
     }
 
     addSocialPrefrence() {
-        this.socialPrefrence.push(this.formBuilder.group({
-            name: [],
-            stake: []
+        this.marketingGroup.get('socialMedia').controls.push(this.formBuilder.group({
+            account: [],
+            id: []
         }));
     }
 
     ngOnInit(): void {
+        this.marketingGroup = this.createMarketingControlGroup();
     }
+
+
+    createMarketingControlGroup(): FormGroup {
+        return this.formBuilder.group({
+            product: this.formBuilder.group({
+                question1: [],
+                question2: [],
+                answer21: [],
+                answer22: [],
+                answer23: [],
+                answer24: [],
+                answer25: [],
+                answer26: [],
+                answer27: [],
+                question3: [],
+                question4: [],
+                answer41: [],
+                answer42: [],
+                answer43: [],
+                answer44: [],
+                answer45: [],
+                answer46: [],
+                answer47: [],
+                answer48: [],
+                answer49: [],
+                answer410: [],
+                answer411: [],
+                answer412: [],
+                answer413: [],
+                answer414: [],
+                answer415: [],
+                answer416: [],
+                answer417: [],
+                answer418: [],
+                answer419: [],
+                answer420: [],
+                answer421: [],
+                answer422: [],
+                answer423: [],
+                question5: [],
+
+                // ... add as many as required for the questions
+            }),
+
+            performance: this.formBuilder.array([
+                this.formBuilder.group({
+                    question: [],
+                    answer: []
+                })
+                // uniqueUsers: [],
+                // registrations: [],
+                // downloads: [],
+                // dau: [],
+                // mau: [],
+                // units: [],
+                // conversionRate: [],
+                // churnRate: [],
+                // retantionRate: [],
+                // newUsers: [],
+                // cpa: [],
+                // cac: [],
+                // ltv: [],
+                // arpu: [],
+            ]),
+
+            socialMedia: this.formBuilder.array([
+                this.formBuilder.group({
+                    account: [],
+                    id: []
+                })
+                // facebook: [],
+                // twitter: [],
+                // instagram: [],
+                // ... continue with all the rest in the spreadsheet
+            ]),
+
+            customerDetails: this.formBuilder.group({
+                tam: [],
+                sam: [],
+                som: [],
+                primaryCustomer: []
+            }),
+
+            notes: []
+
+        });
+    }
+
 
 }

@@ -4,18 +4,19 @@
     </div>
 </div>
 
-<div class="row">
+<form [formGroup]="marketingGroup.get('product')" class="row">
     <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
         <span>What is the key nature of your USP (Unique Selling Proposition)?</span>
     </div>
     <div *ngFor="let product of products[0].kinds" class="col-sm-12 col-md-4">
         <div class="row">
             <div class="col-2 d-flex justify-content-start align-items-center ">
-                <input style="max-width: 20px;box-shadow: none!important;" name="stage" class="form-control" id="xx"
+                <input class="form-control" formControlName="question1" id="question1"
+                       name="stage" style="max-width: 20px;box-shadow: none!important;"
                        type="radio">
             </div>
             <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                <label for="xx">{{product.title}}</label>
+                <label for="question1">{{product.title}}</label>
             </div>
         </div>
     </div>
@@ -27,11 +28,11 @@
         <div *ngFor="let product of products[1].kinds" class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input style="max-width: 20px;box-shadow: none!important;" name="stage" class="form-control" id="xx"
-                           type="checkbox">
+                    <input class="form-control" formControlName="question2" id="question2"
+                           name="stage" style="max-width: 20px;box-shadow: none!important;" type="checkbox">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="xx">{{product.title}}</label>
+                    <label for="question2">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -44,11 +45,12 @@
         <div *ngFor="let product of products[2].kinds" class="col-sm-12 col-md-3">
             <div class="row">
                 <div class="col-6 d-flex justify-content-end align-items-center ">
-                    <input style="max-width: 20px;box-shadow: none!important;" name="stage" class="form-control" id="xx"
+                    <input class="form-control" formControlName="question3" id="question3"
+                           name="stage" style="max-width: 20px;box-shadow: none!important;"
                            type="radio">
                 </div>
                 <div class="col-6 d-flex justify-content-center align-items-center text-left">
-                    <label for="xx">{{product.title}}</label>
+                    <label for="question3">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -62,11 +64,12 @@
         <div *ngFor="let product of products[3].kinds" class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input style="max-width: 20px;box-shadow: none!important;" name="stage" class="form-control" id="xx"
+                    <input class="form-control" formControlName="question4" id="question4"
+                           name="stage" style="max-width: 20px;box-shadow: none!important;"
                            type="checkbox">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="xx">{{product.title}}</label>
+                    <label for="question4">{{product.title}}</label>
                 </div>
             </div>
         </div>
@@ -79,15 +82,20 @@
         <div *ngFor="let product of products[4].kinds" class="col-sm-12 col-md-4">
             <div class="row">
                 <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input style="max-width: 20px;box-shadow: none!important;" name="stage" class="form-control" id="xx"
+                    <input class="form-control" formControlName="question5" id="question5"
+                           name="stage" style="max-width: 20px;box-shadow: none!important;"
                            type="radio">
                 </div>
                 <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="xx">{{product.title}}</label>
+                    <label for="question5">{{product.title}}</label>
                 </div>
             </div>
         </div>
     </div>
+
+</form>
+
+<div class="row">
 
     <div class="w-100 my-4 py-2">
         <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
@@ -97,46 +105,53 @@
 
     <div class="row mx-2 w-100">
         <div class="col-sm-12">
-            <div *ngFor="let pref of marketingPrefrence" class="row my-4">
-                <div class="col-8 d-flex justify-content-start align-items-center ">
-                    <select placeholder="Key Unit Economics (current)" class="w-100 form-control">
-                        <option value="0">Unique Users/Viewers (p/m)</option>
-                        <option value="1">Registrations / Sign-Ups (p/m)</option>
-                        <option value="2">Downloads (p/m)</option>
-                        <option value="3">Daily Active Users (DAU)</option>
-                        <option value="4">Monthly Active Users (MAU)</option>
-                        <option value="5">Unit GPM / NPM</option>
-                        <option value="6">Conversion Rate </option>
-                        <option value="7">Churn Rate</option>
-                        <option value="8">Retention Rate</option>
-                        <option value="9">Engagement Rate</option>
-                        <option value="10">Return Rate</option>
-                        <option value="11">New Users (p/m)</option>
-                        <option value="12">Cost Per Acquisition (CPA) or …</option>
-                        <option value="13">Customer Acquisition Cost (CAC)</option>
-                        <option value="14">Life Time Value (LTV)</option>
-                        <option value="15">Average Revenue Per User (ARPU)</option>
-                    </select>
-                </div>
-                <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                    <input class="w-100 form-control" type="text" placeholder="Answer">
-                </div>
+            <div *ngFor="let pref of marketingGroup.get('performance').controls; index as i" class="row my-4">
+                <form [formGroup]="marketingGroup.get('performance').controls[i]" class="w-100 d-flex">
+                    <div class="col-8 d-flex justify-content-start align-items-center ">
+                        <select class="w-100 form-control" formControlName="question"
+                                placeholder="Key Unit Economics (current)">
+                            <option value="0">Unique Users/Viewers (p/m)</option>
+                            <option value="1">Registrations / Sign-Ups (p/m)</option>
+                            <option value="2">Downloads (p/m)</option>
+                            <option value="3">Daily Active Users (DAU)</option>
+                            <option value="4">Monthly Active Users (MAU)</option>
+                            <option value="5">Unit GPM / NPM</option>
+                            <option value="6">Conversion Rate</option>
+                            <option value="7">Churn Rate</option>
+                            <option value="8">Retention Rate</option>
+                            <option value="9">Engagement Rate</option>
+                            <option value="10">Return Rate</option>
+                            <option value="11">New Users (p/m)</option>
+                            <option value="12">Cost Per Acquisition (CPA) or …</option>
+                            <option value="13">Customer Acquisition Cost (CAC)</option>
+                            <option value="14">Life Time Value (LTV)</option>
+                            <option value="15">Average Revenue Per User (ARPU)</option>
+                        </select>
+                    </div>
+                    <div class="col-4 d-flex justify-content-start align-items-center text-left">
+                        <input class="w-100 form-control" formControlName="answer" placeholder="Answer" type="text">
+                    </div>
+                </form>
             </div>
             <button (click)="addMoreMarketingPrefrence()" class="btn btn-primary my-3">Add More</button>
         </div>
     </div>
 
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Social media accounts</h2>
-        </div>
-    </div>
+</div>
 
-    <div class="row mx-2 w-100">
-        <div class="col-sm-12">
-            <div *ngFor="let pref of socialPrefrence" class="row my-4">
+
+<div class="w-100 my-4 py-2">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
+        <h2 class="w-100 text-left">Social media accounts</h2>
+    </div>
+</div>
+
+<div class="row mx-2 w-100">
+    <div class="col-sm-12">
+        <div *ngFor="let pref of marketingGroup.get('socialMedia').controls ; index as i" class="row my-4">
+            <form [formGroup]="marketingGroup.get('socialMedia').controls[i]" class="w-100 d-flex">
                 <div class="col-8 d-flex justify-content-start align-items-center ">
-                    <select placeholder="Platform" class="w-100 form-control">
+                    <select class="w-100 form-control" formControlName="account" placeholder="Platform">
                         <option value="0">Facebook</option>
                         <option value="1">Twitter</option>
                         <option value="2">Instagram</option>
@@ -147,61 +162,67 @@
                     </select>
                 </div>
                 <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                    <input class="w-100 form-control" type="text" placeholder="User id">
+                    <input class="w-100 form-control" formControlName="id" placeholder="User id" type="text">
                 </div>
-            </div>
-            <button (click)="addSocialPrefrence()" class="btn btn-primary my-3">Add More</button>
+            </form>
         </div>
+        <button (click)="addSocialPrefrence()" class="btn btn-primary my-3">Add More</button>
     </div>
+</div>
 
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Social media accounts</h2>
-        </div>
+<div class="w-100 my-4 py-2">
+    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
+        <h2 class="w-100 text-left">Customer & markets</h2>
     </div>
+</div>
 
-    <div class="row mx-2 w-100">
-        <div class="col-sm-12">
-            <div *ngFor="let market of markets" class="row my-4">
+<div class="row mx-2 w-100">
+    <div class="col-sm-12">
+        <div *ngFor="let market of markets; index as i" class="row my-4">
+            <form [formGroup]="marketingGroup.get('customerDetails')" class="w-100 d-flex">
                 <div class="col-5 d-flex justify-content-start align-items-center ">
                     <span class="w-100 text-left">
-                        {{market}}
+                        {{market.title}}
                     </span>
                 </div>
                 <div class="col-4 d-flex justify-content-start align-items-center text-left">
                     <div class="input-group">
-                        <input type="text" class="form-control"
-                               placeholder=""
+                        <input [formControlName]="market.control" aria-describedby="basic-addon2"
                                aria-label=""
-                               aria-describedby="basic-addon2">
+                               class="form-control"
+                               placeholder=""
+                               type="number">
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">£</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div  class="row my-4">
-                <div class="col-5 d-flex justify-content-start align-items-center ">
+            </form>
+        </div>
+        <form [formGroup]="marketingGroup.get('customerDetails')" class="row my-4">
+            <div class="col-5 d-flex justify-content-start align-items-center ">
                     <span class="w-100 text-left">
                         Where are your primary customer's on the ‘Innovation Curve?’&nbsp;
                     </span>
-                </div>
-                <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                    <select placeholder="Platform" class="w-100 form-control">
-                        <option value="0">Innovators</option>
-                        <option value="1">Early adaptors</option>
-                        <option value="2">Early majority</option>
-                        <option value="3">Late majority</option>
-                        <option value="4">Laggards</option>
-                    </select>
-                </div>
             </div>
-        </div>
+            <div class="col-4 d-flex justify-content-start align-items-center text-left">
+                <select class="w-100 form-control" formControlName="primaryCustomer" placeholder="Platform">
+                    <option value="0">Innovators</option>
+                    <option value="1">Early adaptors</option>
+                    <option value="2">Early majority</option>
+                    <option value="3">Late majority</option>
+                    <option value="4">Laggards</option>
+                </select>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-4 py-2">
-        <h2>Additional notes</h2>
-    </div>
+<div class="section-title w-100 d-flex justify-content-start align-items-center my-4 py-2">
+    <h2>Additional notes</h2>
+</div>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-              placeholder="Any other founder notes or comments to be written here"></textarea>
+<form [formGroup]="marketingGroup" class="w-100 d-flex">
+    <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
+              rows="3"></textarea>
+</form>
