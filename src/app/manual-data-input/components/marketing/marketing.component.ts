@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
     styleUrls: ['./marketing.component.scss']
 })
 export class MarketingComponent implements OnInit {
+    // tslint:disable-next-line:no-output-rename
+    @Output('value') value = new EventEmitter<any>();
 
     markets = [
         {
@@ -147,6 +149,9 @@ export class MarketingComponent implements OnInit {
 
     ngOnInit(): void {
         this.marketingGroup = this.createMarketingControlGroup();
+        this.marketingGroup.valueChanges.subscribe(() => {
+            this.value.emit(this.marketingGroup.value);
+        });
     }
 
 

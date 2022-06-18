@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 })
 export class InnovationComponent implements OnInit {
 
+    // tslint:disable-next-line:no-output-rename
+    @Output('value') value = new EventEmitter<any>();
 
     stages = [
         {
@@ -136,6 +138,9 @@ export class InnovationComponent implements OnInit {
 
     ngOnInit(): void {
         this.innovationGroup = this.createInnovationControlGroup();
+        this.innovationGroup.valueChanges.subscribe(() => {
+            this.value.emit(this.innovationGroup.value);
+        });
     }
 
     createInnovationControlGroup(): FormGroup {

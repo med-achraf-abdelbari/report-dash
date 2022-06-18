@@ -51,9 +51,9 @@
 <!--                            <app-financial></app-financial>-->
 <!--                        </div>  -->
                         <div class="my-3">
-                            <app-marketing *ngIf="activeSection === 'MARKETING'"></app-marketing>
-                            <app-innovation *ngIf="activeSection === 'INNOVATION'"></app-innovation>
-                            <app-financial *ngIf="activeSection === 'FIANANCE'"></app-financial>
+                            <app-marketing (value)="updateMarketing($event)" *ngIf="activeSection === 'MARKETING'"></app-marketing>
+                            <app-innovation (value)="updateInnovation($event)" *ngIf="activeSection === 'INNOVATION'"></app-innovation>
+                            <app-financial  (value)="updateFinance($event)" *ngIf="activeSection === 'FIANANCE'"></app-financial>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-lg-9">

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,9 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
     styleUrls: ['./financial.component.scss']
 })
 export class FinancialComponent implements OnInit {
+
+    // tslint:disable-next-line:no-output-rename
+    @Output('value') value = new EventEmitter<any>();
 
     financialYears = [new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2, new Date().getFullYear() - 3];
     shareHolders: FormGroup[] = [
@@ -42,7 +45,7 @@ export class FinancialComponent implements OnInit {
         this.financialGroup = this.createFinancialControlGorup();
         this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
         this.financialGroup.valueChanges.subscribe(() => {
-            console.log(this.financialGroup);
+            this.value.emit(this.financialGroup.value);
         });
     }
 
