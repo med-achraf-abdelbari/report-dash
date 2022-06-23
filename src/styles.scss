@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+b{
+    font-weight: bolder;
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+}
+h2, h3, h4, h5, h6{
+    line-height: 0!important;
+}
+
+.section-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 15px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+*{
+    font-family: Rajdhani, "Helvetica", sans-serif!important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Rajdhani, "Helvetica", sans-serif; }
+
+.mat-tab-label-active{
+    background: #4a4a4a!important;
+    color: white!important;
+}
+
+//$primary = red;
+
+.mat-tab-label{
+    background: #979797;
+    color: white;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background-color: #333333!important;
+}

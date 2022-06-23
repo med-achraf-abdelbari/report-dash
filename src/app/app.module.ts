@@ -25,6 +25,8 @@ import {FinancialComponent} from './manual-data-input/components/financial/finan
 import {InnovationComponent} from './manual-data-input/components/innovation/innovation.component';
 import {MarketingComponent} from './manual-data-input/components/marketing/marketing.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import {HttpClientModule} from '@angular/common/http';
             maxAge: 25,
             logOnly: environment.production,
         }),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        MatTabsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
