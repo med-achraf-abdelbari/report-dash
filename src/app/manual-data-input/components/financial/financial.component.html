@@ -6,28 +6,19 @@
     <div class="w-100">
         <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
             <mat-tab label="Accounting method">
-                <div class="question p-4">
-                    <div class="question-title">
-                        <span>Is your accounting type</span>
-                    </div>
-                    <form [formGroup]="financialGroup" class="question-answer">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input formControlName="accountingMethod" id="Accrual"  class="custom-control-input" [value]="'accrual'" type="checkbox"
-                                   checked="">
-                            <label class="custom-control-label" for="Accrual">Accrual</label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input formControlName="accountingMethod" id="Cash" class="custom-control-input" [value]="'cash'"  type="checkbox"
-                                   checked="">
-                            <label class="custom-control-label" for="Cash">Cash</label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input formControlName="accountingMethod" id="D'ont know" [value]="null" class="custom-control-input" type="checkbox"
-                                   checked="">
-                            <label class="custom-control-label" for="D'ont know">D'ont know</label>
-                        </div>
+                <div class="question d-flex py-3 flex-wrap justify-content-center">
+                    <mat-chip-list aria-label="Accounting method" class="my-2">
+                        <mat-chip><mat-icon class="mx-1" aria-hidden="false" >wallet</mat-icon><strong>What is your accounting type ?</strong></mat-chip>
+                    </mat-chip-list>
+                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100">
+                        <mat-form-field appearance="fill" class="w-100" >
+                            <mat-select [formControlName]="'accountingMethod'" required>
+                                <mat-option value="Accrual">Accrual</mat-option>
+                                <mat-option value="Cash">Cash</mat-option>
+                                <mat-option value="D'ont know">D'ont know</mat-option>
+                            </mat-select>
+                            <mat-label>Select your accounting method</mat-label>
+                        </mat-form-field>
                     </form>
                 </div>
             </mat-tab>

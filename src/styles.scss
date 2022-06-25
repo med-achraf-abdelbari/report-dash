@@ -1,44 +1,69 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 /* You can add global styles to this file, and also import other style files */
-b{
-    font-weight: bolder;
-    width: 100%;
-    display: flex;
-    margin: 10px 0;
-}
-h2, h3, h4, h5, h6{
-    line-height: 0!important;
+b {
+  font-weight: bolder;
+  width: 100%;
+  display: flex;
+  margin: 10px 0;
 }
 
-.section-2{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    gap: 15px;
+h2, h3, h4, h5, h6 {
+  line-height: 0 !important;
 }
 
-.cursor-pointer{
-    cursor: pointer;
+.section-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 15px;
 }
 
-*{
-    font-family: Rajdhani, "Helvetica", sans-serif!important;
+.cursor-pointer {
+  cursor: pointer;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Rajdhani, "Helvetica", sans-serif; }
+body,div,p,span {
+  font-family: Rajdhani, "Helvetica", sans-serif !important;
+  font-weight: 700;
+}
 
-.mat-tab-label-active{
-    background: #4a4a4a!important;
-    color: white!important;
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Rajdhani, "Helvetica", sans-serif;
+}
+
+.mat-tab-label-active {
+  background: #f4f5f7 !important;
+  color: black !important;
 }
 
 //$primary = red;
 
-.mat-tab-label{
-    background: #979797;
-    color: white;
+.mat-tab-label {
+  background: #f4f5f7 !important;
+  color: #3b3b3b;
 }
 
-.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
-    background-color: #333333!important;
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #333333 !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #333333 !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #333333 !important;;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple{
+  background-color: #757575;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #757575;
 }
