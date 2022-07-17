@@ -1,3 +1,14 @@
 .vw-75{
   min-width: 75vw!important;
 }
+
+.fs-32{
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.section-wrapper{
+  max-height: 36vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

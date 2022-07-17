@@ -3,6 +3,8 @@
 }
 
 .profile-page {
+    background-image: url("~src/assets/img/bg.jpg");
+    background-size: cover;
     .card-profile {
         margin-top: -150px;
 
@@ -70,6 +72,8 @@
 // Card with blockquotes
 
 .card {
+    background: #ffffffd4;
+    border-radius: 20px;
     .card-blockquote {
         padding: 2rem;
         position: relative;

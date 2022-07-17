@@ -1,60 +1,76 @@
 <main class="profile-page">
     <section class="section-profile-cover section-shaped my-0">
-        <!-- Circles background -->
-        <div class="shape shape-style-1 shape-primary alpha-4">
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-            <!--      <span></span>-->
-        </div>
-        <!-- SVG separator -->
-        <div class="separator separator-bottom separator-skew">
-            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-            </svg>
-        </div>
     </section>
-    <section class="section">
+    <section class="section ">
         <div class="container d-flex justify-content-center">
             <div class="card card-profile shadow mt--300 vw-75">
-                <div class="px-4">
+                <div class="px-4 manual-min-height">
 
-                    <div class="text-left mt-5">
-                        <h3>Manual data input</h3>
+                    <div class="text-center mt-5">
+                        <h3 class="fs-32 color-bl">BUSINESS PERFORMANCE PROFILING</h3>
                     </div>
 
                     <div class="mt-5 py-3 border-top text-center">
 
-                        <mat-stepper [linear]="false" #stepper>
-                            <mat-step label="Finance">
-                                <app-financial  (value)="updateFinance($event)" *ngIf="activeSection === 'FIANANCE'"></app-financial>
-                                <div>
-                                    <button mat-button matStepperNext>Next</button>
+                        <mat-accordion class="example-headers-align" multi>
+                            <mat-expansion-panel [expanded]="true" >
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        FINANCE
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="section-wrapper">
+                                    <app-financial></app-financial>
                                 </div>
-                            </mat-step>
-
-                            <mat-step label="Innovation">
-                                <app-innovation (value)="updateInnovation($event)" *ngIf="activeSection === 'INNOVATION'"></app-innovation>
-
-                                <div>
-                                    <button mat-button matStepperPrevious>Previous</button>
-                                    <button mat-button matStepperNext>Next</button>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel >
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        INNOVATION
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="section-wrapper">
+                                    <app-innovation></app-innovation>
                                 </div>
-                            </mat-step>
-
-                            <mat-step label="Product, Marketing & Market">
-                                <app-marketing (value)="updateMarketing($event)" *ngIf="activeSection === 'MARKETING'"></app-marketing>
-
-                                <div>
-                                    <button mat-button matStepperPrevious>Previous</button>
+                            </mat-expansion-panel>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        MARKETING
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="section-wrapper">
+                                    <app-marketing></app-marketing>
                                 </div>
-                            </mat-step>
+                            </mat-expansion-panel>
+                        </mat-accordion>
 
-                        </mat-stepper>
+<!--                        <mat-stepper [linear]="false" #stepper>-->
+<!--                            <mat-step label="Finance">-->
+<!--                                <app-financial  (value)="updateFinance($event)" *ngIf="activeSection === 'FIANANCE'"></app-financial>-->
+<!--                                <div>-->
+<!--                                    <button mat-button matStepperNext>Next</button>-->
+<!--                                </div>-->
+<!--                            </mat-step>-->
+
+<!--                            <mat-step label="Innovation">-->
+<!--                                <app-innovation (value)="updateInnovation($event)" *ngIf="activeSection === 'INNOVATION'"></app-innovation>-->
+
+<!--                                <div>-->
+<!--                                    <button mat-button matStepperPrevious>Previous</button>-->
+<!--                                    <button mat-button matStepperNext>Next</button>-->
+<!--                                </div>-->
+<!--                            </mat-step>-->
+
+<!--                            <mat-step label="Product, Marketing & Market">-->
+<!--                                <app-marketing (value)="updateMarketing($event)" *ngIf="activeSection === 'MARKETING'"></app-marketing>-->
+
+<!--                                <div>-->
+<!--                                    <button mat-button matStepperPrevious>Previous</button>-->
+<!--                                </div>-->
+<!--                            </mat-step>-->
+
+<!--                        </mat-stepper>-->
 
 <!--                        <div class="w-100 mb-4">-->
 <!--                            <ul class="row nav nav-pills nav-fill flex-column flex-sm-row" id="tabs-text" role="tablist">-->
@@ -77,12 +93,6 @@
 <!--                        <div class="my-3">-->
 <!--                            <app-financial></app-financial>-->
 <!--                        </div>  -->
-                        <div class="row justify-content-center">
-                            <div class="col-lg-9">
-                                <p><strong>A notice about the correct data input may be added before submit</strong></p>
-                                <button mat-button >Submit</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

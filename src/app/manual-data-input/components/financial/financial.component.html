@@ -1,382 +1,329 @@
 <div class="w-100">
-<!--    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">-->
-<!--        <h2>Financials</h2>-->
-<!--    </div>-->
+    <!--    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">-->
+    <!--        <h2>Financials</h2>-->
+    <!--    </div>-->
 
     <div class="w-100">
-        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs ">
-            <mat-tab label="Accounting method">
-                <div class="question d-flex py-3 flex-wrap justify-content-center">
-                    <mat-chip-list aria-label="Accounting method" class="my-2">
-                        <mat-chip><mat-icon class="mx-1" aria-hidden="false" >wallet</mat-icon><strong>What is your accounting type ?</strong></mat-chip>
-                    </mat-chip-list>
-                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100">
-                        <mat-form-field appearance="fill" class="w-100" >
-                            <mat-select [formControlName]="'accountingMethod'" required>
-                                <mat-option value="Accrual">Accrual</mat-option>
-                                <mat-option value="Cash">Cash</mat-option>
-                                <mat-option value="D'ont know">D'ont know</mat-option>
-                            </mat-select>
-                            <mat-label>Select your accounting method</mat-label>
-                        </mat-form-field>
-                    </form>
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>Accounting Method</span>
                 </div>
-            </mat-tab>
-            <mat-tab label="Company shares">
-                <div class="w-100 p-4">
-<!--                    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">-->
-<!--                        <h2 class="w-100 text-left"></h2>-->
-<!--                        <span>Who have you given or allocated company shares to?</span>-->
-<!--                    </div>-->
-
-                    <div class="w-100 d-flex">
-                        <div class="custom-control custom-checkbox mb-3">
-                            <form [formGroup]="financialGroup">
-                                <input formControlName="employeeShares" class="custom-control-input" id="hasShares"  type="checkbox" >
-                                <label class="custom-control-label" for="hasShares">Have you set aside shares
-                                    for employees?</label>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Select your account type :
+                        </div>
+                        <div class="input-feild">
+                            <select formControlName="accountingMethod" class="form-select">
+                                <option value="" disabled selected>Please select</option>
+                                <option value="Accrual">Accrual</option>
+                                <option value="Cash">Cash</option>
+                                <option value="D'ont know">D'ont know</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>Company shares</span>
+                </div>
+                <div  class="question-answer d-flex w-100 flex-wrap">
+                    <div class="w-100 d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Have you set aside
+                            shares for employees?
+                        </div>
+                        <div class="input-feild">
+                            <form class="w-100" [formGroup]="financialGroup">
+                                <select formControlName="employeeShares" class="form-select">
+                                    <option value="" disabled selected>Please select</option>
+                                    <option value=true>Yes</option>
+                                    <option value=false>No</option>
+                                </select>
                             </form>
                         </div>
                     </div>
-
-                    <div class="question">
-                        <div class="question-title">
-                            <span>Current Shareholders</span>
-                        </div>
-                        <div style="grid-column: span 8;">
-                            <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i " class="share-holder">
-                                <form [formGroup]="financialGroup.get('shareholders').controls[i]" style="display: grid;grid-template-columns: repeat(4 , 1fr);">
-                                    <div class="form-group  px-2">
-                                        <input type="text" class="form-control" formControlName="name"
-                                               placeholder="Name">
+                    <div *ngIf="financialGroup.get('employeeShares').value" class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                        <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "  class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                            <div class="input-label w-20">
+                                <p *ngIf="i == 0">Current Shareholders</p>
+                            </div>
+                            <div  class="w-80 my-3">
+                                <form [formGroup]="financialGroup.get('shareholders').controls[i]" class="d-flex justify-content-start align-items-center flex-wrap ">
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="name"  placeholder="Name">
                                     </div>
-                                    <div class="form-group  px-2">
-                                        <div class="input-group">
-                                            <input type="number" class="form-control"
-                                                   placeholder="Stake"
-                                                   aria-label="Stake"
-                                                   formControlName="stake"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >%</span>
-                                            </div>
-                                        </div>
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="stake" placeholder="Stake" type="number">
                                     </div>
-                                    <div class="form-group px-2">
-                                        <input type="number" formControlName="shares" class="form-control"
-                                               placeholder="Shares">
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="shares" placeholder="Shares">
                                     </div>
-                                    <div class="form-group px-2">
-                                        <select formControlName="shareClass" class="form-control">
-                                            <option value="0">Ordinary</option>
-                                            <option value="1">Prefrence</option>
+                                    <div class="input-item">
+                                        <select placeholder="test" class="form-select" formControlName="shareClass" required>
+                                            <option value="" disabled selected>Share class</option>
+                                            <option value="Ordinary">Ordinary</option>
+                                            <option value="Prefrence">Prefrence</option>
                                         </select>
                                     </div>
-                                    <div class="form-group  px-2">
-                                        <select formControlName="voting" class="form-control">
-                                            <option value="0">Voting</option>
-                                            <option value="1">Non Voting</option>
+                                    <div class="input-item">
+                                        <select class="form-select" formControlName="voting" required>
+                                            <option value="" disabled selected>Voting</option>
+                                            <option value="Voting">Voting</option>
+                                            <option value="Non Voting">Non Voting</option>
                                         </select>
                                     </div>
-                                    <div class="form-group  px-2">
-                                        <select formControlName="antiDilution" class="form-control">
-                                            <option value="1">Yes</option>
-                                            <option value="0">No</option>
+                                    <div class="input-item">
+                                        <select class="form-select" formControlName="antiDilution" required>
+                                            <option value="" disabled selected>Anti dilution</option>
+                                            <option value=true>Yes</option>
+                                            <option value=false>No</option>
                                         </select>
                                     </div>
-                                    <div class="form-group px-2">
-                                        <input formControlName="allocationDate" type="date" class="form-control"
-                                               placeholder="date">
+                                    <div class="input-item">
+                                        <input class="form-control" type="date" formControlName="allocationDate">
                                     </div>
                                 </form>
                             </div>
-                            <div class="w-100">
-                                <button  class="btn btn-primary" (click)="addShareHolder()">Add shareholder</button>
-                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center">
+                            <button (click)="addShareHolder()" color="primary" mat-raised-button mat-ripple>
+                                Add shareholder
+                            </button>
                         </div>
                     </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Previous Cash">
-                <div class="w-100 p-4">
-<!--                    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">-->
-<!--                        <h2 class="w-100 text-left"></h2>-->
-<!--                        <span>Specify here any cash that has come into the business.</span>-->
+            </div>
+            </div>
+        </div>
+
+<!--        <mat-stepper #stepper orientation="vertical">-->
+<!--            <mat-step>-->
+<!--                <div class="w-100 p-4">-->
+<!--                    <div *ngIf="financialGroup.get('employeeShares').value" class="w-100">-->
+<!--                        <div class="question d-flex flex-wrap justify-content-center">-->
+<!--                            <mat-chip-list aria-label="Accounting method" class="my-2">-->
+<!--                                <mat-chip>-->
+<!--                                    <mat-icon aria-hidden="false" class="mx-1">account_tree</mat-icon>-->
+<!--                                    <strong>Current Shareholders</strong></mat-chip>-->
+<!--                            </mat-chip-list>-->
+<!--                            <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "-->
+<!--                                 class="question-answer d-flex w-100 justify-content-center">-->
+<!--                                <form [formGroup]="financialGroup.get('shareholders').controls[i]"-->
+<!--                                      class="row w-100 my-3">-->
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Name</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="name" matInput placeholder="Name">-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Stake</mat-label>&ndash;&gt;-->
+<!--                                            <mat-icon matSuffix>monetization_on</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Shares</mat-label>&ndash;&gt;-->
+<!--                                            <mat-icon matSuffix>donut_small</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+
+<!--&lt;!&ndash;                                            <mat-label>Select share type</mat-label>&ndash;&gt;-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--                                            <mat-select [formControlName]="'voting'" required>-->
+<!--                                                <mat-option value="0">Voting</mat-option>-->
+<!--                                                <mat-option value="1">Non Voting</mat-option>-->
+<!--                                            </mat-select>-->
+<!--&lt;!&ndash;                                            <mat-label>Voting</mat-label>&ndash;&gt;-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--                                            <mat-select [formControlName]="'antiDilution'" required>-->
+<!--                                                <mat-option value="0">Yes</mat-option>-->
+<!--                                                <mat-option value="1">No</mat-option>-->
+<!--                                            </mat-select>-->
+<!--&lt;!&ndash;                                            <mat-label>Anti Dilution</mat-label>&ndash;&gt;-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Allocation date</mat-label>&ndash;&gt;-->
+<!--                                            <input [matDatepicker]="picker" formControlName="allocationDate" matInput>-->
+<!--                                            <mat-hint>HINT</mat-hint>-->
+<!--                                            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>-->
+<!--                                            <mat-datepicker #picker></mat-datepicker>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                </form>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
 <!--                    </div>-->
-
-                    <div class="question ">
-                        <div class="question-title text-left">
-                            <span>Previous Finance Injection</span>
-                        </div>
-                        <div style="grid-column: span 8;">
-                            <div *ngFor="let previousC of financialGroup.get('previousCash').controls; index as j " class="share-holder">
-                                <form [formGroup]="financialGroup.get('previousCash').controls[j]"  style="display: grid;grid-template-columns: repeat(4 , 1fr);">
-                                    <div class="form-group px-2">
-                                        <select formControlName="type" class="form-control">
-                                            <option value="Equity investment">Equity investment</option>
-                                            <option value="Crowdfunding">Crowdfunding</option>
-                                            <option value="Grant">Grant</option>
-                                            <option value="Loan">Loan</option>
-                                            <option value="Convertible Loan">Convertible Loan</option>
-                                        </select>
-                                    </div>
-                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'" class="form-group px-2">
-                                        <div class="input-group">
-                                            <input formControlName="cap" type="number" class="form-control"
-                                                   placeholder="Cap"
-                                                   aria-label="Cap"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >£</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'" class="form-group px-2">
-                                        <div class="input-group">
-                                            <input type="number" class="form-control"
-                                                   placeholder="Discount"
-                                                   aria-label="Discount"
-                                                   formControlName="discount"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group px-2">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                   placeholder="Fund or Source"
-                                                   aria-label="Fund or Source"
-                                                   formControlName="source"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group px-2">
-                                        <input formControlName="date" type="date" class="form-control"
-                                               placeholder="date">
-                                    </div>
-                                    <div class="form-group px-2">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                   placeholder="Amount"
-                                                   aria-label="Amount"
-                                                   formControlName="amount"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >£</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group px-2">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"
-                                                   placeholder="Equity given"
-                                                   aria-label="Equity given"
-                                                   formControlName="equityGiven"
-                                                   aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" >%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group px-2">
-                                        <select formControlName="charges" class="form-control">
-                                            <option value="Equity investment">Yes</option>
-                                            <option value="Crowdfunding">No</option>
-                                            <option value="Grant">Not sure</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="w-100">
-                                <button class="btn btn-primary" (click)="createPreviousCash()">Add more</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Additional notes">
-<!--                <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">-->
-<!--                    <h2></h2>-->
 <!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12 d-flex justify-content-end">-->
+<!--                        <button mat-raised-button matStepperNext>Next</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </mat-step>-->
+<!--            <mat-step>-->
+<!--                <div class="w-100 p-4">-->
 
-                <form [formGroup]="financialGroup" class="w-100 p-4">
-        <textarea formControlName="notes" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                  placeholder="Any other founder notes or comments to be written here"></textarea>
-                </form>
+<!--                    &lt;!&ndash;                    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <h2 class="w-100 text-left"></h2>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <span>Specify here any cash that has come into the business.</span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-12 d-flex justify-content-start">-->
+<!--                            <button mat-raised-button matStepperPrevious>Previous</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="w-100">-->
+<!--                        <div class="question d-flex flex-wrap justify-content-center">-->
+<!--                            <mat-chip-list aria-label="Accounting method" class="my-2">-->
+<!--                                <mat-chip>-->
+<!--                                    <mat-icon aria-hidden="false" class="mx-1">price_check</mat-icon>-->
+<!--                                    <strong>Previous Finance Injection</strong></mat-chip>-->
+<!--                            </mat-chip-list>-->
+<!--                            <div *ngFor="let previousC of financialGroup.get('previousCash').controls; index as j "-->
+<!--                                 class="question-answer d-flex w-100 justify-content-center">-->
+<!--                                <form [formGroup]="financialGroup.get('previousCash').controls[j]"-->
+<!--                                      class="row w-100 my-3">-->
 
-            </mat-tab>
-        </mat-tab-group>
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--                                            <mat-select [formControlName]="'type'" required>-->
+<!--                                                <mat-option value="Equity investment">Equity investment</mat-option>-->
+<!--                                                <mat-option value="Crowdfunding">Crowdfunding</mat-option>-->
+<!--                                                <mat-option value="Grant">Grant</mat-option>-->
+<!--                                                <mat-option value="Loan">Loan</mat-option>-->
+<!--                                                <mat-option value="Convertible Loan">Convertible Loan</mat-option>-->
+<!--                                            </mat-select>-->
+<!--&lt;!&ndash;                                            <mat-label>Voting</mat-label>&ndash;&gt;-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+<!--                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'"-->
+<!--                                         class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Cap</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="cap" matInput placeholder="Cap" type="number">-->
+<!--                                            <mat-icon matSuffix>£</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'"-->
+<!--                                         class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Discount</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="discount" matInput placeholder="Discount"-->
+<!--                                                   type="number">-->
+<!--                                            <mat-icon matSuffix>%</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Fund or Source</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="source" matInput placeholder="Fund or Source">-->
+<!--                                            <mat-icon matSuffix>monetization_on</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Date</mat-label>&ndash;&gt;-->
+<!--                                            <input [matDatepicker]="picker" formControlName="date" matInput>-->
+<!--                                            <mat-hint>HINT</mat-hint>-->
+<!--                                            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>-->
+<!--                                            <mat-datepicker #picker></mat-datepicker>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Amount</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="amount" matInput placeholder="Amount" type="number">-->
+<!--                                            <mat-icon matSuffix>monetization_on</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--&lt;!&ndash;                                            <mat-label>Equity given</mat-label>&ndash;&gt;-->
+<!--                                            <input formControlName="equityGiven" matInput placeholder="Equity given"-->
+<!--                                                   type="number">-->
+<!--                                            <mat-icon matSuffix>%</mat-icon>-->
+<!--                                            <mat-hint>Hint</mat-hint>-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-3 col-sm-12">-->
+<!--                                        <mat-form-field appearance="outline" class="w-100">-->
+<!--                                            <mat-select [formControlName]="'charges'" required>-->
+<!--                                                <mat-option value="Equity investment">Yes</mat-option>-->
+<!--                                                <mat-option value="Crowdfunding">No</mat-option>-->
+<!--                                                <mat-option value="Grant">Not sure</mat-option>-->
+<!--                                            </mat-select>-->
+<!--&lt;!&ndash;                                            <mat-label>Charges</mat-label>&ndash;&gt;-->
+<!--                                        </mat-form-field>-->
+<!--                                    </div>-->
+
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                            <div class="col-12 d-flex justify-content-center">-->
+<!--                                <button (click)="createPreviousCash()" color="primary" mat-raised-button mat-ripple>Add-->
+<!--                                    more-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12 d-flex justify-content-end">-->
+<!--                        <button mat-raised-button matStepperNext>Next</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </mat-step>-->
+<!--            <mat-step>-->
+<!--                <mat-form-field appearance="outline" class="example-full-width w-100">-->
+<!--&lt;!&ndash;                    <mat-label>Notes</mat-label>&ndash;&gt;-->
+<!--                    <textarea class="w-100" formControlName="notes" matInput-->
+<!--                              placeholder="Any other founder notes or comments to be written here"></textarea>-->
+<!--                </mat-form-field>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-12 d-flex justify-content-end">-->
+<!--                        <button mat-raised-button matStepperNext>next</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </mat-step>-->
+<!--        </mat-stepper>-->
     </div>
-<!--    <div class="financial-row w-100">-->
-<!--        <div class="metric-title"><span>Sales/turnover</span></div>-->
-<!--        <div class="metric-values">-->
-<!--            <div class="row">-->
-<!--                <form [formGroup]="financialGroup.get('financial').get('sales')" class="d-flex flex-wrap">-->
-<!--                    <div *ngFor="let year of financialYears; index as i" class="form-group mx-2">-->
-<!--                        <div class="input-group">-->
-<!--                            <input type="number" class="form-control"-->
-<!--                                   placeholder="Sales/turnover"-->
-<!--                                   aria-label="Sales/turnover"-->
-<!--                                   aria-describedby="basic-addon2"-->
-<!--                                   formControlName="year{{i+1}}"-->
-<!--                                    >-->
-<!--                            <div class="input-group-append">-->
-<!--                                <span class="input-group-text" >£</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="add-value">-->
-<!--            <ul class="nav nav-pills nav-pills-circle"  role="tablist">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link rounded-circle active"  data-toggle="tab"-->
-<!--                        role="tab" aria-controls="home" aria-selected="true">-->
-<!--                        <span class="nav-link-icon d-block"><i class="fa fa-plus"></i></span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="financial-row w-100 ">-->
-<!--        <div class="metric-title"><span>Gross Profit</span></div>-->
-<!--        <div class="metric-values">-->
-<!--            <div class="row">-->
-<!--                <form [formGroup]="financialGroup.get('financial').get('grossProfit')" class="d-flex flex-wrap">-->
-<!--                    <div *ngFor="let year of financialYears ; index as i " class="form-group mx-2">-->
-<!--                        <div class="input-group">-->
-<!--                            <input type="number" class="form-control"-->
-<!--                                   placeholder="Sales/turnover"-->
-<!--                                   aria-label="Sales/turnover"-->
-<!--                                   formControlName="year{{i+1}}"-->
-<!--                                   aria-describedby="basic-addon2">-->
-<!--                            <div class="input-group-append">-->
-<!--                                <span class="input-group-text">£</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="add-value">-->
-<!--            <ul class="nav nav-pills nav-pills-circle"  role="tablist">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link rounded-circle active"  data-toggle="tab"-->
-<!--                        role="tab" aria-controls="home" aria-selected="true">-->
-<!--                        <span class="nav-link-icon d-block"><i class="fa fa-plus"></i></span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="financial-row w-100 ">-->
-<!--        <div class="metric-title"><span>Net Profit</span></div>-->
-<!--        <div class="metric-values">-->
-<!--            <div class="row">-->
-<!--                <form [formGroup]="financialGroup.get('financial').get('netProfit')" class="d-flex flex-wrap">-->
-<!--                    <div *ngFor="let year of financialYears ; index as i " class="form-group mx-2">-->
-<!--                        <div class="input-group">-->
-<!--                            <input type="number" class="form-control"-->
-<!--                                   placeholder="Sales/turnover"-->
-<!--                                   aria-label="Sales/turnover"-->
-<!--                                   formControlName="year{{i+1}}"-->
-<!--                                   aria-describedby="basic-addon2">-->
-<!--                            <div class="input-group-append">-->
-<!--                                <span class="input-group-text" >£</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="add-value">-->
-<!--            <ul class="nav nav-pills nav-pills-circle" id="tabs_2" role="tablist">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link rounded-circle active" id="home-tab" data-toggle="tab"-->
-<!--                      role="tab" aria-controls="home" aria-selected="true">-->
-<!--                        <span class="nav-link-icon d-block"><i class="fa fa-plus"></i></span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
 </div>
-
-<!--<div class="w-100">-->
-<!--    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3">-->
-<!--        <h2>Runway</h2>-->
-<!--    </div>-->
-<!--    <form [formGroup]="financialGroup.get('runway')" class="">-->
-<!--        <div class="question">-->
-<!--            <div class="question-title">-->
-<!--                <span>Break-even point</span>-->
-<!--            </div>-->
-<!--            <form [formGroup]="financialGroup.get('runway').get('breakEven')" class="question-answer">-->
-<!--                <div class="input-group">-->
-<!--                    <input type="number" class="form-control"-->
-<!--                           placeholder="Months"-->
-<!--                           aria-label="Months"-->
-<!--                           formControlName="months"-->
-<!--                           aria-describedby="basic-addon2">-->
-<!--                    <div class="input-group-append">-->
-<!--                        <span class="input-group-text" >£</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="input-group">-->
-<!--                    <select formControlName="from" class="form-control">-->
-<!--                        <option value=""  selected>Months from ...</option>-->
-<!--                        <option value="now">months from now</option>-->
-<!--                        <option value="investment">months from investment</option>-->
-<!--                    </select>-->
-<!--&lt;!&ndash;                    <input type="text" class="form-control"&ndash;&gt;-->
-<!--&lt;!&ndash;                           placeholder="Months from"&ndash;&gt;-->
-<!--&lt;!&ndash;                           aria-label="Months from"&ndash;&gt;-->
-<!--&lt;!&ndash;                           aria-describedby="basic-addon2">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <div class="input-group-append">&ndash;&gt;-->
-<!--&lt;!&ndash;                        <span class="input-group-text" >£</span>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--        <div class="question ">-->
-<!--            <div class="question-title">-->
-<!--                <span>Burn-rate [Now]</span>-->
-<!--            </div>-->
-<!--            <div class="question-answer">-->
-<!--                <div class="input-group">-->
-<!--                    <input type="number" class="form-control"-->
-<!--                           placeholder="Burn rate now currency"-->
-<!--                           aria-label="Burn rate now currency"-->
-<!--                           formControlName="burnRateNow"-->
-<!--                           aria-describedby="basic-addon2">-->
-<!--                    <div class="input-group-append">-->
-<!--                        <span class="input-group-text" >£</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="question ">-->
-<!--            <div class="question-title">-->
-<!--                <span>Burn-rate [After next investment]</span>-->
-<!--            </div>-->
-<!--            <div class="question-answer">-->
-<!--                <div class="input-group">-->
-<!--                    <input type="number" class="form-control"-->
-<!--                           placeholder="Burn rate after currency"-->
-<!--                           aria-label="Burn rate after currency"-->
-<!--                           formControlName="burnRateAfter"-->
-<!--                           aria-describedby="basic-addon2">-->
-<!--                    <div class="input-group-append">-->
-<!--                        <span class="input-group-text" >£</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->

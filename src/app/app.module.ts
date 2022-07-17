@@ -33,6 +33,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -63,6 +68,12 @@ import {MatChipsModule} from '@angular/material/chips';
         MatRadioModule,
         MatSelectModule,
         MatChipsModule,
+        MatCheckboxModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRippleModule,
+        MatExpansionModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

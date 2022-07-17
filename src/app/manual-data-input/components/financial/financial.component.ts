@@ -45,6 +45,7 @@ export class FinancialComponent implements OnInit {
         this.financialGroup = this.createFinancialControlGorup();
         this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
         this.financialGroup.valueChanges.subscribe(() => {
+            console.log(this.financialGroup.value);
             this.value.emit(this.financialGroup.value);
         });
     }
@@ -55,13 +56,13 @@ export class FinancialComponent implements OnInit {
 
     createShareholder(): FormGroup {
         return this.formBuilder.group({
-            name: [],
-            stake: [],
-            shares: [],
-            shareClass: [],
-            voting: [],
-            antiDilution: [],
-            allocationDate: [],
+            name: new FormControl('', []),
+            stake: new FormControl('', []),
+            shares: new FormControl('', []),
+            shareClass: new FormControl('', []),
+            voting: new FormControl('', []),
+            antiDilution: new FormControl('', []),
+            allocationDate: new FormControl('', [])
         });
     }
 
@@ -130,8 +131,8 @@ export class FinancialComponent implements OnInit {
             ]),
 
             notes: new FormControl(),
-            employeeShares: [false],
-            accountingMethod: new FormControl(),
+            employeeShares: new FormControl('', []),
+            accountingMethod: new FormControl('', []),
 
         });
     }
