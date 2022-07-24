@@ -56,7 +56,7 @@
                     <div *ngIf="financialGroup.get('employeeShares').value" class="w-100 d-flex justify-content-start align-items-center flex-wrap">
                         <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "  class="w-100 d-flex justify-content-start align-items-center flex-wrap">
                             <div class="input-label w-20">
-                                <p *ngIf="i == 0">Current Shareholders</p>
+                                <p class="level-3" *ngIf="i == 0">Current Shareholders</p>
                             </div>
                             <div  class="w-80 my-3">
                                 <form [formGroup]="financialGroup.get('shareholders').controls[i]" class="d-flex justify-content-start align-items-center flex-wrap ">
@@ -105,6 +105,516 @@
             </div>
             </div>
         </div>
+
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>Previous Finance Injection</span>
+                </div>
+                <div  class="question-answer d-flex w-100 flex-wrap">
+                    <div class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                        <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "  class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                            <div class="input-label w-20">
+                                <p class="level-3" *ngIf="i == 0">Previous Cash</p>
+                            </div>
+                            <div  class="w-80 my-3">
+                                <form [formGroup]="financialGroup.get('previousCash').controls[i]" class="d-flex justify-content-start align-items-center flex-wrap ">
+                                    <div class="input-item">
+                                        <select  class="form-select" formControlName="type" required>
+                                            <option value="" disabled selected>Injection type</option>
+                                            <option value="Equity investment">Equity investment</option>
+                                            <option value="Crowdfunding">Crowdfunding</option>
+                                            <option value="Grant">Grant</option>
+                                            <option value="Loan">Loan</option>
+                                            <option value="Convertible Loan">Convertible Loan</option>
+                                        </select>
+                                    </div>
+                                    <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'" class="input-item">
+                                        <input class="form-control" formControlName="cap" placeholder="Cap" type="number">
+                                    </div>
+                                    <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'" class="input-item">
+                                        <input class="form-control" formControlName="discount" placeholder="Discount">
+                                    </div>
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="source" placeholder="Fund or Source">
+                                    </div>
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="date" placeholder="Date" type="date">
+                                    </div>
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="amount" placeholder="Amount" type="number">
+                                    </div>
+                                    <div class="input-item">
+                                        <input class="form-control" formControlName="equityGiven"  placeholder="Equity given" type="number">
+                                    </div>
+                                    <div class="input-item">
+                                        <select  class="form-select" formControlName="charges">
+                                            <option value="" disabled selected>Charges</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="Not sure">Not sure</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center">
+                            <button (click)="createPreviousCash()" color="primary" mat-raised-button mat-ripple>
+                                Add more
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>REVENUE RETENTION</span>
+                </div>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            New Revenue (ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="New Revenue" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Retained Revenue (ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Retained Revenue" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>FINANCIAL PERFORMANCE</span>
+                </div>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Gross Profit :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Cash & Cash Equivalent" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Net Profit :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Monthly Burn Rate" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Gross Profit Margin (Ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Net Burn Rate" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Net Profit Margin (Ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Net Cash" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Cost of Goods Sold (Ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Monthly Recurring Revenue :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Total Debt :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Turnover to Staff (Ratio) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Promotion to Sales :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Compound Annual Growth Rate (Revenues) :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Gross Margin Growth :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <div class="question d-flex p-3 flex-wrap justify-content-start">
+                <div class="question-title d-flex justify-content-start align-items-center">
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle mr-2"></i>
+                    </div>
+                    <span>CASH & OPERATION</span>
+                </div>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Cash & Cash Equivalent :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Cash & Cash Equivalent" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Monthly Burn Rate :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Monthly Burn Rate" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Net Burn Rate :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Net Burn Rate" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Net Cash :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Net Cash" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            Runway :
+                        </div>
+                        <div class="input-feild">
+                            <div class="form-group mb-0">
+                                <div class="position-relative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input class="form-control " placeholder="Runway" type="number">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+<!--        <div class="w-100">-->
+<!--            <div class="question d-flex flex-wrap justify-content-center">-->
+<!--                <mat-chip-list aria-label="Accounting method" class="my-2">-->
+<!--                    <mat-chip>-->
+<!--                        <mat-icon aria-hidden="false" class="mx-1">price_check</mat-icon>-->
+<!--                        <strong>Previous Finance Injection</strong></mat-chip>-->
+<!--                </mat-chip-list>-->
+<!--                <div *ngFor="let previousC of financialGroup.get('previousCash').controls; index as j "-->
+<!--                     class="question-answer d-flex w-100 justify-content-center">-->
+<!--                    <form [formGroup]="financialGroup.get('previousCash').controls[j]"-->
+<!--                          class="row w-100 my-3">-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                <mat-select [formControlName]="'type'" required>-->
+<!--                                    <mat-option value="Equity investment">Equity investment</mat-option>-->
+<!--                                    <mat-option value="Crowdfunding">Crowdfunding</mat-option>-->
+<!--                                    <mat-option value="Grant">Grant</mat-option>-->
+<!--                                    <mat-option value="Loan">Loan</mat-option>-->
+<!--                                    <mat-option value="Convertible Loan">Convertible Loan</mat-option>-->
+<!--                                </mat-select>-->
+<!--                                &lt;!&ndash;                                            <mat-label>Voting</mat-label>&ndash;&gt;-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+<!--                        <div-->
+<!--                             class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Cap</mat-label>&ndash;&gt;-->
+<!--                                <input formControlName="cap" matInput placeholder="Cap" type="number">-->
+<!--                                <mat-icon matSuffix>£</mat-icon>-->
+<!--                                <mat-hint>Hint</mat-hint>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'"-->
+<!--                             class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Discount</mat-label>&ndash;&gt;-->
+<!--                                <input formControlName="discount" matInput placeholder="Discount"-->
+<!--                                       type="number">-->
+<!--                                <mat-icon matSuffix>%</mat-icon>-->
+<!--                                <mat-hint>Hint</mat-hint>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Fund or Source</mat-label>&ndash;&gt;-->
+<!--                                <input formControlName="source" matInput placeholder="Fund or Source">-->
+<!--                                <mat-icon matSuffix>monetization_on</mat-icon>-->
+<!--                                <mat-hint>Hint</mat-hint>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Date</mat-label>&ndash;&gt;-->
+<!--                                <input [matDatepicker]="picker" formControlName="date" matInput>-->
+<!--                                <mat-hint>HINT</mat-hint>-->
+<!--                                <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>-->
+<!--                                <mat-datepicker #picker></mat-datepicker>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Amount</mat-label>&ndash;&gt;-->
+<!--                                <input formControlName="amount" matInput placeholder="Amount" type="number">-->
+<!--                                <mat-icon matSuffix>monetization_on</mat-icon>-->
+<!--                                <mat-hint>Hint</mat-hint>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                &lt;!&ndash;                                            <mat-label>Equity given</mat-label>&ndash;&gt;-->
+<!--                                <input formControlName="equityGiven" matInput placeholder="Equity given"-->
+<!--                                       type="number">-->
+<!--                                <mat-icon matSuffix>%</mat-icon>-->
+<!--                                <mat-hint>Hint</mat-hint>-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                        <div class="col-md-3 col-sm-12">-->
+<!--                            <mat-form-field appearance="outline" class="w-100">-->
+<!--                                <mat-select [formControlName]="'charges'" required>-->
+<!--                                    <mat-option value="Equity investment">Yes</mat-option>-->
+<!--                                    <mat-option value="Crowdfunding">No</mat-option>-->
+<!--                                    <mat-option value="Grant">Not sure</mat-option>-->
+<!--                                </mat-select>-->
+<!--                                &lt;!&ndash;                                            <mat-label>Charges</mat-label>&ndash;&gt;-->
+<!--                            </mat-form-field>-->
+<!--                        </div>-->
+
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="col-12 d-flex justify-content-center">-->
+<!--                    <button (click)="createPreviousCash()" color="primary" mat-raised-button mat-ripple>Add-->
+<!--                        more-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 <!--        <mat-stepper #stepper orientation="vertical">-->
 <!--            <mat-step>-->
@@ -202,109 +712,7 @@
 <!--                            <button mat-raised-button matStepperPrevious>Previous</button>-->
 <!--                        </div>-->
 <!--                    </div>-->
-<!--                    <div class="w-100">-->
-<!--                        <div class="question d-flex flex-wrap justify-content-center">-->
-<!--                            <mat-chip-list aria-label="Accounting method" class="my-2">-->
-<!--                                <mat-chip>-->
-<!--                                    <mat-icon aria-hidden="false" class="mx-1">price_check</mat-icon>-->
-<!--                                    <strong>Previous Finance Injection</strong></mat-chip>-->
-<!--                            </mat-chip-list>-->
-<!--                            <div *ngFor="let previousC of financialGroup.get('previousCash').controls; index as j "-->
-<!--                                 class="question-answer d-flex w-100 justify-content-center">-->
-<!--                                <form [formGroup]="financialGroup.get('previousCash').controls[j]"-->
-<!--                                      class="row w-100 my-3">-->
 
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--                                            <mat-select [formControlName]="'type'" required>-->
-<!--                                                <mat-option value="Equity investment">Equity investment</mat-option>-->
-<!--                                                <mat-option value="Crowdfunding">Crowdfunding</mat-option>-->
-<!--                                                <mat-option value="Grant">Grant</mat-option>-->
-<!--                                                <mat-option value="Loan">Loan</mat-option>-->
-<!--                                                <mat-option value="Convertible Loan">Convertible Loan</mat-option>-->
-<!--                                            </mat-select>-->
-<!--&lt;!&ndash;                                            <mat-label>Voting</mat-label>&ndash;&gt;-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-<!--                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'"-->
-<!--                                         class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Cap</mat-label>&ndash;&gt;-->
-<!--                                            <input formControlName="cap" matInput placeholder="Cap" type="number">-->
-<!--                                            <mat-icon matSuffix>£</mat-icon>-->
-<!--                                            <mat-hint>Hint</mat-hint>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div *ngIf="financialGroup.get('previousCash').controls[j].get('type')?.value == 'Convertible Loan'"-->
-<!--                                         class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Discount</mat-label>&ndash;&gt;-->
-<!--                                            <input formControlName="discount" matInput placeholder="Discount"-->
-<!--                                                   type="number">-->
-<!--                                            <mat-icon matSuffix>%</mat-icon>-->
-<!--                                            <mat-hint>Hint</mat-hint>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Fund or Source</mat-label>&ndash;&gt;-->
-<!--                                            <input formControlName="source" matInput placeholder="Fund or Source">-->
-<!--                                            <mat-icon matSuffix>monetization_on</mat-icon>-->
-<!--                                            <mat-hint>Hint</mat-hint>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Date</mat-label>&ndash;&gt;-->
-<!--                                            <input [matDatepicker]="picker" formControlName="date" matInput>-->
-<!--                                            <mat-hint>HINT</mat-hint>-->
-<!--                                            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>-->
-<!--                                            <mat-datepicker #picker></mat-datepicker>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Amount</mat-label>&ndash;&gt;-->
-<!--                                            <input formControlName="amount" matInput placeholder="Amount" type="number">-->
-<!--                                            <mat-icon matSuffix>monetization_on</mat-icon>-->
-<!--                                            <mat-hint>Hint</mat-hint>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--&lt;!&ndash;                                            <mat-label>Equity given</mat-label>&ndash;&gt;-->
-<!--                                            <input formControlName="equityGiven" matInput placeholder="Equity given"-->
-<!--                                                   type="number">-->
-<!--                                            <mat-icon matSuffix>%</mat-icon>-->
-<!--                                            <mat-hint>Hint</mat-hint>-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="col-md-3 col-sm-12">-->
-<!--                                        <mat-form-field appearance="outline" class="w-100">-->
-<!--                                            <mat-select [formControlName]="'charges'" required>-->
-<!--                                                <mat-option value="Equity investment">Yes</mat-option>-->
-<!--                                                <mat-option value="Crowdfunding">No</mat-option>-->
-<!--                                                <mat-option value="Grant">Not sure</mat-option>-->
-<!--                                            </mat-select>-->
-<!--&lt;!&ndash;                                            <mat-label>Charges</mat-label>&ndash;&gt;-->
-<!--                                        </mat-form-field>-->
-<!--                                    </div>-->
-
-<!--                                </form>-->
-<!--                            </div>-->
-<!--                            <div class="col-12 d-flex justify-content-center">-->
-<!--                                <button (click)="createPreviousCash()" color="primary" mat-raised-button mat-ripple>Add-->
-<!--                                    more-->
-<!--                                </button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
 <!--                </div>-->
 <!--                <div class="row">-->
 <!--                    <div class="col-12 d-flex justify-content-end">-->

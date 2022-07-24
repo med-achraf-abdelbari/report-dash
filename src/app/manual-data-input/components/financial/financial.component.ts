@@ -56,6 +56,7 @@ export class FinancialComponent implements OnInit {
 
     createShareholder(): FormGroup {
         return this.formBuilder.group({
+            type: new FormControl('', []),
             name: new FormControl('', []),
             stake: new FormControl('', []),
             shares: new FormControl('', []),

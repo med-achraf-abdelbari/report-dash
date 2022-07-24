@@ -103,14 +103,14 @@ body {
   position: absolute;
   &:after{
     color: #f3c308;
-    border-width: 0 3px 3px 0!important;
+    border-width: 0 5px 5px 0!important;
   }
 }
 
 .mat-expansion-panel-header-title{
   padding-left: 20px;
   color: #415a77!important;
-  font-size: 22px;
+  font-size: 32px;
 }
 
 .color-bl{
@@ -118,7 +118,10 @@ body {
 }
 
 .question-title{
-  padding: 15px;
+  width: 100%;
+  border-bottom: 2px solid #525765b0;
+  margin-bottom: 1rem;
+  padding: 15px 0;
   .help-wrapper{
     color: #415a77;
     font-size: 16px;
@@ -134,8 +137,9 @@ body {
     padding: 0 20px;
     color: #4c4c4c;
     font-size: 18px;
-    font-weight: 400;
     text-align: left;
+    min-width: 250px;
+    font-weight: 700;
   }
   select{
     min-width: 225px;
@@ -159,4 +163,29 @@ body {
 
 .w-80{
   width: 80%!important;
+}
+
+.input-group-prepend{
+  position: absolute;
+  height: 46px;
+  border-radius: 0!important;
+  span{
+    border-right: 0;
+    border-radius: 0.25rem 0 0 0.25rem;
+    background: #eeefef;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.form-group{
+  input{
+    padding-left: 50px;
+  }
+}
+
+.level-3{
+  font-weight: 600;
 }
