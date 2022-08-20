@@ -70,8 +70,7 @@ export class InnovationComponent implements OnInit {
         'Would it require new skill sets – do we need to recruit or train people to do it?',
         'Would it require new technologies or types of resources or facilities or whatever that we don’t know how to manage?',
         'Are you undertaking and R&D?',
-        '(UK only) Have you applied for any R&D tax credits?',
-        ''
+        '(UK only) Have you applied for any R&D tax credits?'
     ];
 
     designs = [

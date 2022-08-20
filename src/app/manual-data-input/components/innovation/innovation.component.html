@@ -1,167 +1,176 @@
-<form [formGroup]="innovationGroup" class="w-100">
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Stage of Innovation</h2>
-        </div>
-    </div>
+<form class="w-100">
 
-    <div class="questions my-3 py-4">
-        <div *ngFor="let stage of stages" class="question">
-            <div style="width: 100px!important;">
-                <input [id]="stage.name" [value]=stage.name class="form-control"
-                       formControlName="stageOfInnovation"
-                       name="stage" style="max-width: 20px;box-shadow: none!important;" type="radio"></div>
-            <label [for]="stage.name" class=" question-radio">{{stage.name}}
-                <p class="w-100">{{stage.info}}</p>
-            </label>
-        </div>
-    </div>
-
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Technology Readiness Level&nbsp;</h2>
-        </div>
-    </div>
-
-    <div class="questions my-3 py-4">
-        <div *ngFor="let level of techLevels" class="question">
-            <div style="width: 100px!important;">
-                <input [id]="level.name" [value]="level.level" class="form-control"
-                       formControlName="technologyReadiness"
-                       name="stage" style="max-width: 20px;box-shadow: none!important;" type="radio"></div>
-            <label [for]="level.name" class=" question-radio">{{level.level}}
-                <p class="w-100">{{level.desc}}</p>
-            </label>
-        </div>
-    </div>
-
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Commercial Exploitation</h2>
-        </div>
-    </div>
-
-    <form [formGroup]="innovationGroup.get('areaOfImpact')" class="w-100">
-        <div *ngFor="let quest of commercialExplorationQuestions; index as i" class="reverse-question">
-            <div class="q">
-                <div class="question-title">
-                    <span>{{quest}}</span>
+    <div class="w-100">
+        <div  class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
                 </div>
-                <div class="question-choise">
-                    <div class="option">
-                        <input class="form-control" formControlName="question{{i+1}}"
-                               name="stage{{i}}" style="max-width: 20px;box-shadow: none!important;"
-                               type="radio"
-                               value="0">
-                    </div>
-
-                    <div class="option">
-                        <input class="form-control" formControlName="question{{i+1}}"
-                               name="stage{{i}}" style="max-width: 20px;box-shadow: none!important;"
-                               type="radio"
-                               value="1">
-                    </div>
-
-                    <div class="option">
-                        <input class="form-control" formControlName="question{{i+1}}"
-                               name="stage{{i}}" style="max-width: 20px;box-shadow: none!important;"
-                               type="radio"
-                               value="2">
-                    </div>
-                </div>
+                <span>Stage of Innovation</span>
             </div>
-        </div>
-
-        <div class="reverse-question">
-            <div class="q">
-                <div class="question-title">
-                    <span>Where is your company's innovation culture on the ‘Innovation Curve?’</span>
+            <form *ngFor="let stage of stages" [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild d-flex">
+                        <div
+                             class="custom-control custom-checkbox circle mb-3 mx-3 w-auto">
+                            <input checked="" class="custom-control-input"  [id]="stage.name" type="checkbox">
+                            <label class="custom-control-label" [for]="stage.name"></label>
+                        </div>
+                    </div>
+                    <div class="input-label d-flex flex-wrap">
+                        <span class="w-100 mb-2">{{stage.name}}</span>
+                        <span class="w-100 fw-normal">{{stage.info}}</span>
+                    </div>
                 </div>
-                <div class="question-choise">
-                    <div class="c-option">
-                        <select formControlName="question9">
-                            <option value="Innovators">Innovators</option>
-                            <option value="Early adapters">Early adapters</option>
-                            <option value="Early majority">Early majority</option>
-                            <option value="Late majority">Late majority</option>
-                            <option value="Laggards">Laggards</option>
+            </form>
+        </div>
+    </div>
+
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Technology Readiness Level</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-label">
+                        Select TRL level :
+                    </div>
+                    <div class="input-feild">
+                        <select class="form-select" formControlName="technologyReadiness">
+                            <option disabled selected value="">Select your account type</option>
+                            <option *ngFor="let level of techLevels" value="{{level.level}}">{{level.desc}}</option>
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
-    </form>
+            </form>
 
-
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Innovation & IP&nbsp;</h2>
         </div>
     </div>
 
-    <div class="row ">
-        <div class="col-sm-12 col-md-4 d-flex justify-content-md-start justify-content-sm-center align-items-center">
-            <span>What assets do you generate ? </span>
-        </div>
-        <div class="col-sm-12 col-md-8 d-flex justify-content-md-start justify-content-sm-center align-items-center my-1">
-            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="w-100 d-flex">
-
-                <div *ngFor="let answer of ipAssets.assetsGenerated.controls; let j = index;"
-                     class="custom-control custom-checkbox mb-3 mx-3">
-                    <input checked="" class="custom-control-input" formControlName="{{j}}" id="cust{{j}}"
-                           type="checkbox">
-                    <label class="custom-control-label" for="cust{{j}}}">{{answer.display}}</label>
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Commercial Exploitation</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex w-50 mb-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-label">
+                        {{quest}} :
+                    </div>
+                    <div class="input-feild">
+                        <select class="form-select" formControlName="technologyReadiness">
+                            <option disabled selected value="">Select your answer</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
                 </div>
             </form>
 
         </div>
     </div>
 
-    <div class="row ">
-        <div class="col-sm-12 col-md-4 d-flex justify-content-md-start justify-content-sm-center align-items-center">
-            <span>Have you registered any of the following?</span>
-        </div>
-        <div class="col-sm-12 col-md-8 d-flex justify-content-md-start justify-content-sm-center align-items-center my-1">
-            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsOwned')" class="w-100 d-flex">
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Innovation & IP</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="question-answer d-flex w-50 mb-3">
+                <div class="d-flex justify-content-start align-items-center flex-wrap">
+                    <div class="input-label w-100">
+                        What assets do you generate?
+                    </div>
+                    <div class="input-feild w-100">
+                        <div *ngFor="let answer of ipAssets.assetsGenerated.controls; let j = index;"
+                             class="custom-control custom-checkbox mb-3 mx-3">
+                            <input checked="" class="custom-control-input" formControlName="{{j}}" id="cu{{j}}"
+                                   type="checkbox">
+                            <label class="custom-control-label" for="cu{{j}}">{{answer.display}}</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
-                <div *ngFor="let answer of ipAssets.assetsOwned.controls; let j = index;"
-                     class="custom-control custom-checkbox mb-3 mx-3">
-                    <input checked="" class="custom-control-input" formControlName="{{j}}" id="cu{{j}}"
-                           type="checkbox">
-                    <label class="custom-control-label" for="cu{{j}}">{{answer.display}}</label>
+            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="question-answer d-flex w-50 mb-3">
+                <div class="d-flex justify-content-start align-items-center flex-wrap">
+                    <div class="input-label w-100">
+                        Have you registered any of the following?
+                    </div>
+                    <div class="input-feild w-100">
+                        <div *ngFor="let answer of ipAssets.assetsOwned.controls; let j = index;"
+                             class="custom-control custom-checkbox mb-3 mx-3">
+                            <input checked="" class="custom-control-input" formControlName="{{j}}" id="cu{{j}}"
+                                   type="checkbox">
+                            <label class="custom-control-label" for="cu{{j}}">{{answer.display}}</label>
+                        </div>
+                    </div>
                 </div>
             </form>
 
         </div>
     </div>
 
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Design</h2>
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Design</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="innovationGroup.get('design')" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center flex-wrap w-100">
+                    <div class="input-label w-100">
+                        A question is required for design in here?
+                    </div>
+                    <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
+                        <div *ngFor="let design of designs; let j = index;"
+                             class="custom-control custom-checkbox mb-3 mx-3 w-auto">
+                            <input checked="" class="custom-control-input" [value]="design" [formControlName]="design.control" id="design{{j}}"
+                                   type="checkbox">
+                            <label class="custom-control-label" for="design{{j}}">{{design.name}}</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
-
-    <form [formGroup]="innovationGroup.get('design')">
-        <div *ngFor="let design of designs" class="row">
-            <div class="col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-sm-center align-items-center">
-                {{design.name}}
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Additional Notes</span>
             </div>
-            <div class="col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-sm-center align-items-center my-1">
-                <select [formControlName]="design.control">
-                    <option [value]="null">I don't have any</option>
-                    <option *ngFor="let answer of designTypes" [value]="answer">{{answer}}</option>
-                </select>
-            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="innovationGroup.get('design')" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center flex-wrap w-100">
+                    <div class="input-label w-100">
+                        Any other additional notes or comments to be written here
+                    </div>
+                    <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
+                          <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
+                                    rows="3"></textarea>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-
-
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-4 py-2">
-        <h2>Additional notes</h2>
     </div>
-
-    <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
-              rows="3"></textarea>
 
 </form>
