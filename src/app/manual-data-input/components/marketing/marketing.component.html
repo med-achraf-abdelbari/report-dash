@@ -126,121 +126,21 @@
 
         </div>
     </div>
-</div>
-<!--
-<div class="w-100 my-4 py-2">
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-        <h2 class="w-100 text-left">Product</h2>
-    </div>
-</div>-->
 
-<!--
-<form  class="row">
-
-    <div *ngFor="let product of products[0].kinds; index as i" class="col-sm-12 col-md-4">
-        <div class="row">
-            <div class="col-2 d-flex justify-content-start align-items-center ">
-                <input class="form-control" formControlName="question1" [value]="product.title" id="question1{{i}}"
-                       style="max-width: 20px;box-shadow: none!important;"
-                       type="radio">
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Marketing preference</span>
             </div>
-            <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                <label for="question1{{i}}">{{product.title}}</label>
-            </div>
-        </div>
-    </div>
-
-    <div class="row my-4">
-        <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
-            <span>Customer interactions</span>
-        </div>
-        <div *ngFor="let product of products[1].kinds; index as i " class="col-sm-12 col-md-4">
-            <div class="row">
-                <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input [value]="product.title" class="form-control" formControlName="question2" id="question2{{i}}"
-                           style="max-width: 20px;box-shadow: none!important;" type="checkbox">
-                </div>
-                <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question2{{i}}">{{product.title}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row my-4 w-100">
-        <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
-            <span>How do you sell</span>
-        </div>
-        <div *ngFor="let product of products[2].kinds ; index as i " class="col-sm-12 col-md-3">
-            <div class="row">
-                <div class="col-6 d-flex justify-content-end align-items-center ">
-                    <input class="form-control" formControlName="question3" id="question3{{i}}"
-                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
-                           type="radio">
-                </div>
-                <div class="col-6 d-flex justify-content-center align-items-center text-left">
-                    <label for="question3{{i}}">{{product.title}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row my-4">
-        <div class="col-sm-12 d-flex justify-content-center align-items-center my-3 flex-wrap">
-            <span class="w-100">How do you make money via any primary revenues</span>
-            <span>Select any from the following to describe aspects of your business and/or revenue model.</span>
-        </div>
-        <div *ngFor="let product of products[3].kinds;index as i " class="col-sm-12 col-md-4">
-            <div class="row">
-                <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input class="form-control" formControlName="question4" id="question4{{i}}"
-                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
-                           type="checkbox">
-                </div>
-                <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question4{{i}}">{{product.title}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row my-4">
-        <div class="col-sm-12 d-flex justify-content-center align-items-center my-3 flex-wrap">
-            <span class="w-100">How would you best describe the Business Model?</span>
-        </div>
-        <div *ngFor="let product of products[4].kinds; index as i " class="col-sm-12 col-md-4">
-            <div class="row">
-                <div class="col-2 d-flex justify-content-start align-items-center ">
-                    <input class="form-control" formControlName="question5" id="question5{{i}}"
-                           [value]="product.title" style="max-width: 20px;box-shadow: none!important;"
-                           type="radio">
-                </div>
-                <div class="col-10 d-flex justify-content-start align-items-center text-left">
-                    <label for="question5{{i}}">{{product.title}}</label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</form>
--->
-
-<div class="row">
-
-    <div class="w-100 my-4 py-2">
-        <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-            <h2 class="w-100 text-left">Marketing prefrence</h2>
-        </div>
-    </div>
-
-    <div class="row mx-2 w-100">
-        <div class="col-sm-12">
-            <div *ngFor="let pref of marketingGroup.get('performance').controls; index as i" class="row my-4">
-                <form [formGroup]="marketingGroup.get('performance').controls[i]" class="w-100 d-flex">
-                    <div class="col-8 d-flex justify-content-start align-items-center ">
-                        <select class="w-100 form-control" formControlName="question"
-                                placeholder="Key Unit Economics (current)">
-                            <option value="0">Unique Users/Viewers (p/m)</option>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('performance').controls[i]"  *ngFor="let pref of marketingGroup.get('performance').controls; index as i" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <div class="input-label w-50">
+                        <select class="w-100 form-control" formControlName="question">
+                            <option selected value="0">Unique Users/Viewers (p/m)</option>
                             <option value="1">Registrations / Sign-Ups (p/m)</option>
                             <option value="2">Downloads (p/m)</option>
                             <option value="3">Daily Active Users (DAU)</option>
@@ -258,101 +158,120 @@
                             <option value="15">Average Revenue Per User (ARPU)</option>
                         </select>
                     </div>
-                    <div class="col-4 d-flex justify-content-start align-items-center text-left">
+                    <div class="input-feild w-50">
                         <input class="w-100 form-control" formControlName="answer" placeholder="Answer" type="text">
                     </div>
-                </form>
-            </div>
-            <button (click)="addMoreMarketingPrefrence()" class="btn btn-primary my-3">Add More</button>
-        </div>
-    </div>
-
-</div>
-
-
-<div class="w-100 my-4 py-2">
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-        <h2 class="w-100 text-left">Social media accounts</h2>
-    </div>
-</div>
-
-<div class="row mx-2 w-100">
-    <div class="col-sm-12">
-        <div *ngFor="let pref of marketingGroup.get('socialMedia').controls ; index as i" class="row my-4">
-            <form [formGroup]="marketingGroup.get('socialMedia').controls[i]" class="w-100 d-flex">
-                <div class="col-8 d-flex justify-content-start align-items-center ">
-                    <select class="w-100 form-control" formControlName="account" placeholder="Platform">
-                        <option value="0">Facebook</option>
-                        <option value="1">Twitter</option>
-                        <option value="2">Instagram</option>
-                        <option value="3">linkedIn</option>
-                        <option value="4">WhatsApp</option>
-                        <option value="5">Pinterest</option>
-                        <option value="6">Other</option>
-                    </select>
-                </div>
-                <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                    <input class="w-100 form-control" formControlName="id" placeholder="User id" type="text">
                 </div>
             </form>
+            <div class=" w-100 d-flex justify-content-end align-items-center">
+                <button (click)="addMoreMarketingPrefrence()" class="btn btn-primary my-3">Add More</button>
+            </div>
         </div>
-        <button (click)="addSocialPrefrence()" class="btn btn-primary my-3">Add More</button>
     </div>
-</div>
 
-<div class="w-100 my-4 py-2">
-    <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
-        <h2 class="w-100 text-left">Customer & markets</h2>
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Social media accounts</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('socialMedia').controls[i]"  *ngFor="let pref of marketingGroup.get('socialMedia').controls ; index as i" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <div class="input-label w-50">
+                        <select class="w-100 form-control" formControlName="account" placeholder="Platform">
+                            <option value="0">Facebook</option>
+                            <option value="1">Twitter</option>
+                            <option value="2">Instagram</option>
+                            <option value="3">linkedIn</option>
+                            <option value="4">WhatsApp</option>
+                            <option value="5">Pinterest</option>
+                            <option value="6">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-feild w-50">
+                        <input class="w-100 form-control" formControlName="id" placeholder="User id" type="text">
+                    </div>
+                </div>
+            </form>
+            <div class=" w-100 d-flex justify-content-end align-items-center">
+                <button (click)="addSocialPrefrence()" class="btn btn-primary my-3">Add More</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="row mx-2 w-100">
-    <div class="col-sm-12">
-        <div *ngFor="let market of markets; index as i" class="row my-4">
-            <form [formGroup]="marketingGroup.get('customerDetails')" class="w-100 d-flex">
-                <div class="col-5 d-flex justify-content-start align-items-center ">
-                    <span class="w-100 text-left">
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Customer & markets</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('customerDetails')"  *ngFor="let market of markets; index as i" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <div class="input-label w-50">
+                        <span class="w-100 text-left">
                         {{market.title}}
                     </span>
-                </div>
-                <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                    <div class="input-group">
-                        <input [formControlName]="market.control" aria-describedby="basic-addon2"
-                               aria-label=""
-                               class="form-control"
-                               placeholder=""
-                               type="number">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">£</span>
+                    </div>
+                    <div class="input-feild w-50">
+                        <div class="form-group mb-0">
+                            <div class="position-relative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-dollar"></i></span>
+                                </div>
+                                <input class="form-control " placeholder="Runway" type="number">
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
-        </div>
-        <form [formGroup]="marketingGroup.get('customerDetails')" class="row my-4">
-            <div class="col-5 d-flex justify-content-start align-items-center ">
-                    <span class="w-100 text-left">
-                        Where are your primary customer's on the ‘Innovation Curve?’&nbsp;
+            <form [formGroup]="marketingGroup.get('customerDetails')" class="question-answer d-flex w-100 mb-3">
+                <div class="d-flex justify-content-start align-items-center w-100">
+                    <div class="input-label w-50">
+                        <span class="w-100 text-left">
+                         Where are your primary customer's on the ‘Innovation Curve?’&nbsp;
                     </span>
+                    </div>
+                    <div class="input-feild w-50">
+                        <select class="w-100 form-control" formControlName="primaryCustomer">
+                            <option value="0">Innovators</option>
+                            <option value="1">Early adaptors</option>
+                            <option value="2">Early majority</option>
+                            <option value="3">Late majority</option>
+                            <option value="4">Laggards</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="w-100">
+    <div class="question d-flex p-3 flex-wrap justify-content-start">
+        <div class="question-title d-flex justify-content-start align-items-center">
+            <div class="help-wrapper cursor-pointer">
+                <i class="fa fa-info-circle mr-2"></i>
             </div>
-            <div class="col-4 d-flex justify-content-start align-items-center text-left">
-                <select class="w-100 form-control" formControlName="primaryCustomer" placeholder="Platform">
-                    <option value="0">Innovators</option>
-                    <option value="1">Early adaptors</option>
-                    <option value="2">Early majority</option>
-                    <option value="3">Late majority</option>
-                    <option value="4">Laggards</option>
-                </select>
+            <span>Additional Notes</span>
+        </div>
+        <!--        ACCOUNTING METHOD-->
+        <form [formGroup]="marketingGroup" class="question-answer d-flex w-100 mb-3">
+            <div class="d-flex justify-content-start align-items-center flex-wrap w-100">
+                <div class="input-label w-100">
+                    Any other additional notes or comments to be written here
+                </div>
+                <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
+                          <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
+                                    rows="3"></textarea>
+                </div>
             </div>
         </form>
     </div>
 </div>
-
-<div class="section-title w-100 d-flex justify-content-start align-items-center my-4 py-2">
-    <h2>Additional notes</h2>
-</div>
-
-<form [formGroup]="marketingGroup" class="w-100 d-flex">
-    <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
-              rows="3"></textarea>
-</form>
