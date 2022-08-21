@@ -1,5 +1,12 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 /* You can add global styles to this file, and also import other style files */
+
+@for $i from 1 through 38 {
+  .fs-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+
 b {
   font-weight: bolder;
   width: 100%;
@@ -136,10 +143,10 @@ body {
   .input-label{
     padding: 0 20px;
     color: #4c4c4c;
-    font-size: 18px;
+    font-size: 17px;
     text-align: left;
     min-width: 250px;
-    font-weight: 700;
+    font-weight: 600;
   }
   select{
     min-width: 225px;

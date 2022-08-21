@@ -18,7 +18,7 @@ input[type="radio"] + label::before
   display: inline-block;
   width: 20px;
   aspect-ratio: 1;
-  border: 1px solid #686de0;
+  border: 1px solid #415a77;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -34,8 +34,8 @@ input[type="radio"] + label::after
   display: inline-block;
   width: 10px;
   aspect-ratio: 1;
-  border: 1px solid #686de0;
-  background: #686de0;
+  border: 1px solid #415a77;
+  background: #415a77;
   border-radius: 50%;
   position: absolute;
   left: 5px;

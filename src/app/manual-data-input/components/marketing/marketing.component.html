@@ -1,13 +1,142 @@
+<div class="w-100">
+    <div class="w-100">
+        <div class="question d-flex p-3 flex-wrap justify-content-start">
+            <div class="question-title d-flex justify-content-start align-items-center">
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle mr-2"></i>
+                </div>
+                <span>Product</span>
+            </div>
+
+            <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
+                <span class="fs-18">What is the key nature of your USP (Unique Selling Proposition)?</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[0].kinds; index as i" class="question-answer d-flex w-50 my-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-feild d-flex align-items-center   ">
+                                <div
+                                        class="custom-control custom-checkbox circle mx-3 w-auto">
+                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title"></label>
+                                </div>
+                            </div>
+                            <div class="input-label d-flex flex-wrap">
+                                <span class="w-100 fw-normal">{{product.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
+                <span class="fs-18">Customer interactions (Select the appropriate choices) </span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[1].kinds; index as i" class="question-answer d-flex w-50 my-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-feild d-flex align-items-center   ">
+                                <div
+                                        class="custom-control custom-checkbox  mx-3 w-auto">
+                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title"></label>
+                                </div>
+                            </div>
+                            <div class="input-label d-flex flex-wrap">
+                                <span class="w-100 fw-normal">{{product.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
+                <span class="fs-18">How do you sell (Select the appropriate choices) </span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[2].kinds; index as i" class="question-answer d-flex w-25 my-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-feild d-flex align-items-center   ">
+                                <div
+                                        class="custom-control custom-checkbox circle mx-3 w-auto">
+                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title"></label>
+                                </div>
+                            </div>
+                            <div class="input-label d-flex flex-wrap">
+                                <span class="w-100 fw-normal">{{product.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
+                <span class="fs-18">Customer interactions (Select the appropriate choices)</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[3].kinds; index as i" class="question-answer d-flex w-25 my-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-feild d-flex align-items-center   ">
+                                <div
+                                        class="custom-control custom-checkbox  mx-3 w-auto">
+                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title"></label>
+                                </div>
+                            </div>
+                            <div class="input-label d-flex flex-wrap">
+                                <span class="w-100 fw-normal">{{product.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
+                <span class="fs-18">How would you best describe the Business Model?</span>
+            </div>
+            <!--        ACCOUNTING METHOD-->
+            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[4].kinds; index as i" class="question-answer d-flex w-25 my-3">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div class="input-feild">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-feild d-flex align-items-center   ">
+                                <div
+                                        class="custom-control custom-checkbox circle mx-3 w-auto">
+                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title"></label>
+                                </div>
+                            </div>
+                            <div class="input-label d-flex flex-wrap">
+                                <span class="w-100 fw-normal">{{product.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--
 <div class="w-100 my-4 py-2">
     <div class="section-title w-100 d-flex justify-content-start align-items-center my-3 flex-wrap">
         <h2 class="w-100 text-left">Product</h2>
     </div>
-</div>
+</div>-->
 
-<form [formGroup]="marketingGroup.get('product')" class="row">
-    <div class="col-sm-12 d-flex justify-content-center align-items-center my-3">
-        <span>What is the key nature of your USP (Unique Selling Proposition)?</span>
-    </div>
+<!--
+<form  class="row">
+
     <div *ngFor="let product of products[0].kinds; index as i" class="col-sm-12 col-md-4">
         <div class="row">
             <div class="col-2 d-flex justify-content-start align-items-center ">
@@ -94,6 +223,7 @@
     </div>
 
 </form>
+-->
 
 <div class="row">
 
