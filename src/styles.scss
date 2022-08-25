@@ -150,14 +150,14 @@ body {
   }
   select{
     min-width: 225px;
-    height: 46px;
+    height: 40px;
   }
 }
 .input-item{
   padding: 15px;
   input{
     min-width: 225px;
-    height: 46px;
+    height: 40px;
   }
 }
 .manual-min-height{
@@ -174,7 +174,7 @@ body {
 
 .input-group-prepend{
   position: absolute;
-  height: 46px;
+  height: 40px;
   border-radius: 0!important;
   span{
     border-right: 0;
@@ -262,4 +262,15 @@ input[type="radio"]:checked + label::after
 
 mat-panel-title{
   line-height: 38px;
+}
+
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description{
+  margin-left: 20px;
+}
+.mat-expansion-indicator{
+  margin-left: 20px;
+  transform: rotate(-90deg) !important;
+}
+.mat-expanded .mat-expansion-indicator{
+  transform: rotate(0deg) !important;
 }
