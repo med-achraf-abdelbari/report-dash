@@ -5,10 +5,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Revenue Retention</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -52,10 +52,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Financial Performance</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-50 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -270,10 +270,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Business Performance</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -318,10 +318,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Market Growth</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -366,10 +366,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Market Size</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -396,10 +396,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Cash & Operation</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
                     <div class="d-flex justify-content-start align-items-center">
@@ -511,10 +511,10 @@
         <div class="w-100">
             <div class="question d-flex p-3 flex-wrap justify-content-start">
                 <div class="question-title d-flex justify-content-start align-items-center">
-                    <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle mr-2"></i>
-                    </div>
                     <span>Company Reporting</span>
+                    <div class="help-wrapper cursor-pointer">
+                        <i class="fa fa-info-circle ml-2"></i>
+                    </div>
                 </div>
                 <!--        ACCOUNTING METHOD-->
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -538,88 +538,181 @@
                 <div class="question-answer d-flex w-100 flex-wrap mb-3">
                     <div class="w-100 d-flex justify-content-start align-items-center">
                         <div class="input-label">
-                            <span class="mr-4">Company shares</span>
-                            Have you set aside
-                            shares for employees?
+                            <span class="mr-4 font-weight-600">Company shares :</span>
+                            <span class="font-weight-400">
+                                [Have you set aside shares for employees?]
+                            </span>
                         </div>
-                        <div class="input-feild">
-                            <form [formGroup]="financialGroup" class="w-100">
+                        <div class="input-feild h-0">
+                        </div>
+                    </div>
+                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-label h-0">
+                            </div>
+                            <div class="input-feild mxt-17">
                                 <select class="form-select" formControlName="employeeShares">
                                     <option disabled selected value="">Please select</option>
                                     <option value=true>Yes</option>
                                     <option value=false>No</option>
                                 </select>
-                            </form>
-                        </div>
-                    </div>
-                    <div *ngIf="financialGroup.get('employeeShares').value"
-                         class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                        <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
-                             class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                            <div class="input-label w-20">
-                                <p *ngIf="i == 0" class="level-3">[Current Shareholders]</p>
-                            </div>
-                            <div class="w-80 my-3">
-                                <form [formGroup]="financialGroup.get('shareholders').controls[i]"
-                                      class="d-flex justify-content-start align-items-center flex-wrap ">
-                                    <div class="input-item">
-                                        <input class="form-control" formControlName="name" placeholder="Name">
-                                    </div>
-                                    <div class="input-item">
-                                        <input class="form-control" formControlName="stake" placeholder="Stake"
-                                               type="number">
-                                    </div>
-                                    <div class="input-item">
-                                        <input class="form-control" formControlName="shares" placeholder="Shares">
-                                    </div>
-                                    <div class="input-item">
-                                        <select class="form-select" formControlName="shareClass" placeholder="test"
-                                                required>
-                                            <option disabled selected value="">Share class</option>
-                                            <option value="Ordinary">Ordinary</option>
-                                            <option value="Prefrence">Prefrence</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-item">
-                                        <select class="form-select" formControlName="voting" required>
-                                            <option disabled selected value="">Voting</option>
-                                            <option value="Voting">Voting</option>
-                                            <option value="Non Voting">Non Voting</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-item">
-                                        <select class="form-select" formControlName="antiDilution" required>
-                                            <option disabled selected value="">Anti dilution</option>
-                                            <option value=true>Yes</option>
-                                            <option value=false>No</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-item">
-                                        <input class="form-control" formControlName="allocationDate" type="date">
-                                    </div>
-                                </form>
                             </div>
                         </div>
-                        <div class="w-100 d-flex justify-content-end">
-                            <button (click)="addShareHolder()" class="btn btn-primary">
-                                Add shareholder
-                            </button>
+                    </form>
+                    <form *ngIf="financialGroup.get('employeeShares').value" class="question-answer d-flex w-100 mb-3 xx">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-label">
+                                <span class="font-weight-400 pl-152">[Current Shareholders]</span>
+                            </div>
+                            <div class="input-feild h-0">
+                            </div>
                         </div>
-                    </div>
+                    </form>
+                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="input-label h-0">
+                            </div>
+                            <div class="input-feild mxt-17">
+                                <div *ngIf="financialGroup.get('employeeShares').value"
+                                     class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                    <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
+                                         class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                        <div class="input-label w-20 h-0">
+                                        </div>
+                                        <div class="w-100 my-3">
+                                            <form [formGroup]="financialGroup.get('shareholders').controls[i]"
+                                                  class="d-flex justify-content-start align-items-center flex-wrap ">
+                                                <div class="input-item">
+                                                    <input class="form-control" formControlName="name" placeholder="Name">
+                                                </div>
+                                                <div class="input-item">
+                                                    <input class="form-control" formControlName="stake" placeholder="Stake"
+                                                           type="number">
+                                                </div>
+                                                <div class="input-item">
+                                                    <input class="form-control" formControlName="shares" placeholder="Shares">
+                                                </div>
+                                                <div class="input-item">
+                                                    <select class="form-select" formControlName="shareClass" placeholder="test"
+                                                            required>
+                                                        <option disabled selected value="">Share class</option>
+                                                        <option value="Ordinary">Ordinary</option>
+                                                        <option value="Prefrence">Prefrence</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-item">
+                                                    <select class="form-select" formControlName="voting" required>
+                                                        <option disabled selected value="">Voting</option>
+                                                        <option value="Voting">Voting</option>
+                                                        <option value="Non Voting">Non Voting</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-item">
+                                                    <select class="form-select" formControlName="antiDilution" required>
+                                                        <option disabled selected value="">Anti dilution</option>
+                                                        <option value=true>Yes</option>
+                                                        <option value=false>No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-item">
+                                                    <input class="form-control" formControlName="allocationDate" type="date">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="w-100 d-flex justify-content-end">
+                                        <button (click)="addShareHolder()" class="btn btn-primary">
+                                            Add shareholder
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <!--        END COMPANY SHARES-->
 
                 <!--        PREVIOUS FINANCE INJECTION-->
-                <div class="question-answer d-flex w-100 flex-wrap mb-3">
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <div class="input-label">
+                            <span class="mr-4 font-weight-600">Previous Finance Injection :</span>
+                            <span class="font-weight-400">
+                                [Previous Injection]
+                            </span>
+                        </div>
+                        <div class="input-feild h-0">
+                        </div>
+                    </div>
+                </form>
+                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
+                    <div class="d-flex justify-content-start align-items-center w-100">
+                        <div class="input-label h-0"></div>
+                        <div class="input-feild mxt-17">
+                            <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "
+                                 class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                <div class="w-100 my-3">
+                                    <form [formGroup]="financialGroup.get('previousCash').controls[i]"
+                                          class="d-flex justify-content-start align-items-center flex-wrap ">
+                                        <div class="input-item">
+                                            <select class="form-select" formControlName="type" required>
+                                                <option disabled selected value="">Injection type</option>
+                                                <option value="Equity investment">Equity investment</option>
+                                                <option value="Crowdfunding">Crowdfunding</option>
+                                                <option value="Grant">Grant</option>
+                                                <option value="Loan">Loan</option>
+                                                <option value="Convertible Loan">Convertible Loan</option>
+                                            </select>
+                                        </div>
+                                        <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
+                                             class="input-item">
+                                            <input class="form-control" formControlName="cap" placeholder="Cap"
+                                                   type="number">
+                                        </div>
+                                        <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
+                                             class="input-item">
+                                            <input class="form-control" formControlName="discount" placeholder="Discount">
+                                        </div>
+                                        <div class="input-item">
+                                            <input class="form-control" formControlName="source"
+                                                   placeholder="Fund or Source">
+                                        </div>
+                                        <div class="input-item">
+                                            <input class="form-control" formControlName="date" placeholder="Date"
+                                                   type="date">
+                                        </div>
+                                        <div class="input-item">
+                                            <input class="form-control" formControlName="amount" placeholder="Amount"
+                                                   type="number">
+                                        </div>
+                                        <div class="input-item">
+                                            <input class="form-control" formControlName="equityGiven"
+                                                   placeholder="Equity given" type="number">
+                                        </div>
+                                        <div class="input-item">
+                                            <select class="form-select" formControlName="charges">
+                                                <option disabled selected value="">Charges</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                                <option value="Not sure">Not sure</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--<div class="question-answer d-flex w-100 flex-wrap mb-3">
                     <div class="w-100 d-flex justify-content-start align-items-center flex-wrap">
                         <div class="input-label">
-                            Previous Finance Injection
+
                         </div>
                         <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "
                              class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                            <div class="input-label w-20">
-                                <p *ngIf="i == 0" class="level-3">[Previous Injection]</p>
-                            </div>
+                  &lt;!&ndash;          <div class="input-label w-20">
+                                <p *ngIf="i == 0" class="level-3"></p>
+                            </div>&ndash;&gt;
                             <div class="w-80 my-3">
                                 <form [formGroup]="financialGroup.get('previousCash').controls[i]"
                                       class="d-flex justify-content-start align-items-center flex-wrap ">
@@ -675,7 +768,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!--        END PREVIOUS FINANCE INJECTION-->
             </div>
         </div>

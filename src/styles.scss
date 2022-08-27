@@ -111,11 +111,14 @@ body {
   &:after{
     color: #f3c308;
     border-width: 0 5px 5px 0!important;
+    vertical-align: top!important;
+    margin-top: -4px!important;
+    padding: 6px!important;
   }
 }
 
 .mat-expansion-panel-header-title{
-  padding-left: 20px;
+  padding-left: 24px;
   color: #415a77!important;
   font-size: 32px;
 }
@@ -141,7 +144,7 @@ body {
 
 .question-answer{
   .input-label{
-    padding: 0 20px;
+    padding: 0 20px 0 0;
     color: #4c4c4c;
     font-size: 17px;
     text-align: left;
@@ -150,11 +153,12 @@ body {
   }
   select{
     min-width: 225px;
-    height: 40px;
+    height: 38px;
+    border-radius: 0!important;
   }
 }
 .input-item{
-  padding: 15px;
+  padding: 15px 15px 15px 0;
   input{
     min-width: 225px;
     height: 40px;
@@ -174,13 +178,13 @@ body {
 
 .input-group-prepend{
   position: absolute;
-  height: 40px;
+  height: 38px;
   border-radius: 0!important;
   span{
     border-right: 0;
     border-radius: 0.25rem 0 0 0.25rem;
     background: #eeefef;
-    width: 40px;
+    width: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -190,6 +194,7 @@ body {
 .form-group{
   input{
     padding-left: 50px;
+    height: 38px!important;
   }
 }
 
@@ -273,4 +278,11 @@ mat-panel-title{
 }
 .mat-expanded .mat-expansion-indicator{
   transform: rotate(0deg) !important;
+}
+
+.mat-expansion-panel-header{
+  padding: 0!important;
+}
+.mat-expansion-panel-body {
+  padding: 0 24px 16px 30px!important;
 }

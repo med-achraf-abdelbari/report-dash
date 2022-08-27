@@ -2,10 +2,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Product</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
 
             <div class="col-sm-12 d-flex justify-content-start align-items-center my-3">
@@ -130,10 +130,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Marketing preference</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="marketingGroup.get('performance').controls[i]"  *ngFor="let pref of marketingGroup.get('performance').controls; index as i" class="question-answer d-flex w-100 mb-3">
@@ -172,10 +172,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Social media accounts</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="marketingGroup.get('socialMedia').controls[i]"  *ngFor="let pref of marketingGroup.get('socialMedia').controls ; index as i" class="question-answer d-flex w-100 mb-3">
@@ -205,10 +205,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start w-100">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Customer & markets</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="marketingGroup.get('customerDetails')"  *ngFor="let market of markets; index as i" class="question-answer d-flex w-100 mb-3">
@@ -256,10 +256,10 @@
 <div class="w-100">
     <div class="question d-flex p-3 flex-wrap justify-content-start">
         <div class="question-title d-flex justify-content-start align-items-center">
-            <div class="help-wrapper cursor-pointer">
-                <i class="fa fa-info-circle mr-2"></i>
-            </div>
             <span>Additional Notes</span>
+            <div class="help-wrapper cursor-pointer">
+                <i class="fa fa-info-circle ml-2"></i>
+            </div>
         </div>
         <!--        ACCOUNTING METHOD-->
         <form [formGroup]="marketingGroup" class="question-answer d-flex w-100 mb-3">

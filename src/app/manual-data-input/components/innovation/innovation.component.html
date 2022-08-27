@@ -3,10 +3,10 @@
     <div class="w-100">
         <div  class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Stage of Innovation</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <form *ngFor="let stage of stages" [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
                 <div class="d-flex justify-content-start align-items-center">
@@ -29,10 +29,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Technology Readiness Level</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
@@ -55,10 +55,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Commercial Exploitation</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex w-50 mb-3">
@@ -82,10 +82,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Innovation & IP</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="question-answer d-flex w-50 mb-3">
@@ -126,10 +126,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Design</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="innovationGroup.get('design')" class="question-answer d-flex w-100 mb-3">
@@ -153,10 +153,10 @@
     <div class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
-                <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle mr-2"></i>
-                </div>
                 <span>Additional Notes</span>
+                <div class="help-wrapper cursor-pointer">
+                    <i class="fa fa-info-circle ml-2"></i>
+                </div>
             </div>
             <!--        ACCOUNTING METHOD-->
             <form [formGroup]="innovationGroup.get('design')" class="question-answer d-flex w-100 mb-3">
