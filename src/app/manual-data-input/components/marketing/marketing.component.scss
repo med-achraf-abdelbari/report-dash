@@ -73,3 +73,19 @@ input[type="radio"]:checked + label::after
     border-radius: 100% !important;
   }
 }
+
+.word-wrap{
+  word-wrap: break-word!important;
+}
+
+@media (max-width: 1490px) {
+  .word-wrap{
+    width: 150px!important;
+  }
+}
+
+@media (max-width: 990px) {
+  .word-wrap{
+    width: 60px!important;
+  }
+}
