@@ -158,14 +158,19 @@
                             <option value="15">Average Revenue Per User (ARPU)</option>
                         </select>
                     </div>
-                    <div class="input-feild w-50">
+                    <div class="input-feild w-40">
                         <input class="w-100 form-control" formControlName="answer" placeholder="Answer" type="text">
+                    </div>
+                    <div *ngIf="marketingGroup.get('performance').controls.length == i+1" class="w-10">
+                        <div class=" w-100 d-flex justify-content-end align-items-center">
+                            <button (click)="addMoreMarketingPrefrence()" class="btn p-2">
+                                Add More <i class="fa-solid fa-circle-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>
-            <div class=" w-100 d-flex justify-content-end align-items-center">
-                <button (click)="addMoreMarketingPrefrence()" class="btn btn-primary my-3">Add More</button>
-            </div>
+
         </div>
     </div>
 
@@ -191,14 +196,18 @@
                             <option value="6">Other</option>
                         </select>
                     </div>
-                    <div class="input-feild w-50">
+                    <div class="input-feild w-40">
                         <input class="w-100 form-control" formControlName="id" placeholder="User id" type="text">
                     </div>
+                        <div *ngIf="marketingGroup.get('socialMedia').controls.length == i+1" class="w-10">
+                            <div class=" w-100 d-flex justify-content-end align-items-center">
+                                <button (click)="addSocialPrefrence()" class="btn p-2">
+                                    Add More <i class="fa-solid fa-circle-plus"></i>
+                                </button>
+                            </div>
+                        </div>
                 </div>
             </form>
-            <div class=" w-100 d-flex justify-content-end align-items-center">
-                <button (click)="addSocialPrefrence()" class="btn btn-primary my-3">Add More</button>
-            </div>
         </div>
     </div>
 
