@@ -12,7 +12,7 @@
                 <div class="d-flex justify-content-start align-items-center">
                     <div class="input-feild d-flex">
                         <div
-                             class="custom-control custom-checkbox circle mb-3 mx-3 w-auto">
+                             class="custom-control custom-checkbox circle mb-3 w-auto">
                             <input checked="" class="custom-control-input"  [id]="stage.name" type="checkbox">
                             <label class="custom-control-label" [for]="stage.name"></label>
                         </div>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
                         <div *ngFor="let design of designs; let j = index;"
-                             class="custom-control custom-checkbox mb-3 mx-3 w-auto">
+                             class="custom-control custom-checkbox mb-3 w-auto">
                             <input checked="" class="custom-control-input" [value]="design" [formControlName]="design.control" id="design{{j}}"
                                    type="checkbox">
                             <label class="custom-control-label" for="design{{j}}">{{design.name}}</label>
