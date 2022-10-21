@@ -304,3 +304,15 @@ mat-panel-title{
 .mat-expansion-panel-body {
   padding: 0 24px 16px 30px!important;
 }
+
+tr:nth-child(even) {background: #dce1e5
+}
+tr:nth-child(odd) {background: #FFF}
+
+tbody{
+  tr{
+    td:nth-child(2){
+      text-align: right;
+    }
+  }
+}

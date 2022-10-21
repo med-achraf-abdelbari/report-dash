@@ -29,10 +29,13 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-easy-table/style.css",
               "src/styles.scss",
               "src/assets/scss/argon.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -49,7 +52,13 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "scripts": [
+                "node_modules/apexcharts/dist/apexcharts.min.js"
+              ],
+              "styles": [
+                "node_modules/ngx-easy-table/style.css"
+              ]
             },
             "development": {
               "vendorChunk": true,

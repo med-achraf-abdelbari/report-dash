@@ -1,0 +1,83 @@
+<div class="report-line d-grid p-4">
+    <div class="metric">
+        <div class="metric-title px-0">
+            Stage of Innovation
+            <hr class="divider my-1">
+        </div>
+        <div class="chart">
+            <div style="text-align:center">
+                <ngx-table [columns]="columns"
+                           [configuration]="configuration"
+                           [data]="data.stageOfInnovation">
+                </ngx-table>
+            </div>
+        </div>
+    </div>
+    <div class="metric">
+        <div class="metric-title px-0">
+            Commercial Exploitation
+            <hr class="divider my-1">
+        </div>
+        <div class="chart">
+            <div style="text-align:center">
+                <ngx-table [columns]="columns"
+                           [configuration]="configuration"
+                           [data]="data.commercialExploitation">
+                </ngx-table>
+            </div>
+        </div>
+    </div>
+    <div class="metric">
+        <div class="metric-title px-0">
+            Commercial Exploitation
+            <hr class="divider my-1">
+        </div>
+        <div class="chart">
+            <div class="row">
+                <div class="col-12">
+                    <span>Assets generated</span>
+                </div>
+            </div>
+            <div style="text-align:center">
+                <apx-chart
+                        [series]="innovationIpChartOptions.series"
+                        [chart]="innovationIpChartOptions.chart"
+                        [dataLabels]="innovationIpChartOptions?.dataLabels"
+                        [plotOptions]="innovationIpChartOptions?.plotOptions"
+                        [legend]="innovationIpChartOptions.legend"
+                        [colors]="innovationIpChartOptions.colors"
+                ></apx-chart>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <span>Registered assets</span>
+                </div>
+            </div>
+            <div style="text-align:center">
+                <apx-chart
+                        [series]="innovationIpRChartOptions.series"
+                        [chart]="innovationIpRChartOptions.chart"
+                        [dataLabels]="innovationIpRChartOptions?.dataLabels"
+                        [plotOptions]="innovationIpRChartOptions?.plotOptions"
+                        [legend]="innovationIpRChartOptions.legend"
+                        [colors]="innovationIpRChartOptions.colors"
+                ></apx-chart>
+            </div>
+        </div>
+    </div>
+    <div class="metric">
+        <div class="metric-title px-0">
+            Design
+            <hr class="divider my-1">
+        </div>
+        <div class="chart">
+            <div style="text-align:center">
+                <ngx-table [columns]="columns"
+                           [configuration]="configuration"
+                           [data]="data.design">
+                </ngx-table>
+            </div>
+        </div>
+    </div>
+</div>

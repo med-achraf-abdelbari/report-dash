@@ -1,0 +1,54 @@
+.report-wrapper{
+  .report-header{
+    margin-top: 100px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    .company-details{
+      .company-name{
+        font-size: 42px;
+        line-height: 52px;
+      }
+    }
+
+    .company-details-data{
+      .detail{
+        font-size: 24px;
+        font-weight: 600!important;
+      }
+    }
+
+    .date-and-extras{
+      line-height: 40px;
+      max-height: 40px;
+      .detail{
+        font-size: 24px;
+        font-weight: 600!important;
+      }
+    }
+
+  }
+
+  .report-line {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    .metric{
+      .metric-title{
+        padding: 20px 15px;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #415a77;
+      }
+      .divider{
+        border-bottom: 4px solid #415a77;
+        width:120px;
+        display: block;
+        line-height:1.6em;
+      }
+      .chart{
+
+      }
+    }
+  }
+}

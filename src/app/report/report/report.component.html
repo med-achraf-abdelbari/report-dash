@@ -1,0 +1,93 @@
+<div class="report-wrapper">
+    <div class="report-header w-100 d-grid p-4">
+        <div class="company-details d-flex justify-content-between align-items-start">
+        <span class="company-name w-25 d-flex flex-wrap">
+            <span class="detail w-100">
+                Financial
+            </span>
+            <span class="detail w-100">
+                Performance
+            </span>
+            <span class="detail w-100">
+                report
+            </span>
+        </span>
+            <div class="company-details-data w-75 d-flex flex-wrap ">
+                <span class="detail w-100">Sector</span>
+                <span class="detail w-100">Sub-sector</span>
+                <span class="detail w-100">Development phase</span>
+                <span class="detail w-100">HQ</span>
+                <span class="detail w-100">Founded in 20xx</span>
+            </div>
+        </div>
+        <div class="date-and-extras d-flex justify-content-end align-items-start flex-wrap justify-content-end align-items-start">
+        <span class="detail w-100 text-right">
+            Report Date : 26 June 2022
+        </span>
+            <span class="detail w-100 text-right">
+            Currency : 26 June 2022
+        </span>
+            <span class="detail w-100 text-right">
+            Location : 26 June 2022
+        </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
+            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Financial report</span>
+        </div>
+    </div>
+    <div class="report-line d-grid p-4">
+        <div *ngFor="let metric of metrics" class="metric">
+            <div class="metric-title px-0">
+                {{metric.metricTitle}}
+                <hr class="divider my-1">
+            </div>
+            <div *ngIf="metric.type.includes('chart')" class="chart">
+                <div style="text-align:center">
+                    <apx-chart
+                            [chart]="metric?.MetricObj?.chart"
+                            [colors]="metric?.MetricObj?.colors"
+                            [fill]="metric?.MetricObj?.fill"
+                            [labels]="metric?.MetricObj?.labels"
+                            [markers]="metric?.MetricObj?.markers"
+                            [plotOptions]="metric?.MetricObj?.plotOptions"
+                            [series]="metric?.MetricObj?.series"
+                            [stroke]="metric?.MetricObj?.stroke"
+                            [tooltip]="metric?.MetricObj?.tooltip"
+                            [xaxis]="metric?.MetricObj?.xaxis"
+                            [yaxis]="metric?.MetricObj?.yaxis"
+                    ></apx-chart>
+                </div>
+            </div>
+
+            <div *ngIf="metric.type.includes('table')" class="chart">
+                <div style="text-align:center">
+                    <ngx-table [columns]="columns"
+                               [configuration]="configuration"
+                               [data]="metric?.MetricObj?.columns">
+                    </ngx-table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
+            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Marketing report</span>
+        </div>
+    </div>
+    <div class=" d-grid">
+        <app-marketing-report></app-marketing-report>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
+            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Innovation report</span>
+        </div>
+    </div>
+    <div class=" d-grid ">
+        <app-innovation-report></app-innovation-report>
+    </div>
+</div>

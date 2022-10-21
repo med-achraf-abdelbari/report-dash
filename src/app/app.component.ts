@@ -1,5 +1,5 @@
 import {Component, ElementRef, HostListener, Inject, OnInit, Renderer2} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {DOCUMENT, Location} from '@angular/common';
 import {filter, Subscription} from 'rxjs';
 import {ParseHttpClientService} from './shared/services/http-client/parse-http-client.service';
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
 
     constructor(private renderer: Renderer2,
                 private router: Router,
-                @Inject(DOCUMENT,) private document: any,
+                private activatedRoute: ActivatedRoute,
+                @Inject(DOCUMENT) private document: any,
                 private element: ElementRef,
                 public location: Location,
                 private parseClient: ParseHttpClientService,
@@ -65,6 +66,8 @@ export class AppComponent implements OnInit {
         lastScrollTop = st;
     }
 
+    isReport = false;
+
     ngOnInit() {
         // tslint:disable-next-line:prefer-const
         const navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
@@ -85,6 +88,9 @@ export class AppComponent implements OnInit {
                 }
             });
         });
+        setInterval(() =>{
+            this.isReport = this.router.url.includes('report');
+        }, 500);
         this.hasScrolled();
     }
 }
