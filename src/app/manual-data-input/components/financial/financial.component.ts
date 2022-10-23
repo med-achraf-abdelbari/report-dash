@@ -1,5 +1,27 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {SettingsService} from '../../../shared/services/settings/settings.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DomSanitizer} from '@angular/platform-browser';
+
+@Component({
+    selector: 'app-modal-content',
+    template: `
+		<div class="modal-header">
+			<h4 class="modal-title">Help</h4>
+			<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+			<p [innerHTML]="innerHtml"></p>
+		</div>
+	`,
+})
+export class NgbdModalContent {
+    @Input() name;
+    @Input() innerHtml;
+
+    constructor(public activeModal: NgbActiveModal) {}
+}
 
 @Component({
     selector: 'app-financial',
@@ -37,8 +59,12 @@ export class FinancialComponent implements OnInit {
     ];
     financialGroup: any;
     salesFG: any;
+    helpDeepDive = {};
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+                private settingsService: SettingsService,
+                private modalService: NgbModal,
+    ) {
     }
 
     ngOnInit() {
@@ -48,6 +74,22 @@ export class FinancialComponent implements OnInit {
             console.log(this.financialGroup.value);
             this.value.emit(this.financialGroup.value);
         });
+        this.getHelpDeepDive();
+    }
+
+    getHelpDeepDive() {
+        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
+            this.helpDeepDive = data?.attributes?.moduleFinancials;
+        });
+    }
+
+    openHintModal(hintType: string) {
+        const modalRef = this.modalService.open(NgbdModalContent , {
+            centered : true,
+            backdrop : true,
+            size : 'xl'
+        });
+        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
     }
 
     addShareHolder() {

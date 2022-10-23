@@ -7,7 +7,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Revenue Retention</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('revenueRetention')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -54,7 +54,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Financial Performance</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('financialPerformance')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-50 mb-3">
@@ -272,7 +272,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Business Performance</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('businessPerformance')"  class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -320,7 +320,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Market Growth</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('marketGrowth')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -368,7 +368,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Market Size</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('marketSize')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -398,7 +398,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Cash & Operation</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('cashOperation')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
@@ -513,7 +513,7 @@
                 <div class="question-title d-flex justify-content-start align-items-center">
                     <span>Company Reporting</span>
                     <div class="help-wrapper cursor-pointer">
-                        <i class="fa fa-info-circle ml-2"></i>
+                        <i (click)="openHintModal('companyReporting')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
                 <!--        ACCOUNTING METHOD-->

@@ -30,6 +30,14 @@
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          <li class="nav-item d-none d-lg-block ml-lg-4">
+              <a [routerLink]="'/landing'" class="btn btn-neutral btn-icon">
+            <span class="btn-inner--icon">
+              <i class="fa fa-home mr-2"></i>
+            </span>
+                  <span  class="nav-link-inner--text ">Home</span>
+              </a>
+          </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
           <a [routerLink]="'/public/about'" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
@@ -38,12 +46,13 @@
             <span  class="nav-link-inner--text ">About</span>
           </a>
         </li>
+          {{puidDetails?.user?.email}}
           <li class="nav-item d-none d-lg-block ml-lg-4">
-              <a [routerLink]="'/public/about'" class="btn btn-neutral btn-icon">
+              <a href="mailto:{{puidDetails?.user?.email}}?subject=Financial performance report&body=This is only a test!" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
-              <i class="fa fa-info-circle mr-2"></i>
+              <i class="fa fa-envelope mr-2"></i>
             </span>
-                  <span  class="nav-link-inner--text ">Contact us</span>
+                  <span  class="nav-link-inner--text ">Contact</span>
               </a>
           </li>
       </ul>

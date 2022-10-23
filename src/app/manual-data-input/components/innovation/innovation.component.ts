@@ -1,5 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {NgbdModalContent} from '../financial/financial.component';
+import {SettingsService} from '../../../shared/services/settings/settings.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-innovation',
@@ -130,9 +133,12 @@ export class InnovationComponent implements OnInit {
 
     innovationGroup: any;
     private evidences: any;
+    helpDeepDive = {};
 
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+                private settingsService: SettingsService,
+                private modalService: NgbModal) {
     }
 
     ngOnInit(): void {
@@ -140,7 +146,24 @@ export class InnovationComponent implements OnInit {
         this.innovationGroup.valueChanges.subscribe(() => {
             this.value.emit(this.innovationGroup.value);
         });
+        this.getHelpDeepDive();
     }
+
+    getHelpDeepDive() {
+        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
+            this.helpDeepDive = data?.attributes?.moduleInnovation;
+        });
+    }
+
+    openHintModal(hintType: string) {
+        const modalRef = this.modalService.open(NgbdModalContent , {
+            centered : true,
+            backdrop : true,
+            size : 'xl'
+        });
+        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
+    }
+
 
     createInnovationControlGroup(): FormGroup {
 

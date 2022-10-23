@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
         this.store.select(selectPuidDetails).pipe(filter(help => !!help)).subscribe((data: any) => {
             this.puidDetails = data;
             this.ngxService.stop('puidDetails');
+            console.log(this.puidDetails);
         });
         this.store.dispatch(getPuidDetails({
             data: {
