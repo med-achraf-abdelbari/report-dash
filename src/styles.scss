@@ -20,9 +20,6 @@ b {
   margin: 10px 0;
 }
 
-h2, h3, h4, h5, h6 {
-  line-height: 0 !important;
-}
 
 .section-2 {
   display: grid;
@@ -41,8 +38,11 @@ body,div,p,span {
   font-weight: 700;
 }
 
+
 html, body {
   height: 100%;
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
 }
 
 body {
@@ -102,7 +102,7 @@ body {
 }
 
 .mat-vertical-stepper-header{
-    display: none!important;
+  display: none!important;
 }
 
 .mat-vertical-content-container:before{
@@ -314,5 +314,35 @@ tbody{
     td:nth-child(2){
       text-align: right;
     }
+  }
+}
+.report-line {
+  .metric{
+    margin: 20px 0;
+    .metric-title{
+      padding: 15px;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: white;
+      background-color: #415a77;
+      margin: 10px 0;
+    }
+    .divider{
+      border-bottom: 4px solid white;
+      width:120px;
+      display: block;
+      line-height:1.6em;
+      opacity: 0.6;
+    }
+  }
+}
+@media print {
+  footer {
+    display: none !important;
+  }
+  .metric {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
