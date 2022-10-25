@@ -1,11 +1,12 @@
 
 <div class="report-wrapper container">
     <div class="report-header">
-        <div class="row align-items-center justify-content-end text-center">
+        <div class="row align-items-center">
             <div class="col-6 company-name">
-                <h1>Financial Performance Report</h1>
+                <h1>Performance</h1>
+                <h1>Report</h1>
             </div>
-            <div class="col-3 date-and-extras d-flex flex-column align-items-end justify-content-center">
+            <div class="col-6 date-and-extras d-flex flex-column align-items-end justify-content-center">
                 <span class="detail w-100 text-right">
                     Report Date : 26 June 2022
                 </span>
@@ -19,19 +20,21 @@
         </div>
     </div>
     <h2>Company Details</h2>
-    <div class="company-details-data w-75 d-flex flex-column">
-        <span class="detail w-100">Sector</span>
-        <span class="detail w-100">Sub-sector</span>
-        <span class="detail w-100">Development phase</span>
-        <span class="detail w-100">HQ</span>
-        <span class="detail w-100">Founded in 20xx</span>
+    <div class="company-details-data d-flex flex-column">
+        <div class="detail w-100">Sector <span>aa</span> </div>
+        <div class="detail w-100">Sub-sector <span>aa</span></div>
+        <div class="detail w-100">Development phase <span>aa</span></div>
+        <div class="detail w-100">HQ <span>aa</span></div>
+        <div class="detail w-100">Founded in 20xx <span>aa</span></div>
     </div>
     <h2>Financial report</h2>
     <div class="report-line row">
         <div *ngFor="let metric of metrics" class="metric col-6">
             <div class="metric-title">
-                {{metric.metricTitle}}
-                <hr class="divider my-1">
+                <span>
+                    {{metric.metricTitle}}
+                    <hr class="divider my-1">
+                </span>
             </div>
             <div *ngIf="metric.type.includes('chart')" class="chart">
                 <div style="text-align:center">

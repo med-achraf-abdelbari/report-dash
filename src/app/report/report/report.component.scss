@@ -20,6 +20,9 @@
     .detail{
       font-size: 20px;
       font-weight: 600!important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
   h1 {
@@ -30,12 +33,6 @@
     text-align: center;
     font-size: 2rem !important;
     padding: 20px 0;
-    border-image-source: linear-gradient(90deg, hsla(0, 0%, 100%, .5) 0, #a1a1a1 50%, hsla(0, 0%, 100%, .5));
-    border-image-slice: 20;
-    border-width: 2px;
-    border-style: solid;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-bottom: 1px solid;
   }
 }
