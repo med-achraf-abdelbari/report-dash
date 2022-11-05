@@ -36,7 +36,7 @@ export class LandingComponent implements OnInit {
         });
         this.store.dispatch(getPuidDetails({
             data: {
-                permalink: 'vishal-fund'
+                permalink: localStorage.getItem('permalink')
             }
         }));
     }
