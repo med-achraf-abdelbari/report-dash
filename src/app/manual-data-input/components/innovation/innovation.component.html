@@ -61,8 +61,8 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex w-50 mb-3">
-                <div class="d-flex justify-content-start align-items-center">
+            <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex w-50 mb-3 px-1">
+                <div class="d-flex justify-content-between align-items-center w-100">
                     <div class="input-label">
                         {{quest}} :
                     </div>
