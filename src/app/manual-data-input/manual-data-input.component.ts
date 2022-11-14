@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'app-manual-data-input',
-    templateUrl: './manual-data-input.component.html',
-    styleUrls: ['./manual-data-input.component.scss']
+    selector: 'app-manual-data-input', templateUrl: './manual-data-input.component.html', styleUrls: ['./manual-data-input.component.scss']
 })
 
 export class ManualDataInputComponent implements OnInit {
@@ -11,10 +10,18 @@ export class ManualDataInputComponent implements OnInit {
     activeSection: 'FIANANCE' | 'MARKETING' | 'INNOVATION' = 'FIANANCE';
     report = {};
 
-    constructor() {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+        this.route.queryParams.subscribe((params: any) => {
+            console.log(params);
+            this.getMetrics(params);
+        });
+    }
+
+    getMetrics(parms) {
+
     }
 
     updateFinance(data: any) {

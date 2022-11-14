@@ -44,7 +44,10 @@ export class LandingComponent implements OnInit {
     calculatewith(provider: string) {
         this.apiIntegrationService.calculateMatrics({
             integrationName: provider,
-            companyName: 'test'
+            companyName: 'test',
+            options: {
+                code : 't6NgFcxPWbOuhLgyfX35dXI0kB2_c7-blYhklZ5lN5Y'
+            }
         }).subscribe((result: any) => {
             if (result.type === 'auth-url') {
                 window.location.href = result.data.url;

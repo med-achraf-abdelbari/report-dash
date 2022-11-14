@@ -44,7 +44,7 @@ export class SettingsService {
 
     getPuidDetails(puidId: string): Observable<any> {
         const result = new Subject<any>();
-        Parse.Cloud.run('permalink' , {id : puidId}).then(data => result.next(data.attributes));
+        Parse.Cloud.run('permalink' , {id : puidId}).then(data => result.next(data?.attributes));
         return result;
     }
 }

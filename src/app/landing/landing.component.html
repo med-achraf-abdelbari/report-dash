@@ -1,32 +1,23 @@
-<main>
-  <div class="position-relative">
+<main [ngStyle]="{'background' : puidDetails?.settings?.theme?.colors?.gray || '#8a9aab'}">
+  <div class="row pb-3 w-100">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <span class="p-2" style="font-size: 38px; color: #fff; font-weight: 600">Performance Profiling</span>
+    </div>
+  </div>
+  <div class="position-relative landing-wrapper">
     <!-- shape Hero -->
-    <section class="section section-lg section-shaped pb-250">
-      <div class="shape shape-style-1 shape-default" [ngStyle]="{'background' : puidDetails?.settings?.theme?.colors?.gray}">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="row pt-4">
-        <div class="col-12 d-flex justify-content-center align-items-center">
-          <span class="p-2" style="font-size: 38px; color: #172b4d; font-weight: 600">Performance Profiling</span>
-        </div>
-      </div>
+    <section class="section section-lg section-shaped pt-0 pb-250">
+
+
       <div class="container d-flex">
         <div class="col px-0">
           <div class="row">
             <div class="col-12">
               <h1 class="display-3 text-gray">
-                <span class="fs-24 text-underline font-weight-600">Quick Data Submission:</span>
+                <span class="fs-24 font-weight-600">Finance Data Submission:</span>
               </h1>
-              <p class="lead text-gray fs-24">
-                For a faster submission (via an API) and to create a finance report for VCs, Investors or an Advisor, select your financial software below.
+              <p class="lead text-black fs-20 text-justify">
+                Click the appropriate financial software package below that your business runs, to generate and submit a financial snapshot report. If you have different financial software, or you prefer to submit manually (which may take a little longer), then you can use the ‘Submit Manually’ button further below.
               </p>
 <!--              <div class="btn-wrapper">-->
 <!--                <a href="https://demos.creative-tim.com/argon-design-system-angular/documentation/alerts?ref=adsa-landing-page" class="btn btn-info btn-icon mb-3 mb-sm-0">-->
@@ -50,85 +41,85 @@
       </div>
     </section>
     <!-- 1st Hero Variation -->
+    <section class="section pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape rounded-circle mb-4">
+                      <img class="brand-icon" src="assets/img/brand/xero-logo-0DE623D530-seeklogo.com.png" alt="">
+                    </div>
+                    <h6 class="font-weight-800 text-uppercase w-100 text-center">XERO</h6>
+                    <!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-primary">angular</span>-->
+                    <!--                    <span class="badge badge-pill badge-primary">ng-bootstrap</span>-->
+                    <!--                    <span class="badge badge-pill badge-primary">creative</span>-->
+                    <!--                  </div>-->
+                    <a (click)="calculatewith('Xero')" class="btn btn-default mt-1 text-white">Connect with xero</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape rounded-circle mb-4">
+                      <img class="brand-icon" src="assets/img/brand/nB9U4F9UMD6RY.png" alt="">
+                    </div>
+                    <h6 class=" text-uppercase w-100 text-center">WAVE</h6>
+                    <!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-success">business</span>-->
+                    <!--                    <span class="badge badge-pill badge-success">vision</span>-->
+                    <!--                    <span class="badge badge-pill badge-success">success</span>-->
+                    <!--                  </div>-->
+                    <a  class="btn btn-default mt-1 text-white">Connect with wave</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape  rounded-circle mb-4 ">
+                      <img class="brand-icon" src="assets/img/brand/quickbooks-icon-download-25.png" alt="">
+                    </div>
+                    <h6 class=" font-weight-800 text-uppercase w-100 text-center">Quickbooks</h6>
+                    <!--                  <p class="description mt-3">Smart, simple online accounting software for small business · Track expenses, ...</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-warning">marketing</span>-->
+                    <!--                    <span class="badge badge-pill badge-warning">product</span>-->
+                    <!--                    <span class="badge badge-pill badge-warning">launch</span>-->
+                    <!--                  </div>-->
+                    <a  class="btn btn-default mt-1 text-white">Connect with Quickbooks</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section pt-0">
+      <div class="container">
+        <div class="card bg-white shadow-lg border-0">
+          <div class="p-5">
+            <div class="row align-items-center">
+              <div class="col-lg-9">
+                <h3 class="fs-24 font-weight-600">Manual Data Submission:</h3>
+                <p class="lead text-black mt-3 text-justify">
+                  The ‘Submit Manually’ link below will take you to a manual form, which the sender has tailored for you, so that you can submit a performance profile or progress-to-date outline.
+                </p>
+              </div>
+              <div class="col-lg-3 ml-lg-auto">
+                <a [routerLink]="'/user-manual-data-input'"  class="btn btn-default mt-1 text-white">Submit Manually</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  <section class="section section-lg pt-lg-0 mt--200">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="row row-grid">
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape rounded-circle mb-4">
-                    <img class="brand-icon" src="assets/img/brand/xero-logo-0DE623D530-seeklogo.com.png" alt="">
-                  </div>
-                  <h6 class="font-weight-800 text-uppercase w-100 text-center">XERO</h6>
-<!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-primary">angular</span>-->
-<!--                    <span class="badge badge-pill badge-primary">ng-bootstrap</span>-->
-<!--                    <span class="badge badge-pill badge-primary">creative</span>-->
-<!--                  </div>-->
-                  <a (click)="calculatewith('Xero')" class="btn btn-default mt-4 text-white">Connect with xero</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape rounded-circle mb-4">
-                    <img class="brand-icon" src="assets/img/brand/nB9U4F9UMD6RY.png" alt="">
-                  </div>
-                  <h6 class=" text-uppercase w-100 text-center">WAVE</h6>
-<!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-success">business</span>-->
-<!--                    <span class="badge badge-pill badge-success">vision</span>-->
-<!--                    <span class="badge badge-pill badge-success">success</span>-->
-<!--                  </div>-->
-                  <a  class="btn btn-default mt-4 text-white">Connect with wave</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape  rounded-circle mb-4 ">
-                    <img class="brand-icon" src="assets/img/brand/quickbooks-icon-download-25.png" alt="">
-                  </div>
-                  <h6 class=" font-weight-800 text-uppercase w-100 text-center">Quickbooks</h6>
-<!--                  <p class="description mt-3">Smart, simple online accounting software for small business · Track expenses, ...</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-warning">marketing</span>-->
-<!--                    <span class="badge badge-pill badge-warning">product</span>-->
-<!--                    <span class="badge badge-pill badge-warning">launch</span>-->
-<!--                  </div>-->
-                  <a  class="btn btn-default mt-4 text-white">Connect with Quickbooks</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section pt-0">
-    <div class="container">
-      <div class="card bg-white shadow-lg border-0">
-        <div class="p-5">
-          <div class="row align-items-center">
-            <div class="col-lg-9">
-              <h3 class="text-black-50 text-underline">Manual data input:</h3>
-              <p class="lead text-black-50 mt-3">
-                It will be faster to submit using the Xero, Wave or QuickBook (API) connections above. However, if you have none of these, or just want to submit everything manually, then click below on ‘Submit Manually.’
-              </p>
-            </div>
-            <div class="col-lg-3 ml-lg-auto">
-              <a [routerLink]="'/user-manual-data-input'"  class="btn btn-lg btn-block btn-white">Submit Manually</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>

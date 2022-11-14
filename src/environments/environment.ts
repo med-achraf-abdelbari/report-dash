@@ -10,7 +10,7 @@ export const environment = {
     serverURL: 'https://parseapi.back4app.com/',
   },
   feedURL: 'https://driskit.b4a.app/digest',
-  integrationBackend : 'http://localhost:3000'
+  integrationBackend : 'https://buzko-test.nw.r.appspot.com'
 };
 
 /*
