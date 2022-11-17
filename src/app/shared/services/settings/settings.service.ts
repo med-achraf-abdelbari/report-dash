@@ -34,9 +34,17 @@ export class SettingsService {
         return result;
     }
 
+    getHelpDeepDive(): Observable<any> {
+        const result = new Subject<ISettings>();
+        new Parse.Query('HelpDeepDive').descending('createdAt').first().then((settings: any) => {
+            result.next(settings);
+        });
+        return result;
+    }
+
     getPuidDetails(puidId: string): Observable<any> {
         const result = new Subject<any>();
-        Parse.Cloud.run('permalink' , {id : puidId}).then(data => result.next(data.attributes));
+        Parse.Cloud.run('permalink' , {id : puidId}).then(data => result.next(data?.attributes));
         return result;
     }
 }

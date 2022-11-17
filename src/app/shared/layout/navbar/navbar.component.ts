@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {Location, PopStateEvent} from '@angular/common';
 import {Store} from '@ngrx/store';
 import {selectPuidDetails} from '../../../store/selectors/global.selectors';
@@ -18,20 +18,30 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(private store: Store, private router: Router, private location: Location, private ngxService: NgxUiLoaderService) {
+    constructor(private store: Store,
+                private router: Router,
+                private location: Location,
+                private ngxService: NgxUiLoaderService,
+                private route: ActivatedRoute) {
     }
 
     getPuidDetails() {
         if (!this.puidDetails) {
             this.ngxService.start('puidDetails');
         }
+        this.route.queryParams.subscribe((params => {
+            for (const param in params) {
+                localStorage.setItem(param, params[param]);
+            }
+        }));
         this.store.select(selectPuidDetails).pipe(filter(help => !!help)).subscribe((data: any) => {
             this.puidDetails = data;
             this.ngxService.stop('puidDetails');
+            console.log(this.puidDetails);
         });
         this.store.dispatch(getPuidDetails({
             data: {
-                permalink: 'vishal-fund'
+                permalink: localStorage.getItem('permalink')
             }
         }));
     }

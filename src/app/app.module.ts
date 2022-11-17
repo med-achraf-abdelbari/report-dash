@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app.routing';
 import {AppComponent} from './app.component';
@@ -21,7 +21,7 @@ import {mainFeatureKey} from './store/types/types';
 import {NgxSkeletonLoaderModule} from 'ngx-skeleton-loader';
 import {NgxUiLoaderModule} from 'ngx-ui-loader';
 import {lOADER_CONFIG} from './core/config/loader.config';
-import {FinancialComponent} from './manual-data-input/components/financial/financial.component';
+import {FinancialComponent, NgbdModalContent} from './manual-data-input/components/financial/financial.component';
 import {InnovationComponent} from './manual-data-input/components/innovation/innovation.component';
 import {MarketingComponent} from './manual-data-input/components/marketing/marketing.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -42,10 +42,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
     // tslint:disable-next-line:max-line-length
-    declarations: [AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent, FinancialComponent, InnovationComponent, MarketingComponent],
+    declarations: [NgbdModalContent , AppComponent, SignupComponent, LandingComponent, ManualDataInputComponent, NavbarComponent, FooterComponent, LoginComponent, FinancialComponent, InnovationComponent, MarketingComponent],
     imports: [
         BrowserModule,
-        NgbModule,
         FormsModule,
         RouterModule,
         AppRoutingModule,
@@ -74,6 +73,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatNativeDateModule,
         MatRippleModule,
         MatExpansionModule,
+        NgbModalModule,
+        NgbModule
     ],
     providers: [],
     bootstrap: [AppComponent]

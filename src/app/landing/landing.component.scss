@@ -5,3 +5,36 @@
 .brand-icon{
   width: 75px;
 }
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 0 40px 0;
+  flex-wrap: wrap;
+}
+
+.landing-wrapper{
+  max-width: 80vw;
+  border-radius: 30px;
+  padding: 20px;
+  background: white ;
+  box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%) !important
+}
+
+a.btn{
+  border-radius: 12px!important;
+}
+
+h6 {
+  font-size: 14px!important;
+  font-weight: 800;
+}
+
+.fs-24{
+  font-size: 24px!important;
+}
+
+.fs-20{
+  font-size: 20px!important;
+}

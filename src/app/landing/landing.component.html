@@ -1,28 +1,23 @@
-<main>
-  <div class="position-relative">
+<main [ngStyle]="{'background' : puidDetails?.settings?.theme?.colors?.gray || '#8a9aab'}">
+  <div class="row pb-3 w-100">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+      <span class="p-2" style="font-size: 38px; color: #fff; font-weight: 600">Performance Profiling</span>
+    </div>
+  </div>
+  <div class="position-relative landing-wrapper">
     <!-- shape Hero -->
-    <section class="section section-lg section-shaped pb-250">
-      <div class="shape shape-style-1 shape-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="container py-lg-md d-flex">
+    <section class="section section-lg section-shaped pt-0 pb-250">
+
+
+      <div class="container d-flex">
         <div class="col px-0">
           <div class="row">
-            <div class="col-lg-6">
-              <h1 class="display-3  text-gray">
-                Submit your financial metrics & data!
-                <span class="fs-21">A simple and fast way to generate investment & business reports & charts</span>
+            <div class="col-12">
+              <h1 class="display-3 text-gray">
+                <span class="fs-24 font-weight-600">Finance Data Submission:</span>
               </h1>
-              <p class="lead text-gray">
-                For a faster submission , select your financial software package bellow to generate your report
+              <p class="lead text-black fs-20 text-justify">
+                Click the appropriate financial software package below that your business runs, to generate and submit a financial snapshot report. If you have different financial software, or you prefer to submit manually (which may take a little longer), then you can use the ‘Submit Manually’ button further below.
               </p>
 <!--              <div class="btn-wrapper">-->
 <!--                <a href="https://demos.creative-tim.com/argon-design-system-angular/documentation/alerts?ref=adsa-landing-page" class="btn btn-info btn-icon mb-3 mb-sm-0">-->
@@ -46,210 +41,85 @@
       </div>
     </section>
     <!-- 1st Hero Variation -->
+    <section class="section pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape rounded-circle mb-4">
+                      <img class="brand-icon" src="assets/img/brand/xero-logo-0DE623D530-seeklogo.com.png" alt="">
+                    </div>
+                    <h6 class="font-weight-800 text-uppercase w-100 text-center">XERO</h6>
+                    <!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-primary">angular</span>-->
+                    <!--                    <span class="badge badge-pill badge-primary">ng-bootstrap</span>-->
+                    <!--                    <span class="badge badge-pill badge-primary">creative</span>-->
+                    <!--                  </div>-->
+                    <a (click)="calculatewith('Xero')" class="btn btn-default mt-1 text-white">Connect with xero</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape rounded-circle mb-4">
+                      <img class="brand-icon" src="assets/img/brand/nB9U4F9UMD6RY.png" alt="">
+                    </div>
+                    <h6 class=" text-uppercase w-100 text-center">WAVE</h6>
+                    <!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-success">business</span>-->
+                    <!--                    <span class="badge badge-pill badge-success">vision</span>-->
+                    <!--                    <span class="badge badge-pill badge-success">success</span>-->
+                    <!--                  </div>-->
+                    <a  class="btn btn-default mt-1 text-white">Connect with wave</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body  d-flex justify-content-center flex-wrap">
+                    <div class="icon icon-shape  rounded-circle mb-4 ">
+                      <img class="brand-icon" src="assets/img/brand/quickbooks-icon-download-25.png" alt="">
+                    </div>
+                    <h6 class=" font-weight-800 text-uppercase w-100 text-center">Quickbooks</h6>
+                    <!--                  <p class="description mt-3">Smart, simple online accounting software for small business · Track expenses, ...</p>-->
+                    <!--                  <div>-->
+                    <!--                    <span class="badge badge-pill badge-warning">marketing</span>-->
+                    <!--                    <span class="badge badge-pill badge-warning">product</span>-->
+                    <!--                    <span class="badge badge-pill badge-warning">launch</span>-->
+                    <!--                  </div>-->
+                    <a  class="btn btn-default mt-1 text-white">Connect with Quickbooks</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section pt-0">
+      <div class="container">
+        <div class="card bg-white shadow-lg border-0">
+          <div class="p-5">
+            <div class="row align-items-center">
+              <div class="col-lg-9">
+                <h3 class="fs-24 font-weight-600">Manual Data Submission:</h3>
+                <p class="lead text-black mt-3 text-justify">
+                  The ‘Submit Manually’ link below will take you to a manual form, which the sender has tailored for you, so that you can submit a performance profile or progress-to-date outline.
+                </p>
+              </div>
+              <div class="col-lg-3 ml-lg-auto">
+                <a [routerLink]="'/user-manual-data-input'"  class="btn btn-default mt-1 text-white">Submit Manually</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  <section class="section section-lg pt-lg-0 mt--200">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-          <div class="row row-grid">
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape rounded-circle mb-4">
-                    <img class="brand-icon" src="assets/img/brand/xero-logo-0DE623D530-seeklogo.com.png" alt="">
-                  </div>
-                  <h6 class="font-weight-800 text-uppercase w-100 text-center">XERO</h6>
-<!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-primary">angular</span>-->
-<!--                    <span class="badge badge-pill badge-primary">ng-bootstrap</span>-->
-<!--                    <span class="badge badge-pill badge-primary">creative</span>-->
-<!--                  </div>-->
-                  <a (click)="calculatewith('Xero')" class="btn btn-default mt-4 text-white">Connect with xero</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape rounded-circle mb-4">
-                    <img class="brand-icon" src="assets/img/brand/nB9U4F9UMD6RY.png" alt="">
-                  </div>
-                  <h6 class=" text-uppercase w-100 text-center">WAVE</h6>
-<!--                  <p class="description mt-3">Argon is a great free UI package based on Angular that includes the most important components and features.</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-success">business</span>-->
-<!--                    <span class="badge badge-pill badge-success">vision</span>-->
-<!--                    <span class="badge badge-pill badge-success">success</span>-->
-<!--                  </div>-->
-                  <a  class="btn btn-default mt-4 text-white">Connect with wave</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-lift--hover shadow border-0">
-                <div class="card-body py-5 d-flex justify-content-center flex-wrap">
-                  <div class="icon icon-shape  rounded-circle mb-4 ">
-                    <img class="brand-icon" src="assets/img/brand/quickbooks-icon-download-25.png" alt="">
-                  </div>
-                  <h6 class=" font-weight-800 text-uppercase w-100 text-center">Quickbooks</h6>
-<!--                  <p class="description mt-3">Smart, simple online accounting software for small business · Track expenses, ...</p>-->
-<!--                  <div>-->
-<!--                    <span class="badge badge-pill badge-warning">marketing</span>-->
-<!--                    <span class="badge badge-pill badge-warning">product</span>-->
-<!--                    <span class="badge badge-pill badge-warning">launch</span>-->
-<!--                  </div>-->
-                  <a  class="btn btn-default mt-4 text-white">Connect with Quickbooks</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section section-lg pt-0">
-    <div class="container">
-      <div class="card bg-white shadow-lg border-0">
-        <div class="p-5">
-          <div class="row align-items-center">
-            <div class="col-lg-8">
-              <h3 class="text-black-50">Manual data input:</h3>
-              <p class="lead text-black-50 mt-3">
-                You can also input data manually (may take longer) ,click on the Submit manually button below to fill in you manual data.
-              </p>
-            </div>
-            <div class="col-lg-3 ml-lg-auto">
-              <a [routerLink]="'/user-manual-data-input'"  class="btn btn-lg btn-block btn-white">Submit Manually</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!--  <section class="section section-lg bg-gradient-default">-->
-<!--    <div class="container pt-lg pb-300">-->
-<!--      <div class="row text-center justify-content-center">-->
-<!--        <div class="col-lg-10">-->
-<!--          <h2 class="display-3 text-white">Build something</h2>-->
-<!--          <p class="lead text-white">According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record low maximum sea ice extent tihs year down to low ice.</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row row-grid mt-5">-->
-<!--        <div class="col-lg-4">-->
-<!--          <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">-->
-<!--            <i class="ni ni-settings text-primary"></i>-->
-<!--          </div>-->
-<!--          <h5 class="text-white mt-3">Building tools</h5>-->
-<!--          <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--        </div>-->
-<!--        <div class="col-lg-4">-->
-<!--          <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">-->
-<!--            <i class="ni ni-ruler-pencil text-primary"></i>-->
-<!--          </div>-->
-<!--          <h5 class="text-white mt-3">Grow your market</h5>-->
-<!--          <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--        </div>-->
-<!--        <div class="col-lg-4">-->
-<!--          <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">-->
-<!--            <i class="ni ni-atom text-primary"></i>-->
-<!--          </div>-->
-<!--          <h5 class="text-white mt-3">Launch time</h5>-->
-<!--          <p class="text-white mt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; SVG separator &ndash;&gt;-->
-<!--    <div class="separator separator-bottom separator-skew zindex-100">-->
-<!--      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">-->
-<!--        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>-->
-<!--      </svg>-->
-<!--    </div>-->
-<!--  </section>-->
-<!--  <section class="section section-lg pt-lg-0 section-contact-us">-->
-<!--    <div class="container">-->
-<!--      <div class="row justify-content-center mt&#45;&#45;300">-->
-<!--        <div class="col-lg-8">-->
-<!--          <div class="card bg-gradient-secondary shadow">-->
-<!--            <div class="card-body p-lg-5">-->
-<!--              <h4 class="mb-1">Want to work with us?</h4>-->
-<!--              <p class="mt-0">Your project is very important to us.</p>-->
-<!--              <div class="form-group mt-5" [ngClass]="{'focused':focus===true}">-->
-<!--                <div class="input-group input-group-alternative">-->
-<!--                  <div class="input-group-prepend">-->
-<!--                    <span class="input-group-text"><i class="ni ni-user-run"></i></span>-->
-<!--                  </div>-->
-<!--                  <input class="form-control" placeholder="Your name" type="text" (focus)="focus=true" (blur)="focus=false">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="form-group" [ngClass]="{'focused':focus1===true}">-->
-<!--                <div class="input-group input-group-alternative">-->
-<!--                  <div class="input-group-prepend">-->
-<!--                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>-->
-<!--                  </div>-->
-<!--                  <input class="form-control" placeholder="Email address" type="email" (focus)="focus1=true" (blur)="focus1=false">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="form-group mb-4">-->
-<!--                <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80" placeholder="Type a message..."></textarea>-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <button type="button" class="btn btn-default btn-round btn-block btn-lg">Send Message</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
-<!--  <section class="section section-lg">-->
-<!--    <div class="container">-->
-<!--      <div class="row row-grid justify-content-center">-->
-<!--        <div class="col-lg-8 text-center">-->
-<!--          <h2 class="display-3">Do you love this awesome-->
-<!--            <span class="text-success">Design System for Angular?</span>-->
-<!--          </h2>-->
-<!--          <p class="lead">Cause if you do, it can be yours for FREE. Hit the button below to navigate to Creative Tim where you can find the Design System in Angular. Start a new project or give an old Angular project a new look!</p>-->
-<!--          <div class="btn-wrapper">-->
-<!--            <a href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-landing-page" class="btn btn-primary mb-3 mb-sm-0">Download Angular</a>-->
-<!--          </div>-->
-<!--          <div class="text-center">-->
-<!--            <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>-->
-<!--            <div class="row justify-content-center">-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://www.creative-tim.com/product/argon-design-system?ref=adsa-landing-page" target="_blank" placement="top" ngbTooltip="Bootstrap 4 - Most popular front-end component library">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-landing-page" target="_blank" placement="top" ngbTooltip="Angular - One framework. Mobile &amp; desktop">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://www.creative-tim.com/product/vue-argon-design-system?ref=adsa-landing-page" target="_blank" placement="top" ngbTooltip="Vue.js - The progressive javascript framework">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://www.sketchapp.com/?ref=creative-tim" target="_blank" placement="top" ngbTooltip="[Coming Soon] Sketch - Digital design toolkit">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid opacity-3">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://www.adobe.com/products/photoshop.html?ref=creative-tim" target="_blank" placement="top" ngbTooltip="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid opacity-3">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--              <div class="col-lg-2 col-4">-->
-<!--                <a href="https://reactjs.org/?ref=creative-tim" target="_blank" placement="top" ngbTooltip="[Coming Soon] React - A JavaScript library for building user interfaces">-->
-<!--                  <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid opacity-3">-->
-<!--                </a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
 </main>

@@ -1,5 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {NgbdModalContent} from '../financial/financial.component';
+import {SettingsService} from '../../../shared/services/settings/settings.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-marketing',
@@ -125,8 +128,12 @@ export class MarketingComponent implements OnInit {
     public help: any;
 
     marketingGroup: any;
+    helpDeepDive = {};
 
-    constructor(private formBuilder: FormBuilder) {
+
+    constructor(private formBuilder: FormBuilder,
+                private settingsService: SettingsService,
+                private modalService: NgbModal) {
     }
 
     get helpProduct() {
@@ -152,8 +159,23 @@ export class MarketingComponent implements OnInit {
         this.marketingGroup.valueChanges.subscribe(() => {
             this.value.emit(this.marketingGroup.value);
         });
+        this.getHelpDeepDive();
     }
 
+    getHelpDeepDive() {
+        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
+            this.helpDeepDive = data?.attributes?.moduleFinancials;
+        });
+    }
+
+    openHintModal(hintType: string) {
+        const modalRef = this.modalService.open(NgbdModalContent , {
+            centered : true,
+            backdrop : true,
+            size : 'xl'
+        });
+        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
+    }
 
     createMarketingControlGroup(): FormGroup {
         return this.formBuilder.group({

@@ -1,47 +1,40 @@
-<div class="report-wrapper">
-    <div class="report-header w-100 d-grid p-4">
-        <div class="company-details d-flex justify-content-between align-items-start">
-        <span class="company-name w-25 d-flex flex-wrap">
-            <span class="detail w-100">
-                Financial
-            </span>
-            <span class="detail w-100">
-                Performance
-            </span>
-            <span class="detail w-100">
-                report
-            </span>
-        </span>
-            <div class="company-details-data w-75 d-flex flex-wrap ">
-                <span class="detail w-100">Sector</span>
-                <span class="detail w-100">Sub-sector</span>
-                <span class="detail w-100">Development phase</span>
-                <span class="detail w-100">HQ</span>
-                <span class="detail w-100">Founded in 20xx</span>
+
+<div class="report-wrapper container">
+    <div class="report-header">
+        <div class="row align-items-center">
+            <div class="col-6 company-name">
+                <h1>Performance</h1>
+                <h1>Report</h1>
+            </div>
+            <div class="col-6 date-and-extras d-flex flex-column align-items-end justify-content-center">
+                <span class="detail w-100 text-right">
+                    Report Date : 26 June 2022
+                </span>
+                <span class="detail w-100 text-right">
+                    Currency : 26 June 2022
+                </span>
+                <span class="detail w-100 text-right">
+                    Location : 26 June 2022
+                </span>
             </div>
         </div>
-        <div class="date-and-extras d-flex justify-content-end align-items-start flex-wrap justify-content-end align-items-start">
-        <span class="detail w-100 text-right">
-            Report Date : 26 June 2022
-        </span>
-            <span class="detail w-100 text-right">
-            Currency : 26 June 2022
-        </span>
-            <span class="detail w-100 text-right">
-            Location : 26 June 2022
-        </span>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
-            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Financial report</span>
-        </div>
+    <h2>Company Details</h2>
+    <div class="company-details-data d-flex flex-column">
+        <div class="detail w-100">Sector <span>aa</span> </div>
+        <div class="detail w-100">Sub-sector <span>aa</span></div>
+        <div class="detail w-100">Development phase <span>aa</span></div>
+        <div class="detail w-100">HQ <span>aa</span></div>
+        <div class="detail w-100">Founded in 20xx <span>aa</span></div>
     </div>
-    <div class="report-line d-grid p-4">
-        <div *ngFor="let metric of metrics" class="metric">
-            <div class="metric-title px-0">
-                {{metric.metricTitle}}
-                <hr class="divider my-1">
+    <h2>Financial report</h2>
+    <div class="report-line row">
+        <div *ngFor="let metric of metrics" class="metric col-6">
+            <div class="metric-title">
+                <span>
+                    {{metric.metricTitle}}
+                    <hr class="divider my-1">
+                </span>
             </div>
             <div *ngIf="metric.type.includes('chart')" class="chart">
                 <div style="text-align:center">
@@ -71,23 +64,11 @@
             </div>
         </div>
 
-
-    </div>
-    <div class="row">
-        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
-            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Marketing report</span>
-        </div>
-    </div>
-    <div class=" d-grid">
-        <app-marketing-report></app-marketing-report>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 d-flex justify-content-start align-items-center p-4">
-            <span style="font-size: 42px; font-weight: 800; margin-left: 15px;">Innovation report</span>
-        </div>
-    </div>
-    <div class=" d-grid ">
-        <app-innovation-report></app-innovation-report>
-    </div>
+    <h2>Marketing report</h2>
+    <app-marketing-report></app-marketing-report>
+
+    <h2>Innovation report</h2>
+    <app-innovation-report></app-innovation-report>
 </div>

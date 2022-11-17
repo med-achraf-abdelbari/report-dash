@@ -1,53 +1,229 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {SettingsService} from '../../../shared/services/settings/settings.service';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DomSanitizer} from '@angular/platform-browser';
+import {getCurrencySymbol} from '@angular/common';
 
 @Component({
-    selector: 'app-financial',
-    templateUrl: './financial.component.html',
-    styleUrls: ['./financial.component.scss']
+    selector: 'app-modal-content', template: `
+        <div class="modal-header">
+            <h4 class="modal-title">Help</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <p [innerHTML]="innerHtml"></p>
+        </div>
+    `,
+})
+export class NgbdModalContent {
+    @Input() name;
+    @Input() innerHtml;
+
+    constructor(public activeModal: NgbActiveModal) {
+    }
+}
+
+@Component({
+    selector: 'app-financial', templateUrl: './financial.component.html', styleUrls: ['./financial.component.scss']
 })
 export class FinancialComponent implements OnInit {
 
     // tslint:disable-next-line:no-output-rename
     @Output('value') value = new EventEmitter<any>();
 
-    financialYears = [new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2, new Date().getFullYear() - 3];
-    shareHolders: FormGroup[] = [
-        this.formBuilder.group({
-            name: [],
-            stake: [],
-            shares: [],
-            shareClass: [],
-            voting: [],
-            antiDilution: [],
-            allocationDate: [],
-        })
-    ];
-    previousCash: FormGroup[] = [
-        this.formBuilder.group({
-            type: [],
-            cap: [],
-            discount: [],
-            source: [],
-            date: [],
-            amount: [],
-            equityGiven: [],
-            charges: []
-        })
-    ];
+    shareHolders: FormGroup[] = [this.formBuilder.group({
+        name: [], stake: [], shares: [], shareClass: [], voting: [], antiDilution: [], allocationDate: [],
+    })];
+    previousCash: FormGroup[] = [this.formBuilder.group({
+        type: [], cap: [], discount: [], source: [], date: [], amount: [], equityGiven: [], charges: []
+    })];
     financialGroup: any;
     salesFG: any;
+    helpDeepDive = {};
 
-    constructor(private formBuilder: FormBuilder) {
+    getCurrencySymbol = getCurrencySymbol;
+    companyCurrency = 'GBP'; // todo update this value from api
+
+    revenueRetentionFG: FormGroup;
+    financialPerformanceFG: FormGroup;
+    businessPerformanceFG: FormGroup;
+    marketGrowthFG: FormGroup;
+    marketSizeFG: FormGroup;
+    cashOperationFG: FormGroup;
+
+    constructor(private formBuilder: FormBuilder, private settingsService: SettingsService, private modalService: NgbModal, ) {
     }
 
     ngOnInit() {
+        this.initForms();
         this.financialGroup = this.createFinancialControlGorup();
         this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
         this.financialGroup.valueChanges.subscribe(() => {
             console.log(this.financialGroup.value);
             this.value.emit(this.financialGroup.value);
         });
+        this.getHelpDeepDive();
+    }
+
+    initForms() {
+        this.initRevenueRetentionFG();
+        this.initFinancialPerformance();
+        this.initBusinessPerformanceFG();
+        this.initMarketGrowthFG();
+        this.initMarketSizeFG();
+        this.initCashOperationFG();
+    }
+
+    initRevenueRetentionFG() {
+        this.revenueRetentionFG = this.formBuilder.group({
+            newRevenue: new FormControl(), retainedRevenue: new FormControl()
+        });
+    }
+
+    initFinancialPerformance() {
+        this.financialPerformanceFG = this.formBuilder.group({
+            grossProfit: new FormGroup({
+                GPYr1: new FormControl(),
+                GPYr2: new FormControl(),
+                GPYr3: new FormControl(),
+                GPYr4: new FormControl()
+            }),
+            grossProfitMargin: new FormGroup({
+                GPYr1: new FormControl(),
+                GPYr2: new FormControl(),
+                GPYr3: new FormControl(),
+                GPYr4: new FormControl(),
+                RevYr1: new FormControl(),
+                RevYr2: new FormControl(),
+                RevYr3: new FormControl(),
+                RevYr4: new FormControl()
+            }),
+            costOfGoodsSold: new FormGroup({
+                COGS: new FormControl(),
+                totalSaleLLastFY: new FormControl()
+            }),
+            totalDebt: new FormControl(),
+            promotionToSales: new FormGroup({
+                totalSMExp : new FormControl(),
+                sales : new FormControl()
+            }),
+            grossMarginGrowth: new FormGroup({
+                GMYr1 : new FormControl(),
+                GMYr2 : new FormControl(),
+                GMYr3 : new FormControl(),
+                GMYr4 : new FormControl(),
+            }),
+            netProfit: new FormGroup({
+                NPYr1 : new FormControl(),
+                NPYr2 : new FormControl(),
+                NPYr3 : new FormControl(),
+                NPYr4 : new FormControl(),
+            }),
+            netProfitMargin: new FormGroup({
+                NPYr1 : new FormControl(),
+                NPYr2 : new FormControl(),
+                NPYr3 : new FormControl(),
+                NPYr4 : new FormControl(),
+                RevYr1 : new FormControl(),
+                RevYr2 : new FormControl(),
+                RevYr3 : new FormControl(),
+                RevYr4 : new FormControl(),
+            }),
+            monthlyRecurringRevenue: new FormControl(),
+            turnoverToStaff: new FormGroup({
+                turnover : new FormControl(),
+                numStaff : new FormControl()
+            }),
+            compoundAnnualGrowthRate: new FormGroup({
+                salesEndValue : new FormControl(),
+                salesStartingValue : new FormControl(),
+                numOfYears : new FormControl()
+            }),
+            newRevenuePerMarketingSpend: new FormGroup({
+                totalSalesLastFY : new FormControl(),
+                totalMarketingLastFY : new FormControl(),
+            }),
+        });
+    }
+
+    initBusinessPerformanceFG() {
+        this.businessPerformanceFG = this.formBuilder.group({
+            annualRecurringRevenue: new FormGroup({
+                RevYr1: new FormControl(),
+                RevYr2: new FormControl(),
+                RevYr3: new FormControl(),
+                RevYr4: new FormControl()
+            }),
+            YearOnYearRevenueGrowthRate: new FormGroup({
+                TotalRevYr1: new FormControl(),
+                TotalRevYr2: new FormControl(),
+                TotalRevYr3: new FormControl(),
+                TotalRevYr4: new FormControl()
+            }),
+        });
+    }
+
+    initMarketGrowthFG() {
+        this.marketGrowthFG = this.formBuilder.group({
+            marketGrowth: new FormGroup({
+                SOMYr1: new FormControl(),
+                SOMYr2: new FormControl(),
+                SOMYr3: new FormControl(),
+                SOMYr4: new FormControl()
+            }),
+            compoundAnnualGrowthRate: new FormControl(),
+        });
+    }
+
+    initMarketSizeFG() {
+        this.marketSizeFG = this.formBuilder.group({
+            marketSize: new FormControl(),
+        });
+    }
+
+    initCashOperationFG() {
+        this.cashOperationFG = this.formBuilder.group({
+            cashAndCashEquivalent: new FormControl(),
+            monthlyBurnRate: new FormGroup({
+                OperatingCostsMonth1 : new FormControl(),
+                OperatingCostsMonth2 : new FormControl(),
+                OperatingCostsMonth3 : new FormControl(),
+                OperatingCostsMonth4 : new FormControl(),
+            }),
+            netBurnRate: new FormGroup({
+                SalesLastThreeMonths : new FormControl(),
+                COGSLastThreeMonths : new FormControl(),
+                OperatingCostsLastThreeMonths : new FormControl(),
+            }),
+            netCash: new FormGroup({
+                CashEquiv : new FormControl(),
+                CurrentLiabilities : new FormControl(),
+            }),
+            runway: new FormGroup({
+                CashAndCashEquivalent : new FormControl(),
+                NetBurnRate : new FormControl(),
+            }),
+            netRevenueRetention: new FormGroup({
+                TotalBilledLastMonth : new FormControl(),
+                MRRGrowth : new FormControl(),
+                RevenueDowngradesOrCancellations : new FormControl(),
+            }),
+        });
+    }
+
+
+    getHelpDeepDive() {
+        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
+            this.helpDeepDive = data?.attributes?.moduleFinancials;
+        });
+    }
+
+    openHintModal(hintType: string) {
+        const modalRef = this.modalService.open(NgbdModalContent, {
+            centered: true, backdrop: true, size: 'xl'
+        });
+        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
     }
 
     addShareHolder() {
@@ -77,63 +253,27 @@ export class FinancialComponent implements OnInit {
 
             financial: this.formBuilder.group({
                 sales: this.formBuilder.group({
-                    previous: [],
-                    current: [],
-                    year1: [],
-                    year2: [],
-                    year3: [],
-                    year4: [],
-                    year5: [],
-                }),
-                grossProfit: this.formBuilder.group({
-                    previous: [],
-                    current: [],
-                    year1: [],
-                    year2: [],
-                    year3: [],
-                    year4: [],
-                    year5: [],
-                }),
-                netProfit: this.formBuilder.group({
-                    previous: [],
-                    current: [],
-                    year1: [],
-                    year2: [],
-                    year3: [],
-                    year4: [],
-                    year5: [],
+                    previous: [], current: [], year1: [], year2: [], year3: [], year4: [], year5: [],
+                }), grossProfit: this.formBuilder.group({
+                    previous: [], current: [], year1: [], year2: [], year3: [], year4: [], year5: [],
+                }), netProfit: this.formBuilder.group({
+                    previous: [], current: [], year1: [], year2: [], year3: [], year4: [], year5: [],
                 })
             }),
 
             runway: this.formBuilder.group({
                 breakEven: this.formBuilder.group({
-                    months: [],
-                    from: []
-                }),
-                burnRateNow: [],
-                burnRateAfter: []
+                    months: [], from: []
+                }), burnRateNow: [], burnRateAfter: []
             }),
 
-            shareholders: this.formBuilder.array([
-                this.createShareholder()
-            ]),
+            shareholders: this.formBuilder.array([this.createShareholder()]),
 
-            previousCash: this.formBuilder.array([
-                this.formBuilder.group({
-                    type: [],
-                    cap: [],
-                    discount: [],
-                    source: [],
-                    date: [],
-                    amount: [],
-                    equityGiven: [],
-                    charges: []
-                })
-            ]),
+            previousCash: this.formBuilder.array([this.formBuilder.group({
+                type: [], cap: [], discount: [], source: [], date: [], amount: [], equityGiven: [], charges: []
+            })]),
 
-            notes: new FormControl(),
-            employeeShares: new FormControl('', []),
-            accountingMethod: new FormControl('', []),
+            notes: new FormControl(), employeeShares: new FormControl('', []), accountingMethod: new FormControl('', []),
 
         });
     }

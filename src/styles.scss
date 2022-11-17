@@ -20,9 +20,6 @@ b {
   margin: 10px 0;
 }
 
-h2, h3, h4, h5, h6 {
-  line-height: 0 !important;
-}
 
 .section-2 {
   display: grid;
@@ -37,17 +34,24 @@ h2, h3, h4, h5, h6 {
 }
 
 body,div,p,span {
-  font-family: Rajdhani, "Helvetica", sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
   font-weight: 700;
 }
 
+
 html, body {
   height: 100%;
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
 }
 
 body {
   margin: 0;
-  font-family: Rajdhani, "Helvetica", sans-serif;
+  font-family: "Raleway", sans-serif !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: "Raleway", sans-serif !important;
 }
 
 .mat-tab-label-active {
@@ -102,7 +106,7 @@ body {
 }
 
 .mat-vertical-stepper-header{
-    display: none!important;
+  display: none!important;
 }
 
 .mat-vertical-content-container:before{
@@ -157,6 +161,9 @@ i{
 }
 
 .question-answer{
+  .input-feild {
+    padding: 5px 0;
+  }
   .input-label{
     padding: 0 20px 0 0;
     color: #4c4c4c;
@@ -164,11 +171,29 @@ i{
     text-align: left;
     min-width: 250px;
     font-weight: 400;
+    height: 48px;
+    display: flex;
+    align-items: center;
   }
   select{
     min-width: 225px;
     height: 38px;
     border-radius: 0!important;
+  }
+}
+@media screen and (max-width: 1100px){
+  .question-answer{
+    .input-feild {
+      padding: 5px 0;
+    }
+    .input-label{
+      padding: 0 10px 0 0;
+      font-size: 14px;
+      min-width: 190px;
+    }
+    select{
+      min-width: 190px;
+    }
   }
 }
 .input-item{
@@ -314,5 +339,35 @@ tbody{
     td:nth-child(2){
       text-align: right;
     }
+  }
+}
+.report-line {
+  .metric{
+    margin: 20px 0;
+    .metric-title{
+      padding: 15px;
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #415a77;
+      display: flex;
+      margin: 10px 0;
+    }
+    .divider{
+      border-bottom: 4px solid #415a77;
+      width:100%;
+      display: block;
+      line-height:1.6em;
+      opacity: 0.6;
+    }
+  }
+}
+@media print {
+  footer {
+    display: none !important;
+  }
+  .metric {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 }
