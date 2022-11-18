@@ -986,77 +986,71 @@
                 <!--        END ACCOUNTING METHOD-->
 
                 <!--        COMPANY SHARES-->
-                <div class="question-answer d-flex w-100 flex-wrap mb-3">
+                <div class="question-answer w-100  mb-3">
 
                     <form *ngIf="financialGroup.get('employeeShares').value" class="question-answer w-100 mb-3 xx">
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="input-label">
-                                <span class="font-weight-400 pl-152">[Current Shareholders]</span>
+                        <div class="d-flex">
+                            <div class="w-35">
+                                <label class="input-label">[Current Shareholders]</label>
                             </div>
-                            <div class="input-feild h-0">
-                            </div>
-                        </div>
-                    </form>
-                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="input-label h-0">
-                            </div>
-                            <div class="input-feild">
-                                <div *ngIf="financialGroup.get('employeeShares').value"
-                                     class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                                    <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
+                            <div class="w-65">
+                                <div class="input-feild">
+                                    <div *ngIf="financialGroup.get('employeeShares').value"
                                          class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                                        <div class="input-label w-20 h-0">
-                                        </div>
-                                        <div class="w-100 mb-3">
-                                            <form [formGroup]="financialGroup.get('shareholders').controls[i]"
-                                                  class="d-flex justify-content-start align-items-center flex-wrap ">
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="name" placeholder="Name">
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="stake" placeholder="Stake"
-                                                           type="number">
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="shares" placeholder="Shares">
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="shareClass" placeholder="test"
-                                                            required>
-                                                        <option disabled selected value="">Share class</option>
-                                                        <option value="Ordinary">Ordinary</option>
-                                                        <option value="Prefrence">Prefrence</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="voting" required>
-                                                        <option disabled selected value="">Voting</option>
-                                                        <option value="Voting">Voting</option>
-                                                        <option value="Non Voting">Non Voting</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="antiDilution" required>
-                                                        <option disabled selected value="">Anti dilution</option>
-                                                        <option value=true>Yes</option>
-                                                        <option value=false>No</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="allocationDate" type="date">
-                                                </div>
-                                                <div *ngIf="financialGroup.get('shareholders').controls.length == i+1" class="input-item">
-                                                    <div class="w-100 d-flex justify-content-end">
-                                                        <button (click)="addShareHolder()" class="btn p-2">
-                                                            Add shareholder <i class="fa-solid fa-circle-plus"></i>
-                                                        </button>
+                                        <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
+                                             class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                            <div class="input-label w-20 h-0">
+                                            </div>
+                                            <div class="w-100 mb-3">
+                                                <form [formGroup]="financialGroup.get('shareholders').controls[i]"
+                                                      class="d-flex justify-content-start align-items-center flex-wrap ">
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="name" placeholder="Name">
                                                     </div>
-                                                </div>
-                                            </form>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="stake" placeholder="Stake"
+                                                               type="number">
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="shares" placeholder="Shares">
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="shareClass" placeholder="test"
+                                                                required>
+                                                            <option disabled selected value="">Share class</option>
+                                                            <option value="Ordinary">Ordinary</option>
+                                                            <option value="Prefrence">Prefrence</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="voting" required>
+                                                            <option disabled selected value="">Voting</option>
+                                                            <option value="Voting">Voting</option>
+                                                            <option value="Non Voting">Non Voting</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="antiDilution" required>
+                                                            <option disabled selected value="">Anti dilution</option>
+                                                            <option value=true>Yes</option>
+                                                            <option value=false>No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="allocationDate" type="date">
+                                                    </div>
+                                                    <div *ngIf="financialGroup.get('shareholders').controls.length == i+1" class="input-item">
+                                                        <div class="w-100 d-flex justify-content-end">
+                                                            <button (click)="addShareHolder()" class="btn p-2">
+                                                                Add shareholder <i class="fa-solid fa-circle-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
