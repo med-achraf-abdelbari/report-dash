@@ -389,7 +389,7 @@ tbody{
   }
 }
 .custom-control-label{
-  &::before, &::before  {
+  &::before, &::after  {
     top: 1px !important;
   }
 }
