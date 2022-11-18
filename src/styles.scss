@@ -185,7 +185,7 @@ i{
     font-size: 17px;
     text-align: left;
     font-weight: 400;
-    height: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
   }
@@ -203,7 +203,6 @@ i{
     .input-label{
       padding: 0 10px 0 0;
       font-size: 14px;
-      min-width: 190px;
     }
     select{
       min-width: 190px;
