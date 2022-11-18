@@ -388,3 +388,8 @@ tbody{
     break-inside: avoid !important;
   }
 }
+.custom-control-label{
+  &::before, &::before  {
+    top: 1px !important;
+  }
+}
