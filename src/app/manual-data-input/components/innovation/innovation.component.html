@@ -9,16 +9,15 @@
                 </div>
             </div>
             <form *ngFor="let stage of stages" [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
-                <div class="d-flex justify-content-start align-items-center">
-                    <div class="input-feild d-flex">
-                        <div
-                             class="custom-control custom-checkbox circle mb-3 w-auto">
+                <div class="d-flex justify-content-start align-items-center mb-3">
+                    <div class="input-feild d-flex pt-0">
+                        <div class="custom-control custom-checkbox circle mb-3 w-auto">
                             <input checked="" class="custom-control-input"  [id]="stage.name" type="checkbox">
                             <label class="custom-control-label" [for]="stage.name"></label>
                         </div>
                     </div>
                     <div class="input-label d-flex flex-wrap">
-                        <span class="w-100 mb-2">{{stage.name}}</span>
+                        <span class="w-100 mb-2 pt-1">{{stage.name}}</span>
                         <span class="w-100 fw-normal">{{stage.info}}</span>
                     </div>
                 </div>
@@ -35,16 +34,18 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
-                <div class="d-flex justify-content-start align-items-center">
-                    <div class="input-label">
-                        Select TRL level :
+            <form [formGroup]="innovationGroup" class="question-answer w-100 mb-3">
+                <div class="d-flex">
+                    <div class="w-23">
+                        <label class="input-label"> Select TRL level :</label>
                     </div>
-                    <div class="input-feild">
-                        <select class="form-select" formControlName="technologyReadiness">
-                            <option disabled selected value="">Select your account type</option>
-                            <option *ngFor="let level of techLevels" value="{{level.level}}">{{level.desc}}</option>
-                        </select>
+                    <div class="w-77">
+                        <div class="input-feild">
+                            <select class="form-select" formControlName="technologyReadiness">
+                                <option disabled selected value="">Select your account type</option>
+                                <option *ngFor="let level of techLevels" value="{{level.level}}">{{level.desc}}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -61,20 +62,23 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex w-50 mb-3 px-1">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <div class="input-label">
-                        {{quest}} :
+            <div class="commercial-bloc d-flex flex-wrap">
+                <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex mb-3 commercial-form">
+                    <div class="d-flex justify-content-between align-items-center w-100 commercial-form-child">
+                        <div class="input-label">
+                            {{quest}} :
+                        </div>
+                        <div class="input-feild">
+                            <select class="form-select" formControlName="technologyReadiness">
+                                <option disabled selected value="">Select your answer</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-feild">
-                        <select class="form-select" formControlName="technologyReadiness">
-                            <option disabled selected value="">Select your answer</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
+                </form>
+
+            </div>
 
         </div>
     </div>

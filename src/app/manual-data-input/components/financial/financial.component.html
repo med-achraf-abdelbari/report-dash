@@ -947,10 +947,10 @@
                 <!--        ACCOUNTING METHOD-->
                 <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
                     <div class="d-flex">
-                        <div class="w-30">
+                        <div class="w-23">
                             <label class="input-label">Accounting method :</label>
                         </div>
-                        <div class="w-70">
+                        <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="accountingMethod">
                                     <option disabled selected value="">Please select</option>
@@ -962,7 +962,7 @@
                         </div>
                     </div>
                     <div class="d-flex">
-                        <div class="w-30">
+                        <div class="w-23">
                             <label class="input-label flex-column align-items-start">
                                <span class="pr-4 font-weight-600">
                                 Company shares :
@@ -972,7 +972,7 @@
                                 </span>
                             </label>
                         </div>
-                        <div class="w-70">
+                        <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="employeeShares">
                                     <option disabled selected value="">Please select</option>
@@ -990,10 +990,10 @@
 
                     <form *ngIf="financialGroup.get('employeeShares').value" class="question-answer w-100 mb-3 xx">
                         <div class="d-flex">
-                            <div class="w-30">
+                            <div class="w-23">
                                 <label class="input-label">[Current Shareholders]</label>
                             </div>
-                            <div class="w-70">
+                            <div class="w-77">
                                 <div class="input-feild">
                                     <div *ngIf="financialGroup.get('employeeShares').value"
                                          class="w-100 d-flex justify-content-start align-items-center flex-wrap">
@@ -1061,7 +1061,7 @@
                 <!--        PREVIOUS FINANCE INJECTION-->
                 <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
                     <div class="d-flex">
-                        <div class="w-30">
+                        <div class="w-23">
                             <label class="input-label flex-column align-items-start">
                                <span class="pr-4 font-weight-600">
                                    Previous Finance Injection :
@@ -1071,7 +1071,7 @@
                                 </span>
                             </label>
                         </div>
-                        <div class="w-70">
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "
                                      class="w-100 d-flex justify-content-start align-items-center flex-wrap">
