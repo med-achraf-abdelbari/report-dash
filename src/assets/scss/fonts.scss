@@ -1,0 +1,23 @@
+@import "mixins/fonts_mixin";
+
+@include font-face('WorkSans-Thin', 'WorkSans-Regular', 'worksans', 'sans-serif');
+@include font-face('WorkSans-Light', 'WorkSans-Regular', 'worksans', 'sans-serif');
+@include font-face('WorkSans-Regular', 'WorkSans-Regular', 'worksans', 'sans-serif');
+@include font-face('WorkSans-Medium', 'WorkSans-Medium', 'worksans', 'sans-serif');
+@include font-face('WorkSans-SemiBold', 'WorkSans-SemiBold', 'worksans', 'sans-serif');
+@include font-face('WorkSans-Bold', 'WorkSans-Bold', 'worksans', 'sans-serif');
+@include font-face('WorkSans-ExtraBold', 'WorkSans-Bold', 'worksans', 'sans-serif');
+
+
+
+$WorkSans-Thin: "WorkSans-Thin", sans-serif;
+$WorkSans-Light: "WorkSans-Light", sans-serif;
+$WorkSans-Regular: "WorkSans-Regular", sans-serif;
+$WorkSans-SemiBold: "WorkSans-SemiBold", sans-serif;
+$WorkSans-Medium: "WorkSans-Medium", sans-serif;
+$WorkSans-Bold: "WorkSans-Bold", sans-serif;
+$WorkSans-ExtraBold: "WorkSans-ExtraBold", sans-serif;
+
+
+
+
