@@ -10,38 +10,40 @@
                         <i (click)="openHintModal('revenueRetention')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                New Revenue:
-                            </div>
-                            <div class="input-label">
-                                Retained Revenue:
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">New Revenue: </label>
+                        </div>
+                        <div class="w-77">
+                            <div class="input-feild">
+                                <div class="d-flex justify-content-start align-content-center d-flex">
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                            </div>
+                                            <input class="form-control " placeholder="Revenue growth of the latest FY" type="number">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                            </div>
+                                            <input class="form-control" placeholder="Total revenue of last FY" type="number">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="input-feild">
-                            <div class="d-flex justify-content-start align-content-center d-flex">
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
-                                        </div>
-                                        <input class="form-control " placeholder="Revenue growth of the latest FY" type="number">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
-                                        </div>
-                                        <input class="form-control " placeholder="Total revenue of last FY" type="number">
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Retained Revenue: </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center d-flex">
                                     <div class="form-group mb-0 mr-2">
@@ -63,8 +65,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </form>
             </div>
@@ -80,29 +80,12 @@
                         <i (click)="openHintModal('financialPerformance')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-50 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Gross Profit :
-                            </div>
-                            <div class="input-label">
-                                Gross Profit Margin (Ratio) :
-                            </div>
-                            <div class="input-label">
-                                Cost of Goods Sold (Ratio) :
-                            </div>
-                            <div class="input-label">
-                                Total Debt :
-                            </div>
-                            <div class="input-label">
-                                Promotion to Sales :
-                            </div>
-                            <div class="input-label">
-                                Gross Margin Growth :
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label"> Gross Profit :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -139,6 +122,15 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">
+                                Gross Profit Margin (Ratio) :
+                            </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -207,6 +199,14 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Cost of Goods Sold (Ratio) :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -227,6 +227,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Total Debt :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="form-group mb-0">
                                     <div class="position-relative">
@@ -237,9 +244,16 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label"> Promotion to Sales :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
-                                    <div class="form-group mb-0">
+                                    <div class="form-group mb-0 mr-2">
                                         <div class="position-relative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
@@ -257,6 +271,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label"> Gross Margin Growth :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -294,32 +315,14 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </form>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-50 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Net Profit :
-                            </div>
-                            <div class="input-label">
-                                Net Profit Margin (Ratio) :
-                            </div>
-                            <div class="input-label">
-                                Monthly Recurring Revenue :
-                            </div>
-                            <div class="input-label">
-                                Turnover to Staff (Ratio) :
-                            </div>
-                            <div class="input-label">
-                                Compound Annual Growth Rate (Revenues) :
-                            </div>
-                            <div class="input-label">
-                                New Revenue per Marketing Spend :
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Net Profit :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -356,6 +359,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Net Profit Margin (Ratio) : </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="form-group mb-0">
                                     <div class="position-relative">
@@ -366,6 +376,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Monthly Recurring Revenue : </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -386,6 +403,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Turnover to Staff (Ratio) : </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -406,37 +430,51 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="input-feild">
-                            <div class="d-flex justify-content-start align-content-center flex-wrap">
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
-                                        </div>
-                                        <input class="form-control " placeholder="Ending Value" type="number">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
-                                        </div>
-                                        <input class="form-control " placeholder="Beginning Value" type="number">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
-                                        </div>
-                                        <input class="form-control " placeholder="Number of Years" type="number">
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Compound Annual Growth Rate (Revenues) : </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
-                                    <div class="form-group mb-0">
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="Ending Value" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="Beginning Value" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="Number of Years" type="number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">New Revenue per Marketing Spend : </label>
+                        </div>
+                        <div class="w-77">
+                            <div class="input-feild">
+                                <div class="d-flex justify-content-start align-content-center flex-wrap">
+                                    <div class="form-group mb-0 mr-2">
                                         <div class="position-relative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
@@ -472,17 +510,12 @@
                         <i (click)="openHintModal('businessPerformance')"  class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Annual Recurring Revenue :
-                            </div>
-                            <div class="input-label">
-                                Year-on-Year Revenue Growth Rate :
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Annual Recurring Revenue :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0  mr-2">
@@ -523,6 +556,13 @@
                                 </div>
 
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Year-on-Year Revenue Growth Rate :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -564,8 +604,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </form>
             </div>
@@ -581,17 +619,12 @@
                         <i (click)="openHintModal('marketGrowth')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Market Growth (SOM) :
-                            </div>
-                            <div class="input-label">
-                                Compound Annual Growth Rate (of Industry/Market) :
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Market Growth (SOM) :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -628,6 +661,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Compound Annual Growth Rate (of Industry/Market) :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="form-group mb-0 pr-2">
                                     <div class="position-relative">
@@ -640,8 +680,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </form>
             </div>
@@ -657,35 +695,37 @@
                         <i (click)="openHintModal('marketSize')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div class="input-label">
-                            Market Size :
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Market Size :</label>
                         </div>
-                        <div class="input-feild">
-                            <div class="d-flex justify-content-center align-content-center flex-wrap">
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                        <div class="w-77">
+                            <div class="input-feild">
+                                <div class="d-flex align-content-center flex-wrap">
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="TAM" type="number">
                                         </div>
-                                        <input class="form-control " placeholder="TAM" type="number">
                                     </div>
-                                </div>
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="SAM" type="number">
                                         </div>
-                                        <input class="form-control " placeholder="SAM" type="number">
                                     </div>
-                                </div>
-                                <div class="form-group mb-0 mr-2">
-                                    <div class="position-relative">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                    <div class="form-group mb-0 mr-2">
+                                        <div class="position-relative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">{{getCurrencySymbol( companyCurrency,'wide')}}</span>
+                                            </div>
+                                            <input class="form-control " placeholder="SOM" type="number">
                                         </div>
-                                        <input class="form-control " placeholder="SOM" type="number">
                                     </div>
                                 </div>
                             </div>
@@ -705,29 +745,12 @@
                         <i (click)="openHintModal('cashOperation')" class="fa fa-info-circle ml-2"></i>
                     </div>
                 </div>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Cash & Cash Equivalent :
-                            </div>
-                            <div class="input-label">
-                                Monthly Burn Rate :
-                            </div>
-                            <div class="input-label">
-                                Net Burn Rate :
-                            </div>
-                            <div class="input-label">
-                                Net Cash :
-                            </div>
-                            <div class="input-label">
-                                Runway :
-                            </div>
-                            <div class="input-label">
-                                Net Revenue Retention :
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Cash & Cash Equivalent :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="form-group mb-0">
                                     <div class="position-relative">
@@ -738,6 +761,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Monthly Burn Rate :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -774,6 +804,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Net Burn Rate :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -802,6 +839,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Net Cash :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -822,6 +866,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Runway :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -842,6 +893,13 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Net Revenue Retention :</label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <div class="d-flex justify-content-start align-content-center flex-wrap">
                                     <div class="form-group mb-0 mr-2">
@@ -887,20 +945,12 @@
                     </div>
                 </div>
                 <!--        ACCOUNTING METHOD-->
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div>
-                            <div class="input-label">
-                                Accounting method :
-                            </div>
-                            <div class="input-label">
-                                <span class="mr-4 font-weight-600">Company shares :</span>
-                                <span class="font-weight-400">
-                                [Have you set aside shares for employees?]
-                            </span>
-                            </div>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label">Accounting method :</label>
                         </div>
-                        <div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="accountingMethod">
                                     <option disabled selected value="">Please select</option>
@@ -909,6 +959,20 @@
                                     <option value="D'ont know">D'ont know</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label flex-column align-items-start">
+                               <span class="pr-4 font-weight-600">
+                                Company shares :
+                              </span>
+                                <span class="font-weight-400">
+                                    [Have you set aside shares for employees?]
+                                </span>
+                            </label>
+                        </div>
+                        <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="employeeShares">
                                     <option disabled selected value="">Please select</option>
@@ -917,84 +981,76 @@
                                 </select>
                             </div>
                         </div>
-
-
                     </div>
                 </form>
                 <!--        END ACCOUNTING METHOD-->
 
                 <!--        COMPANY SHARES-->
-                <div class="question-answer d-flex w-100 flex-wrap mb-3">
+                <div class="question-answer w-100  mb-3">
 
-                    <form *ngIf="financialGroup.get('employeeShares').value" class="question-answer d-flex w-100 mb-3 xx">
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="input-label">
-                                <span class="font-weight-400 pl-152">[Current Shareholders]</span>
+                    <form *ngIf="financialGroup.get('employeeShares').value" class="question-answer w-100 mb-3 xx">
+                        <div class="d-flex">
+                            <div class="w-23">
+                                <label class="input-label">[Current Shareholders]</label>
                             </div>
-                            <div class="input-feild h-0">
-                            </div>
-                        </div>
-                    </form>
-                    <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                        <div class="d-flex justify-content-start align-items-center">
-                            <div class="input-label h-0">
-                            </div>
-                            <div class="input-feild">
-                                <div *ngIf="financialGroup.get('employeeShares').value"
-                                     class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                                    <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
+                            <div class="w-77">
+                                <div class="input-feild">
+                                    <div *ngIf="financialGroup.get('employeeShares').value"
                                          class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                                        <div class="input-label w-20 h-0">
-                                        </div>
-                                        <div class="w-100 mb-3">
-                                            <form [formGroup]="financialGroup.get('shareholders').controls[i]"
-                                                  class="d-flex justify-content-start align-items-center flex-wrap ">
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="name" placeholder="Name">
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="stake" placeholder="Stake"
-                                                           type="number">
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="shares" placeholder="Shares">
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="shareClass" placeholder="test"
-                                                            required>
-                                                        <option disabled selected value="">Share class</option>
-                                                        <option value="Ordinary">Ordinary</option>
-                                                        <option value="Prefrence">Prefrence</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="voting" required>
-                                                        <option disabled selected value="">Voting</option>
-                                                        <option value="Voting">Voting</option>
-                                                        <option value="Non Voting">Non Voting</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <select class="form-select" formControlName="antiDilution" required>
-                                                        <option disabled selected value="">Anti dilution</option>
-                                                        <option value=true>Yes</option>
-                                                        <option value=false>No</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-item">
-                                                    <input class="form-control" formControlName="allocationDate" type="date">
-                                                </div>
-                                                <div *ngIf="financialGroup.get('shareholders').controls.length == i+1" class="input-item">
-                                                    <div class="w-100 d-flex justify-content-end">
-                                                        <button (click)="addShareHolder()" class="btn p-2">
-                                                            Add shareholder <i class="fa-solid fa-circle-plus"></i>
-                                                        </button>
+                                        <div *ngFor="let shareHolder of financialGroup.get('shareholders').controls; index as i "
+                                             class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                            <div class="input-label w-20 h-0">
+                                            </div>
+                                            <div class="w-100 mb-3">
+                                                <form [formGroup]="financialGroup.get('shareholders').controls[i]"
+                                                      class="d-flex justify-content-start align-items-center flex-wrap ">
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="name" placeholder="Name">
                                                     </div>
-                                                </div>
-                                            </form>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="stake" placeholder="Stake"
+                                                               type="number">
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="shares" placeholder="Shares">
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="shareClass" placeholder="test"
+                                                                required>
+                                                            <option disabled selected value="">Share class</option>
+                                                            <option value="Ordinary">Ordinary</option>
+                                                            <option value="Prefrence">Prefrence</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="voting" required>
+                                                            <option disabled selected value="">Voting</option>
+                                                            <option value="Voting">Voting</option>
+                                                            <option value="Non Voting">Non Voting</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <select class="form-select" formControlName="antiDilution" required>
+                                                            <option disabled selected value="">Anti dilution</option>
+                                                            <option value=true>Yes</option>
+                                                            <option value=false>No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="input-item">
+                                                        <input class="form-control" formControlName="allocationDate" type="date">
+                                                    </div>
+                                                    <div *ngIf="financialGroup.get('shareholders').controls.length == i+1" class="input-item">
+                                                        <div class="w-100 d-flex justify-content-end">
+                                                            <button (click)="addShareHolder()" class="btn p-2">
+                                                                Add shareholder <i class="fa-solid fa-circle-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1003,71 +1059,70 @@
                 <!--        END COMPANY SHARES-->
 
                 <!--        PREVIOUS FINANCE INJECTION-->
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <div class="input-label">
-                            <span class="mr-4 font-weight-600">Previous Finance Injection :</span>
-                            <span class="font-weight-400">
-                                [Previous Injection]
-                            </span>
+                <form [formGroup]="financialGroup" class="question-answer w-100 mb-3">
+                    <div class="d-flex">
+                        <div class="w-23">
+                            <label class="input-label flex-column align-items-start">
+                               <span class="pr-4 font-weight-600">
+                                   Previous Finance Injection :
+                               </span>
+                                <span class="font-weight-400">
+                                    [Previous Injection]
+                                </span>
+                            </label>
                         </div>
-                        <div class="input-feild h-0">
-                        </div>
-                    </div>
-                </form>
-                <form [formGroup]="financialGroup" class="question-answer d-flex w-100 mb-3">
-                    <div class="d-flex justify-content-start align-items-center w-100">
-                        <div class="input-label h-0"></div>
-                        <div class="input-feild mxt-17">
-                            <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "
-                                 class="w-100 d-flex justify-content-start align-items-center flex-wrap">
-                                <div class="w-100 mb-3">
-                                    <form [formGroup]="financialGroup.get('previousCash').controls[i]"
-                                          class="d-flex justify-content-start align-items-center flex-wrap ">
-                                        <div class="input-item">
-                                            <select class="form-select" formControlName="type" required>
-                                                <option disabled selected value="">Injection type</option>
-                                                <option value="Equity investment">Equity investment</option>
-                                                <option value="Crowdfunding">Crowdfunding</option>
-                                                <option value="Grant">Grant</option>
-                                                <option value="Loan">Loan</option>
-                                                <option value="Convertible Loan">Convertible Loan</option>
-                                            </select>
-                                        </div>
-                                        <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
-                                             class="input-item">
-                                            <input class="form-control" formControlName="cap" placeholder="Cap"
-                                                   type="number">
-                                        </div>
-                                        <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
-                                             class="input-item">
-                                            <input class="form-control" formControlName="discount" placeholder="Discount">
-                                        </div>
-                                        <div class="input-item">
-                                            <input class="form-control" formControlName="source"
-                                                   placeholder="Fund or Source">
-                                        </div>
-                                        <div class="input-item">
-                                            <input class="form-control" formControlName="date" placeholder="Date"
-                                                   type="date">
-                                        </div>
-                                        <div class="input-item">
-                                            <input class="form-control" formControlName="amount" placeholder="Amount"
-                                                   type="number">
-                                        </div>
-                                        <div class="input-item">
-                                            <input class="form-control" formControlName="equityGiven"
-                                                   placeholder="Equity given" type="number">
-                                        </div>
-                                        <div class="input-item">
-                                            <select class="form-select" formControlName="charges">
-                                                <option disabled selected value="">Charges</option>
-                                                <option value="Yes">Yes</option>
-                                                <option value="No">No</option>
-                                                <option value="Not sure">Not sure</option>
-                                            </select>
-                                        </div>
-                                    </form>
+                        <div class="w-77">
+                            <div class="input-feild">
+                                <div *ngFor="let shareHolder of financialGroup.get('previousCash').controls; index as i "
+                                     class="w-100 d-flex justify-content-start align-items-center flex-wrap">
+                                    <div class="w-100 mb-3">
+                                        <form [formGroup]="financialGroup.get('previousCash').controls[i]"
+                                              class="d-flex justify-content-start align-items-center flex-wrap ">
+                                            <div class="input-item pt-0">
+                                                <select class="form-select" formControlName="type" required>
+                                                    <option disabled selected value="">Injection type</option>
+                                                    <option value="Equity investment">Equity investment</option>
+                                                    <option value="Crowdfunding">Crowdfunding</option>
+                                                    <option value="Grant">Grant</option>
+                                                    <option value="Loan">Loan</option>
+                                                    <option value="Convertible Loan">Convertible Loan</option>
+                                                </select>
+                                            </div>
+                                            <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
+                                                 class="input-item pt-0">
+                                                <input class="form-control" formControlName="cap" placeholder="Cap"
+                                                       type="number">
+                                            </div>
+                                            <div *ngIf="financialGroup.get('previousCash').controls[i].get('type')?.value == 'Convertible Loan'"
+                                                 class="input-item pt-0">
+                                                <input class="form-control" formControlName="discount" placeholder="Discount">
+                                            </div>
+                                            <div class="input-item pt-0">
+                                                <input class="form-control" formControlName="source"
+                                                       placeholder="Fund or Source">
+                                            </div>
+                                            <div class="input-item pt-0">
+                                                <input class="form-control" formControlName="date" placeholder="Date"
+                                                       type="date">
+                                            </div>
+                                            <div class="input-item pt-0">
+                                                <input class="form-control" formControlName="amount" placeholder="Amount"
+                                                       type="number">
+                                            </div>
+                                            <div class="input-item pt-0">
+                                                <input class="form-control" formControlName="equityGiven"
+                                                       placeholder="Equity given" type="number">
+                                            </div>
+                                            <div class="input-item pt-0">
+                                                <select class="form-select" formControlName="charges">
+                                                    <option disabled selected value="">Charges</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                    <option value="Not sure">Not sure</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
