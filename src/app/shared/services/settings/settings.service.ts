@@ -43,8 +43,16 @@ export class SettingsService {
     }
 
     getPuidDetails(puidId: string): Observable<any> {
-        const result = new Subject<any>();
+        const result = new Subject();
         Parse.Cloud.run('permalink' , {id : puidId}).then(data => result.next(data?.attributes));
+        return result;
+    }
+
+    getCompanyCurrency() {
+        const result = new Subject();
+         Parse.Cloud.run('report' , { id : localStorage.getItem('cid')}).then((companyReport: any) => {
+             result.next(companyReport);
+        });
         return result;
     }
 }

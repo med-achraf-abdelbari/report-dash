@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -27,8 +27,9 @@ export class NgbdModalContent {
 @Component({
     selector: 'app-financial', templateUrl: './financial.component.html', styleUrls: ['./financial.component.scss']
 })
-export class FinancialComponent implements OnInit {
+export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
 
+    @Input() dealReport;
     // tslint:disable-next-line:no-output-rename
     @Output('value') value = new EventEmitter<any>();
 
@@ -43,7 +44,7 @@ export class FinancialComponent implements OnInit {
     helpDeepDive = {};
 
     getCurrencySymbol = getCurrencySymbol;
-    companyCurrency = 'GBP'; // todo update this value from api
+    companyCurrency: string;
 
     revenueRetentionFG: FormGroup;
     financialPerformanceFG: FormGroup;
@@ -51,6 +52,7 @@ export class FinancialComponent implements OnInit {
     marketGrowthFG: FormGroup;
     marketSizeFG: FormGroup;
     cashOperationFG: FormGroup;
+    companyReportingFG: FormGroup;
 
     constructor(private formBuilder: FormBuilder, private settingsService: SettingsService, private modalService: NgbModal, ) {
     }
@@ -66,6 +68,13 @@ export class FinancialComponent implements OnInit {
         this.getHelpDeepDive();
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        if (!this.companyCurrency) {
+            this.companyCurrency = this.dealReport?.report?.currency;
+            console.log('COMPANY CURRENCY ==>', this.companyCurrency);
+        }
+    }
+
     initForms() {
         this.initRevenueRetentionFG();
         this.initFinancialPerformance();
@@ -73,6 +82,7 @@ export class FinancialComponent implements OnInit {
         this.initMarketGrowthFG();
         this.initMarketSizeFG();
         this.initCashOperationFG();
+        this.initCompanyReportingFG();
     }
 
     initRevenueRetentionFG() {
@@ -212,6 +222,34 @@ export class FinancialComponent implements OnInit {
         });
     }
 
+    initCompanyReportingFG() {
+        this.companyReportingFG = this.formBuilder.group({
+            accountingMethod: new FormControl(),
+            companyShares: new FormControl(),
+            shareHolders: new FormArray([
+                new FormGroup({
+                    name : new FormControl(),
+                    stake : new FormControl(),
+                    shares : new FormControl(),
+                    shareClass : new FormControl(),
+                    voting : new FormControl(),
+                    antiDilution : new FormControl(),
+                    date : new FormControl(),
+                })
+            ]),
+            previousFinanceInjection: new FormArray([
+                new FormGroup({
+                    injectionType : new FormControl(),
+                    fundSource : new FormControl(),
+                    date : new FormControl(),
+                    amount : new FormControl(),
+                    equityGiven : new FormControl(),
+                    charges : new FormControl(),
+                })
+            ]),
+        });
+    }
+
 
     getHelpDeepDive() {
         this.settingsService.getHelpDeepDive().subscribe((data: any) => {
@@ -278,5 +316,7 @@ export class FinancialComponent implements OnInit {
         });
     }
 
+    ngOnDestroy() {
+    }
 
 }
