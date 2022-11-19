@@ -7,12 +7,11 @@ import {getPuidDetails} from '../store/actions/global.actions';
 import {ApiIntegrationService} from '../shared/services/api-integration/api-integration.service';
 import {SettingsService} from '../shared/services/settings/settings.service';
 import {AutoUnsububscribe} from '../shared/decorators/AutoUnsubscribe';
+import {Router} from '@angular/router';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
-@AutoUnsububscribe()
-@Component({
-    selector: 'app-landing',
-    templateUrl: './landing.component.html',
-    styleUrls: ['./landing.component.scss']
+@AutoUnsububscribe() @Component({
+    selector: 'app-landing', templateUrl: './landing.component.html', styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit, OnDestroy {
     focus: any;
@@ -25,7 +24,9 @@ export class LandingComponent implements OnInit, OnDestroy {
     metricsSubscription: Subscription;
 
     constructor(private store: Store,
+                private router: Router,
                 private domSanitizer: DomSanitizer,
+                private ngxUiLoaderService: NgxUiLoaderService,
                 private settingsService: SettingsService,
                 private apiIntegrationService: ApiIntegrationService) {
     }
@@ -47,12 +48,19 @@ export class LandingComponent implements OnInit, OnDestroy {
     }
 
     connectWithProvider(provider: string) {
+        localStorage.setItem('selectedProvider', provider);
         this.metricsSubscription = this.apiIntegrationService.calculateMatrics({
-            integrationName: provider,
-            companyName: 'test',
+            integrationName: provider, companyName: localStorage.getItem('permalink'),
         }).subscribe((result: any) => {
             if (result.type === 'auth-url') {
                 window.location.href = result.data.url;
+            }
+            if (result.type === 'metrics') {
+                this.router.navigate(['/user-manual-data-input'], {
+                    queryParams: {
+                        gm: true // get metrics
+                    }
+                });
             }
         });
     }

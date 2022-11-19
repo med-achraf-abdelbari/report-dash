@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ApiIntegrationService} from '../shared/services/api-integration/api-integration.service';
 import {SettingsService} from '../shared/services/settings/settings.service';
 
@@ -14,30 +14,37 @@ export class ManualDataInputComponent implements OnInit {
     dealReport;
 
     constructor(private route: ActivatedRoute,
+                private router: Router,
                 private apiIntegrationService: ApiIntegrationService,
                 private settingsService: SettingsService) {
     }
 
     ngOnInit() {
         this.route.queryParams.subscribe((params: any) => {
-            console.log(params);
-            this.getMetrics(params);
+            if (params.gm || params.code) {
+                this.getMetrics(params);
+            }
         });
         this.getCompanyCurrency();
     }
 
     getCompanyCurrency() {
-        this.settingsService.getCompanyCurrency().subscribe(companyReport =>{
+        this.settingsService.getCompanyCurrency().subscribe(companyReport => {
             this.dealReport = companyReport;
         });
     }
 
     getMetrics(parms) {
-        this.apiIntegrationService.calculateMatrics({
-            integrationName: 'Xero', companyName: 'test', options: {
-                callbackUrl: 'http://localhost:4000/xeroCallback?code=W5Fsmo7vdjE39h6qdbEX7dMvCFwK8WtWwxv71w6h6_M&scope=openid%20profile%20email%20accounting.transactions%20accounting.settings%20accounting.reports.read%20accounting.contacts%20accounting.attachments%20files%20offline_access&session_state=5uHro-www4e5bZODShnHJpkirYaIqckxSxtafhCUKME.jxk8PepBHpHZQiesyAmtGA'
-            }
-        }).subscribe((result: any) => {
+        const requestParams = {
+            integrationName: localStorage.getItem('selectedProvider'),
+            companyName: localStorage.getItem('permalink'),
+        };
+        if (!!parms.code) {
+            requestParams['options'] = {
+                callbackUrl: this.router.url
+            };
+        }
+        this.apiIntegrationService.calculateMatrics(requestParams).subscribe((result: any) => {
             if (result.type === 'auth-url') {
                 window.location.href = result.data.url;
             }

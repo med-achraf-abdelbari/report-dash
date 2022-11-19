@@ -9,8 +9,8 @@
                 </div>
             </div>
             <form *ngFor="let stage of stages" [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
-                <div class="d-flex justify-content-start align-items-center mb-3">
-                    <div class="input-feild d-flex pt-0">
+                <div class="d-flex justify-content-start align-items-start mb-3">
+                    <div class="input-feild d-flex pt-1">
                         <div class="custom-control custom-checkbox circle mb-3 w-auto">
                             <input checked="" class="custom-control-input"  [id]="stage.name" type="checkbox">
                             <label class="custom-control-label" [for]="stage.name"></label>
