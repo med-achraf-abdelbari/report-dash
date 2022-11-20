@@ -1,6 +1,7 @@
 .report-wrapper{
   .report-header{
-    margin: 100px 0 50px;
+    margin: 100px 0 0;
+    border-bottom: 8px solid black;
     .company-details{
       .company-name{
         font-size: 42px;
@@ -11,7 +12,7 @@
     .date-and-extras{
       .detail{
         font-size: 18px;
-        font-weight: 600!important;
+        //font-weight: 600!important;
       }
     }
 
@@ -19,7 +20,7 @@
   .company-details-data{
     .detail{
       font-size: 20px;
-      font-weight: 600!important;
+      //font-weight: 600!important;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -27,12 +28,20 @@
   }
   h1 {
     font-size: 2.2rem;
-    font-weight: 900;
   }
   h2 {
-    text-align: center;
-    font-size: 2rem !important;
-    padding: 20px 0;
-    border-bottom: 1px solid;
+    //font-size: 2rem !important;
+    font-weight: bold;
+    //padding-top: 10px 0;
+    border-bottom: 1px solid #7A7A7A;
   }
 }
+@media print {
+  .page-break {page-break-after: always;}
+}
+.report-line{
+  .metric:nth-child(4){
+    margin-bottom: 4.5rem;
+  }
+}
+
