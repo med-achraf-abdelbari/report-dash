@@ -38,6 +38,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {SharedModule} from './shared/shared.module';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatRippleModule,
         MatExpansionModule,
         NgbModalModule,
-        NgbModule
+        NgbModule,
+        SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]

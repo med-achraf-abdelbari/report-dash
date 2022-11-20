@@ -9,12 +9,17 @@ import {EffectsModule} from '@ngrx/effects';
 import {SharedEffects} from './store/effects/shared.effects';
 import {TermsAndConditionsComponent} from './components/terms-and-conditions/terms-and-conditions.component';
 import {PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy.component';
+import {CurrencyFormatterDirective} from './directives/CurrencyFormatter.directive';
 
 @NgModule({
     declarations: [
         AboutComponent,
         TermsAndConditionsComponent,
-        PrivacyPolicyComponent
+        PrivacyPolicyComponent,
+        CurrencyFormatterDirective
+    ],
+    exports: [
+        CurrencyFormatterDirective
     ],
     imports: [RouterModule.forChild([
         {
@@ -22,8 +27,8 @@ import {PrivacyPolicyComponent} from './components/privacy-policy/privacy-policy
             component: AboutComponent
         },
         {
-          path: 'terms-and-conditions',
-          component: TermsAndConditionsComponent
+            path: 'terms-and-conditions',
+            component: TermsAndConditionsComponent
         },
         {
             path: 'privacy-policy',

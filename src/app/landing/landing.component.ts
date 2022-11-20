@@ -7,7 +7,7 @@ import {getPuidDetails} from '../store/actions/global.actions';
 import {ApiIntegrationService} from '../shared/services/api-integration/api-integration.service';
 import {SettingsService} from '../shared/services/settings/settings.service';
 import {AutoUnsububscribe} from '../shared/decorators/AutoUnsubscribe';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @AutoUnsububscribe() @Component({
@@ -25,6 +25,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
     constructor(private store: Store,
                 private router: Router,
+                private route: ActivatedRoute,
                 private domSanitizer: DomSanitizer,
                 private ngxUiLoaderService: NgxUiLoaderService,
                 private settingsService: SettingsService,
@@ -34,6 +35,12 @@ export class LandingComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.getPuidDetails();
         this.getHelpDeepDive();
+        this.route.queryParams.subscribe((params => {
+            for (const param in params) {
+                console.log(params);
+                localStorage.setItem(param, params[param]);
+            }
+        }));
     }
 
     getPuidDetails() {
