@@ -20,10 +20,10 @@
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <div class="section-wrapper">
-                                    <app-financial [dealReport]="dealReport"></app-financial>
+                                    <app-financial [dealReport]="dealReport" (value)="setFinancialReportData($event)"></app-financial>
                                 </div>
                             </mat-expansion-panel>
-                            <!--<mat-expansion-panel >
+                            <mat-expansion-panel >
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
                                         INNOVATION
@@ -42,57 +42,13 @@
                                 <div class="section-wrapper">
                                     <app-marketing></app-marketing>
                                 </div>
-                            </mat-expansion-panel>-->
+                            </mat-expansion-panel>
                         </mat-accordion>
-
-<!--                        <mat-stepper [linear]="false" #stepper>-->
-<!--                            <mat-step label="Finance">-->
-<!--                                <app-financial  (value)="updateFinance($event)" *ngIf="activeSection === 'FIANANCE'"></app-financial>-->
-<!--                                <div>-->
-<!--                                    <button mat-button matStepperNext>Next</button>-->
-<!--                                </div>-->
-<!--                            </mat-step>-->
-
-<!--                            <mat-step label="Innovation">-->
-<!--                                <app-innovation (value)="updateInnovation($event)" *ngIf="activeSection === 'INNOVATION'"></app-innovation>-->
-
-<!--                                <div>-->
-<!--                                    <button mat-button matStepperPrevious>Previous</button>-->
-<!--                                    <button mat-button matStepperNext>Next</button>-->
-<!--                                </div>-->
-<!--                            </mat-step>-->
-
-<!--                            <mat-step label="Product, Marketing & Market">-->
-<!--                                <app-marketing (value)="updateMarketing($event)" *ngIf="activeSection === 'MARKETING'"></app-marketing>-->
-
-<!--                                <div>-->
-<!--                                    <button mat-button matStepperPrevious>Previous</button>-->
-<!--                                </div>-->
-<!--                            </mat-step>-->
-
-<!--                        </mat-stepper>-->
-
-<!--                        <div class="w-100 mb-4">-->
-<!--                            <ul class="row nav nav-pills nav-fill flex-column flex-sm-row" id="tabs-text" role="tablist">-->
-<!--                                <li class="nav-item col-sm-4">-->
-<!--                                    <a class="nav-link mb-sm-3 mb-md-0 cursor-pointer" id="tabs-text-1-tab" data-toggle="tab" [ngClass]="{'active' : activeSection === 'FIANANCE'}"-->
-<!--                                       (click)="activeSection = 'FIANANCE'" role="tab" aria-controls="tabs-text-1" aria-selected="true">Finance</a>-->
-<!--                                </li>-->
-<!--                                <li class="nav-item col-sm-4">-->
-<!--                                    <a class="nav-link mb-sm-3 mb-md-0 cursor-pointer" id="tabs-text-2-tab" data-toggle="tab" [ngClass]="{'active' : activeSection === 'INNOVATION'}"-->
-<!--                                       (click)="activeSection = 'INNOVATION'" role="tab" aria-controls="tabs-text-2" aria-selected="false">Innovation</a>-->
-<!--                                </li>-->
-<!--                                <li class="nav-item col-sm-4">-->
-<!--                                    <a class="nav-link mb-sm-3 mb-md-0 cursor-pointer" id="tabs-text-3-tab" data-toggle="tab" [ngClass]="{'active' : activeSection === 'MARKETING'}"-->
-<!--                                       (click)="activeSection = 'MARKETING'" role="tab" aria-controls="tabs-text-3" aria-selected="false">Product,-->
-<!--                                        Marketing & Market</a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-
-<!--                        <div class="my-3">-->
-<!--                            <app-financial></app-financial>-->
-<!--                        </div>  -->
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end align-items-center">
+                                <button (click)="submitReport()" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

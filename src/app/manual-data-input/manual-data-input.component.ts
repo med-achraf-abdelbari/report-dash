@@ -12,6 +12,7 @@ export class ManualDataInputComponent implements OnInit {
     activeSection: 'FIANANCE' | 'MARKETING' | 'INNOVATION' = 'FIANANCE';
     report = {};
     dealReport;
+    deepReport:any = {};
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -73,7 +74,11 @@ export class ManualDataInputComponent implements OnInit {
     }
 
     submitReport() {
+        this.settingsService.submitDeepReport(localStorage.getItem('cid'), this.deepReport).then(result =>{console.log(result)})
+    }
 
+    setFinancialReportData(data) {
+        this.deepReport.financials = {...this.deepReport.financials , ...data};
     }
 
     showConfirmModal() {

@@ -4,6 +4,8 @@ import {SettingsService} from '../../../shared/services/settings/settings.servic
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DomSanitizer} from '@angular/platform-browser';
 import {getCurrencySymbol} from '@angular/common';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {merge} from 'rxjs/internal/operators/merge';
 
 @Component({
     selector: 'app-modal-content', template: `
@@ -43,6 +45,7 @@ export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
     salesFG: any;
     helpDeepDive = {};
     financeModules;
+    formGroupsSubscriptions = new Subscription();
 
     getCurrencySymbol = getCurrencySymbol;
     companyCurrency: string;
@@ -59,12 +62,6 @@ export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
 
     ngOnInit() {
         this.initForms();
-        this.revenueRetentionFG.valueChanges.subscribe(() => {
-            console.log(this.revenueRetentionFG.value);
-/*
-            this.value.emit(this.financialGroup.value);
-*/
-        });
         this.getHelpDeepDive();
     }
 
@@ -98,6 +95,17 @@ export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
         this.initMarketSizeFG();
         this.initCashOperationFG();
         this.initCompanyReportingFG();
+        new Observable(observer => {
+                this.formGroupsSubscriptions.add(this.revenueRetentionFG.valueChanges.subscribe(revenueRetentionFG => observer.next(revenueRetentionFG))),
+                this.formGroupsSubscriptions.add(this.financialPerformanceFG.valueChanges.subscribe(financialPerformanceFG => observer.next(financialPerformanceFG))),
+                this.formGroupsSubscriptions.add(this.businessPerformanceFG.valueChanges.subscribe(businessPerformanceFG => observer.next(businessPerformanceFG))),
+                this.formGroupsSubscriptions.add(this.marketGrowthFG.valueChanges.subscribe(marketGrowthFG => observer.next(marketGrowthFG))),
+                this.formGroupsSubscriptions.add(this.marketSizeFG.valueChanges.subscribe(marketSizeFG => observer.next(marketSizeFG))),
+                this.formGroupsSubscriptions.add(this.cashOperationFG.valueChanges.subscribe(cashOperationFG => observer.next(cashOperationFG))),
+                this.formGroupsSubscriptions.add(this.companyReportingFG.valueChanges.subscribe(companyReportingFG => observer.next(companyReportingFG)))
+        }).subscribe((data)=>{
+            this.value.emit(data);
+        })
     }
 
     initRevenueRetentionFG() {
