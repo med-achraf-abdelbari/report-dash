@@ -13,6 +13,7 @@ export class ManualDataInputComponent implements OnInit {
     report = {};
     dealReport;
     deepReport: any = {};
+    params: any;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -22,6 +23,7 @@ export class ManualDataInputComponent implements OnInit {
 
     ngOnInit() {
         this.route.queryParams.subscribe((params: any) => {
+            this.params = params;
             if (params.gm || params.code) {
                 this.getMetrics(params);
             }
@@ -30,7 +32,7 @@ export class ManualDataInputComponent implements OnInit {
     }
 
     getCompanyCurrency() {
-        this.settingsService.getCompanyCurrency().subscribe(companyReport => {
+        this.settingsService.getCompanyCurrency(this.params.cid).subscribe(companyReport => {
             this.dealReport = companyReport;
         });
     }
@@ -38,7 +40,7 @@ export class ManualDataInputComponent implements OnInit {
     getMetrics(parms) {
         const requestParams = {
             integrationName: localStorage.getItem('selectedProvider'),
-            companyName: localStorage.getItem('permalink'),
+            companyName: this.params.permalink,
         };
         if (!!parms.code) {
             requestParams['options'] = {
@@ -74,15 +76,17 @@ export class ManualDataInputComponent implements OnInit {
     }
 
     submitReport() {
-        this.settingsService.submitDeepReport(localStorage.getItem('cid'), this.deepReport).then(result => {console.log(result); });
+        this.settingsService.submitDeepReport(this.params.cid, this.deepReport).then(result => {
+            console.log(result);
+        });
     }
 
     setFinancialReportData(data) {
-        this.deepReport.financials = {...this.deepReport.financials , ...data};
+        this.deepReport.financials = {...this.deepReport.financials, ...data};
     }
 
     setInnovationReportData(data) {
-        this.deepReport.innovation = {...this.deepReport.innovation , ...data};
+        this.deepReport.innovation = {...this.deepReport.innovation, ...data};
     }
 
     showConfirmModal() {

@@ -6,6 +6,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {getCurrencySymbol} from '@angular/common';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {merge} from 'rxjs/internal/operators/merge';
+import {log} from 'util';
 
 @Component({
     selector: 'app-modal-content', template: `
@@ -102,10 +103,10 @@ export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
                 this.formGroupsSubscriptions.add(this.marketGrowthFG.valueChanges.subscribe(marketGrowthFG => observer.next(marketGrowthFG))),
                 this.formGroupsSubscriptions.add(this.marketSizeFG.valueChanges.subscribe(marketSizeFG => observer.next(marketSizeFG))),
                 this.formGroupsSubscriptions.add(this.cashOperationFG.valueChanges.subscribe(cashOperationFG => observer.next(cashOperationFG))),
-                this.formGroupsSubscriptions.add(this.companyReportingFG.valueChanges.subscribe(companyReportingFG => observer.next(companyReportingFG)))
-        }).subscribe((data)=>{
+                this.formGroupsSubscriptions.add(this.companyReportingFG.valueChanges.subscribe(companyReportingFG => observer.next(companyReportingFG)));
+        }).subscribe((data) => {
             this.value.emit(data);
-        })
+        });
     }
 
     initRevenueRetentionFG() {
@@ -284,6 +285,8 @@ export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
                 })
             ]),
         });
+
+        this.companyReportingFG.valueChanges.subscribe(data => console.log(data));
     }
 
     addShareHolder() {

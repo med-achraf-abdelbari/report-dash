@@ -51,9 +51,9 @@ export class SettingsService {
         return result;
     }
 
-    getCompanyCurrency() {
+    getCompanyCurrency(id: string) {
         const result = new Subject();
-         Parse.Cloud.run('report' , { id : localStorage.getItem('cid')}).then((companyReport: any) => {
+         Parse.Cloud.run('report' , { id }).then((companyReport: any) => {
              result.next(companyReport);
         });
         return result;

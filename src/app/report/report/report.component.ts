@@ -3,6 +3,7 @@ import {ApexAxisChartSeries, ApexChart, ApexTitleSubtitle, ApexXAxis, ChartCompo
 import {FINANCIAL_METRIC_LIST} from './metric-list';
 import {Config, DefaultConfig} from 'ngx-easy-table';
 import {SettingsService} from '../../shared/services/settings/settings.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 export interface ChartOptions {
     series: ApexAxisChartSeries | any;
@@ -24,18 +25,26 @@ export class ReportComponent implements OnInit {
     data: any[] = [];
     report;
     show;
+    params: any;
 
-    constructor(private settingsService: SettingsService, private cdr: ChangeDetectorRef) {
+    constructor(private settingsService: SettingsService,
+                private cdr: ChangeDetectorRef,
+                private route: ActivatedRoute,
+                private router: Router,
+                ) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe((params: any) => {
+            this.params = params;
+        });
         this.metrics = [...FINANCIAL_METRIC_LIST];
         this.configuration = {...DefaultConfig, headerEnabled: true, paginationEnabled: false, searchEnabled: false};
         this.getReport();
     }
 
     getReport() {
-        this.settingsService.getCompanyCurrency().subscribe((companyReport: any) => {
+        this.settingsService.getCompanyCurrency(this.params.cid).subscribe((companyReport: any) => {
             this.report = JSON.parse(JSON.stringify(companyReport.report));
             console.log(this.report);
             this.calculateMetricsFromAttributes();
@@ -55,7 +64,6 @@ export class ReportComponent implements OnInit {
         this.metrics[5].MetricObj.columns[3].value = this.report.deepReport.financials.netBurnRate.SalesLastThreeMonths - (this.report.deepReport.financials.netBurnRate.COGSLastThreeMonths +
             this.report.deepReport.financials.netBurnRate.OperatingCostsLastThreeMonths);
         this.metrics[5].MetricObj.columns[4].value = (this.report.deepReport.financials.runway.CashAndCashEquivalent / this.report.deepReport.financials.runway.NetBurnRate);
-
     }
 
     calculateMetricsFromAttributes() {

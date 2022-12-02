@@ -1028,7 +1028,7 @@
                         <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="accountingMethod">
-                                    <option disabled selected value="">Please select</option>
+                                    <option disabled selected [ngValue]="null">Please select</option>
                                     <option value="Accrual">Accrual</option>
                                     <option value="Cash">Cash</option>
                                     <option value="D'ont know">D'ont know</option>
@@ -1050,9 +1050,9 @@
                         <div class="w-77">
                             <div class="input-feild">
                                 <select class="form-select" formControlName="companyShares">
-                                    <option disabled selected value="">Please select</option>
-                                    <option value=true>Yes</option>
-                                    <option value=false>No</option>
+                                    <option disabled selected [ngValue]="null">Please select</option>
+                                    <option [value]=true>Yes</option>
+                                    <option [value]=false>No</option>
                                 </select>
                             </div>
                         </div>
@@ -1063,7 +1063,7 @@
                 <!--        COMPANY SHARES-->
                 <form [formGroup]="companyReportingFG" class="question-answer w-100  mb-3">
 
-                    <form formArrayName="shareHolders" *ngIf="!!companyReportingFG.get('companyShares').value" class="question-answer w-100 mb-3 xx">
+                    <form formArrayName="shareHolders" *ngIf="companyReportingFG.get('companyShares').value === 'true'" class="question-answer w-100 mb-3 xx">
                         <div class="d-flex">
                             <div class="w-23">
                                 <label class="input-label">[Current Shareholders]</label>
@@ -1095,7 +1095,7 @@
                                                                 placeholder="test"
                                                                 required>
 <!--
-                                                            <option disabled selected value="">Share class</option>
+                                                            <option disabled selected [ngValue]="null">Share class</option>
 -->
                                                             <option value="Ordinary">Ordinary</option>
                                                             <option value="Prefrence">Prefrence</option>
@@ -1104,7 +1104,7 @@
                                                     <div class="input-item">
                                                         <select class="form-select" formControlName="voting" required>
 <!--
-                                                            <option disabled selected value="">Voting</option>
+                                                            <option disabled selected [ngValue]="null">Voting</option>
 -->
                                                             <option value="Voting">Voting</option>
                                                             <option value="Non Voting">Non Voting</option>
@@ -1114,7 +1114,7 @@
                                                         <select class="form-select" formControlName="antiDilution"
                                                                 required>
 <!--
-                                                            <option disabled selected value="">Anti dilution</option>
+                                                            <option disabled selected [ngValue]="null">Anti dilution</option>
 -->
                                                             <option value=true>Yes</option>
                                                             <option value=false>No</option>
@@ -1166,7 +1166,7 @@
                                               class="d-flex justify-content-start align-items-center flex-wrap ">
                                             <div class="input-item pt-0">
                                                 <select class="form-select" formControlName="injectionType" required>
-                                                    <option disabled selected value="">Injection type</option>
+                                                    <option disabled selected [ngValue]="null">Injection type</option>
                                                     <option value="Equity investment">Equity investment</option>
                                                     <option value="Crowdfunding">Crowdfunding</option>
                                                     <option value="Grant">Grant</option>
@@ -1203,7 +1203,7 @@
                                             </div>
                                             <div class="input-item pt-0">
                                                 <select class="form-select" formControlName="charges">
-                                                    <option disabled selected value="">Charges</option>
+                                                    <option disabled selected [ngValue]="null">Charges</option>
                                                     <option value="Yes">Yes</option>
                                                     <option value="No">No</option>
                                                     <option value="Not sure">Not sure</option>
