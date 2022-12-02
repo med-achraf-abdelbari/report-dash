@@ -1,11 +1,11 @@
 <form [formGroup]="innovationGroup" class="w-100">
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.stageOfInnovation.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Stage of Innovation</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('stageOfInnovation')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <div class="question-answer d-flex w-100 flex-wrap mb-3">
@@ -26,12 +26,12 @@
         </div>
     </div>
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.technologyReadiness.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Technology Readiness Level</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('technologyReadiness')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
@@ -56,12 +56,12 @@
         </div>
     </div>
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.commercialExploitation.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Commercial Exploitation</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('commercialExploitation')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
@@ -89,12 +89,12 @@
         </div>
     </div>
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.innovationIp.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Innovation & IP</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('innovationIp')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
@@ -137,12 +137,12 @@
         </div>
     </div>
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.design.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Design</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('design')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
@@ -165,12 +165,12 @@
         </div>
     </div>
 
-    <div class="w-100">
+    <div *ngIf="innovationModules?.additionalNotes.show" class="w-100">
         <div class="question d-flex p-3 flex-wrap justify-content-start">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Additional Notes</span>
                 <div class="help-wrapper cursor-pointer">
-                    <i class="fa fa-info-circle ml-2"></i>
+                    <i (click)="openHintModal('additionalNotes')" class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->

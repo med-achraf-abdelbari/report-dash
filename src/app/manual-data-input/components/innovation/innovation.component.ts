@@ -1,16 +1,17 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NgbdModalContent} from '../financial/financial.component';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {commercialExplorationQuestions, designs, designTypes, ipAssets, stages, techLevels} from '../../models/innovation';
+import {getCurrencySymbol} from '@angular/common';
 
 @Component({
     selector: 'app-innovation',
     templateUrl: './innovation.component.html',
     styleUrls: ['./innovation.component.scss']
 })
-export class InnovationComponent implements OnInit {
+export class InnovationComponent implements OnInit, OnChanges {
 
     @Input() dealReport;
     @Output() value = new EventEmitter<any>();
@@ -25,6 +26,9 @@ export class InnovationComponent implements OnInit {
     designTypes = designTypes;
     ipAssets = ipAssets;
 
+    getCurrencySymbol = getCurrencySymbol;
+    companyCurrency: string;
+    innovationModules: any;
 
     constructor(private formBuilder: FormBuilder,
                 private settingsService: SettingsService,
@@ -33,11 +37,19 @@ export class InnovationComponent implements OnInit {
 
     ngOnInit(): void {
         this.innovationGroup = this.createInnovationControlGroup();
-        console.log(this.innovationGroup);
         this.innovationGroup.valueChanges.subscribe((innovationData) => {
             this.value.emit(innovationData);
         });
         this.getHelpDeepDive();
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (!this.companyCurrency) {
+            this.companyCurrency = this.dealReport?.report?.currency;
+            this.innovationModules = this.dealReport?.report?.metadata?.modules?.innovation?.elements;
+            console.log('COMPANY CURRENCY ==>', this.companyCurrency);
+            console.log('INNOVATION MODULES ==>', this.innovationModules);
+        }
     }
 
     getHelpDeepDive() {
@@ -57,21 +69,10 @@ export class InnovationComponent implements OnInit {
 
 
     createInnovationControlGroup(): FormGroup {
-
-        // Create evidence controls
-        const evidenceControls = {};
-        // this.evidences.forEach(ev => {
-        //     evidenceControls[ev.name] = {
-        //         value: null,
-        //         notes: null
-        //     };
-        // });
-
         return this.formBuilder.group({
 
             stageOfInnovation: [],
             technologyReadiness: [],
-            innovationEvidence: this.formBuilder.group(evidenceControls),
 
             areaOfImpact: this.formBuilder.group({
                 question1: [],
@@ -83,8 +84,6 @@ export class InnovationComponent implements OnInit {
                 question7: [],
                 question8: [],
                 question9: [],
-
-                // ... add as many as required for the questions
             }),
 
             innovationAndIP: this.formBuilder.group({
