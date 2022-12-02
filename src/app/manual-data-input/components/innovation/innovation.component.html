@@ -1,7 +1,7 @@
 <form [formGroup]="innovationGroup" class="w-100">
 
     <div class="w-100">
-        <div  class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
+        <div class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
             <div class="question-title d-flex justify-content-start align-items-center">
                 <span>Stage of Innovation</span>
                 <div class="help-wrapper cursor-pointer">
@@ -12,8 +12,9 @@
                 <div *ngFor="let stage of stages" class="d-flex justify-content-start align-items-start mb-3">
                     <div class="input-feild d-flex" style="padding-top: 13px;">
                         <div class="custom-control pl-0 mb-3 w-auto">
-                            <input [value]="stage.name" formControlName="stageOfInnovation" class="custom-control-input" [id]="stage.name" type="radio">
-                            <label class="custom-control-label" [for]="stage.name"></label>
+                            <input [id]="stage.name" [value]="stage.name" class="custom-control-input"
+                                   formControlName="stageOfInnovation" type="radio">
+                            <label [for]="stage.name" class="custom-control-label"></label>
                         </div>
                     </div>
                     <div class="input-label d-flex flex-wrap">
@@ -34,16 +35,18 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <div  class="question-answer w-100 mb-3">
+            <div class="question-answer w-100 mb-3">
                 <div class="d-flex">
                     <div class="w-23">
                         <label class="input-label"> Select TRL level :</label>
                     </div>
                     <div class="w-77">
                         <div class="input-feild">
-                            <select formArrayName="technologyReadiness" class="form-select" formControlName="technologyReadiness">
-                                <option disabled selected [ngValue]="null">Select your account type</option>
-                                <option *ngFor="let techLevel of techLevels" value="{{techLevel.level}}">{{techLevel.desc}}</option>
+                            <select class="form-select" formArrayName="technologyReadiness"
+                                    formControlName="technologyReadiness">
+                                <option [ngValue]="null" disabled selected>Select your account type</option>
+                                <option *ngFor="let techLevel of techLevels"
+                                        value="{{techLevel.level}}">{{techLevel.desc}}</option>
                             </select>
                         </div>
                     </div>
@@ -63,14 +66,16 @@
             </div>
             <!--        ACCOUNTING METHOD-->
             <div class="commercial-bloc d-flex flex-wrap">
-                <form [formGroup]="innovationGroup.get('areaOfImpact')"  *ngFor="let quest of commercialExplorationQuestions; index as i" class="question-answer d-flex mb-3 commercial-form">
+                <form *ngFor="let quest of commercialExplorationQuestions; index as i"
+                      [formGroup]="innovationGroup.get('areaOfImpact')"
+                      class="question-answer d-flex mb-3 commercial-form">
                     <div class="d-flex justify-content-between align-items-center w-100 commercial-form-child">
                         <div class="input-label">
                             {{quest}} :
                         </div>
                         <div class="input-feild">
                             <select class="form-select" formControlName="question{{i+1}}">
-                                <option disabled selected [ngValue]="null">Select your answer</option>
+                                <option [ngValue]="null" disabled selected>Select your answer</option>
                                 <option>Yes</option>
                                 <option>No</option>
                                 <option>Not sure</option>
@@ -99,9 +104,11 @@
                         What assets do you generate?
                     </div>
                     <div class="input-feild w-100">
-                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsGenerated').controls; let x = index;" class="custom-control custom-checkbox mb-3 mx-3">
+                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsGenerated').controls; let x = index;"
+                             class="custom-control custom-checkbox mb-3 mx-3">
                             <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated').controls[x]">
-                                <input class="custom-control-input" formControlName="value" id="cu{{x}}" type="checkbox">
+                                <input class="custom-control-input" formControlName="value" id="cu{{x}}"
+                                       type="checkbox">
                                 <label class="custom-control-label" for="cu{{x}}">{{answer.value.name}}</label>
                             </form>
                         </div>
@@ -115,9 +122,11 @@
                         Have you registered any of the following?
                     </div>
                     <div class="input-feild w-100">
-                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsOwned').controls; let j = index;" class="custom-control custom-checkbox mb-3 mx-3">
+                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsOwned').controls; let j = index;"
+                             class="custom-control custom-checkbox mb-3 mx-3">
                             <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsOwned').controls[j]">
-                                <input class="custom-control-input" formControlName="value" id="fu{{j}}" type="checkbox">
+                                <input class="custom-control-input" formControlName="value" id="fu{{j}}"
+                                       type="checkbox">
                                 <label class="custom-control-label" for="fu{{j}}">{{answer.value.name}}</label>
                             </form>
                         </div>
@@ -145,7 +154,8 @@
                     <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
                         <div *ngFor="let design of designs; let j = index;"
                              class="custom-control custom-checkbox mb-3 w-auto">
-                            <input checked="" class="custom-control-input" [value]="design" [formControlName]="design.control" id="design{{j}}"
+                            <input [formControlName]="design.control" [value]="design" checked=""
+                                   class="custom-control-input" id="design{{j}}"
                                    type="checkbox">
                             <label class="custom-control-label" for="design{{j}}">{{design.name}}</label>
                         </div>
@@ -170,7 +180,8 @@
                         Any other additional notes or comments to be written here
                     </div>
                     <div class="input-feild d-flex justify-content-between align-content-center py-3 w-100">
-                          <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1" placeholder="Any other founder notes or comments to be written here"
+                          <textarea class="form-control" formControlName="notes" id="exampleFormControlTextarea1"
+                                    placeholder="Any other founder notes or comments to be written here"
                                     rows="3"></textarea>
                     </div>
                 </div>

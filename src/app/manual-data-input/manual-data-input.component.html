@@ -30,7 +30,7 @@
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <div class="section-wrapper">
-                                    <app-innovation></app-innovation>
+                                    <app-innovation [dealReport]="dealReport" (value)="setInnovationReportData($event)"></app-innovation>
                                 </div>
                             </mat-expansion-panel>
 <!--                            <mat-expansion-panel>-->

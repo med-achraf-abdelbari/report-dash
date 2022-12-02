@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NgbdModalContent} from '../financial/financial.component';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
@@ -12,6 +12,7 @@ import {commercialExplorationQuestions, designs, designTypes, ipAssets, stages, 
 })
 export class InnovationComponent implements OnInit {
 
+    @Input() dealReport;
     @Output() value = new EventEmitter<any>();
 
     innovationGroup: any;
@@ -33,8 +34,8 @@ export class InnovationComponent implements OnInit {
     ngOnInit(): void {
         this.innovationGroup = this.createInnovationControlGroup();
         console.log(this.innovationGroup);
-        this.innovationGroup.valueChanges.subscribe((data) => {
-            console.log(data);
+        this.innovationGroup.valueChanges.subscribe((innovationData) => {
+            this.value.emit(innovationData);
         });
         this.getHelpDeepDive();
     }
