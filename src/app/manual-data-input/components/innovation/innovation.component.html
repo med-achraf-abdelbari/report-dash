@@ -1,4 +1,4 @@
-<form class="w-100">
+<form [formGroup]="innovationGroup" class="w-100">
 
     <div class="w-100">
         <div  class="question d-flex p-3 flex-wrap justify-content-start w-100 flex-wrap">
@@ -8,11 +8,11 @@
                     <i class="fa fa-info-circle ml-2"></i>
                 </div>
             </div>
-            <form *ngFor="let stage of stages" [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
-                <div class="d-flex justify-content-start align-items-start mb-3">
-                    <div class="input-feild d-flex pt-1">
-                        <div class="custom-control custom-checkbox circle mb-3 w-auto">
-                            <input checked="" class="custom-control-input"  [id]="stage.name" type="checkbox">
+            <div class="question-answer d-flex w-100 flex-wrap mb-3">
+                <div *ngFor="let stage of stages" class="d-flex justify-content-start align-items-start mb-3">
+                    <div class="input-feild d-flex" style="padding-top: 13px;">
+                        <div class="custom-control pl-0 mb-3 w-auto">
+                            <input [value]="stage.name" formControlName="stageOfInnovation" class="custom-control-input" [id]="stage.name" type="radio">
                             <label class="custom-control-label" [for]="stage.name"></label>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <span class="w-100 fw-normal">{{stage.info}}</span>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -34,21 +34,21 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup" class="question-answer w-100 mb-3">
+            <div  class="question-answer w-100 mb-3">
                 <div class="d-flex">
                     <div class="w-23">
                         <label class="input-label"> Select TRL level :</label>
                     </div>
                     <div class="w-77">
                         <div class="input-feild">
-                            <select class="form-select" formControlName="technologyReadiness">
-                                <option disabled selected value="">Select your account type</option>
-                                <option *ngFor="let level of techLevels" value="{{level.level}}">{{level.desc}}</option>
+                            <select formArrayName="technologyReadiness" class="form-select" formControlName="technologyReadiness">
+                                <option disabled selected [ngValue]="null">Select your account type</option>
+                                <option *ngFor="let techLevel of techLevels" value="{{techLevel.level}}">{{techLevel.desc}}</option>
                             </select>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
 
         </div>
     </div>
@@ -69,10 +69,11 @@
                             {{quest}} :
                         </div>
                         <div class="input-feild">
-                            <select class="form-select" formControlName="technologyReadiness">
-                                <option disabled selected value="">Select your answer</option>
+                            <select class="form-select" formControlName="question{{i+1}}">
+                                <option disabled selected [ngValue]="null">Select your answer</option>
                                 <option>Yes</option>
                                 <option>No</option>
+                                <option>Not sure</option>
                             </select>
                         </div>
                     </div>
@@ -92,33 +93,33 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="question-answer d-flex w-50 mb-3">
+            <form [formGroup]="innovationGroup.get('innovationAndIP')" class="question-answer d-flex w-50 mb-3">
                 <div class="d-flex justify-content-start align-items-center flex-wrap">
                     <div class="input-label w-100">
                         What assets do you generate?
                     </div>
                     <div class="input-feild w-100">
-                        <div *ngFor="let answer of ipAssets.assetsGenerated.controls; let j = index;"
-                             class="custom-control custom-checkbox mb-3 mx-3">
-                            <input checked="" class="custom-control-input" formControlName="{{j}}" id="cu{{j}}"
-                                   type="checkbox">
-                            <label class="custom-control-label" for="cu{{j}}">{{answer.display}}</label>
+                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsGenerated').controls; let x = index;" class="custom-control custom-checkbox mb-3 mx-3">
+                            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated').controls[x]">
+                                <input class="custom-control-input" formControlName="value" id="cu{{x}}" type="checkbox">
+                                <label class="custom-control-label" for="cu{{x}}">{{answer.value.name}}</label>
+                            </form>
                         </div>
                     </div>
                 </div>
             </form>
 
-            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsGenerated')" class="question-answer d-flex w-50 mb-3">
+            <form [formGroup]="innovationGroup.get('innovationAndIP')" class="question-answer d-flex w-50 mb-3">
                 <div class="d-flex justify-content-start align-items-center flex-wrap">
                     <div class="input-label w-100">
                         Have you registered any of the following?
                     </div>
                     <div class="input-feild w-100">
-                        <div *ngFor="let answer of ipAssets.assetsOwned.controls; let j = index;"
-                             class="custom-control custom-checkbox mb-3 mx-3">
-                            <input checked="" class="custom-control-input" formControlName="{{j}}" id="cu{{j}}"
-                                   type="checkbox">
-                            <label class="custom-control-label" for="cu{{j}}">{{answer.display}}</label>
+                        <div *ngFor="let answer of innovationGroup.get('innovationAndIP').get('assetsOwned').controls; let j = index;" class="custom-control custom-checkbox mb-3 mx-3">
+                            <form [formGroup]="innovationGroup.get('innovationAndIP').get('assetsOwned').controls[j]">
+                                <input class="custom-control-input" formControlName="value" id="fu{{j}}" type="checkbox">
+                                <label class="custom-control-label" for="fu{{j}}">{{answer.value.name}}</label>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -163,7 +164,7 @@
                 </div>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="innovationGroup.get('design')" class="question-answer d-flex w-100 mb-3">
+            <form [formGroup]="innovationGroup" class="question-answer d-flex w-100 mb-3">
                 <div class="d-flex justify-content-start align-items-center flex-wrap w-100">
                     <div class="input-label w-100">
                         Any other additional notes or comments to be written here
