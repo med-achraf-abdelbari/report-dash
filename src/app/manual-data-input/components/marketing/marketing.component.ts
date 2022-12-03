@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NgbdModalContent} from '../financial/financial.component';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +12,11 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class MarketingComponent implements OnInit {
     // tslint:disable-next-line:no-output-rename
     @Output('value') value = new EventEmitter<any>();
+
+    productForm = new FormGroup({
+        keyNature: new FormControl(''),
+        customerInteraction: new FormControl([]),
+      });
 
     markets = [
         {
@@ -44,29 +49,31 @@ export class MarketingComponent implements OnInit {
         {
             name: 'What is the key nature of your USP (Unique Selling Proposition)?',
             getHelp: () => 'this.helpProduct.USP',
-            control: 'question1',
+            control: 'keyNature',
+            type: 'radio',
             kinds: [
-                {title: 'Cheaper'},
-                {title: 'Better (higher performance or more/better features)'},
-                {title: 'Niche (tailored to a segment of the market)'},
-                {title: 'Local version of established product (local language and/or adapted to our country\'s specific needs)'},
-                {title: 'New - Others have been trying but nobody doing it successfully yet'},
-                {title: 'New - First of its kind in our country (e.g. ride-sharing in Italy before Uber was available in Italy)'},
-                {title: 'First of its kind globally'}
+                {control: 'keyNature',checked : false,title: 'Cheaper'},
+                {control: 'keyNature',checked : false,title: 'Better (higher performance or more/better features)'},
+                {control: 'keyNature',checked : false,title: 'Niche (tailored to a segment of the market)'},
+                {control: 'keyNature',checked : false,title: 'Local version of established product (local language and/or adapted to our country\'s specific needs)'},
+                {control: 'keyNature',checked : false,title: 'New - Others have been trying but nobody doing it successfully yet'},
+                {control: 'keyNature',checked : false,title: 'New - First of its kind in our country (e.g. ride-sharing in Italy before Uber was available in Italy)'},
+                {control: 'keyNature',checked : false,title: 'First of its kind globally'}
             ]
         },
         {
             name: 'Customer interactions',
             getHelp: () => 'this.helpProduct.customerInteractions',
-            control: 'question2',
+            control: 'customerInteraction',
+            type: 'checkbox',
             kinds: [
-                {control: 'answer21', title: 'What is the biggest pain you have now in your life/job/business?'},
-                {control: 'answer22', title: 'What features would you like to have?'},
-                {control: 'answer23', title: 'What do you think of our vision?'},
-                {control: 'answer24', title: 'Questions focused on building the relationship?'},
-                {control: 'answer25', title: 'Can you tell me about the last time that you experienced that particular problem?'},
-                {control: 'answer26', title: 'What\'s not good enough about the solution you\'re currently using?'},
-                {control: 'answer27', title: 'If you had a magic wand, what would the remedy or perfect solution look like?'}
+                {control: 'customerInteraction',checked : false , title: 'What is the biggest pain you have now in your life/job/business?'},
+                {control: 'customerInteraction',checked : false , title: 'What features would you like to have?'},
+                {control: 'customerInteraction',checked : false , title: 'What do you think of our vision?'},
+                {control: 'customerInteraction',checked : false , title: 'Questions focused on building the relationship?'},
+                {control: 'customerInteraction',checked : false , title: 'Can you tell me about the last time that you experienced that particular problem?'},
+                {control: 'customerInteraction',checked : false , title: 'What\'s not good enough about the solution you\'re currently using?'},
+                {control: 'customerInteraction',checked : false , title: 'If you had a magic wand, what would the remedy or perfect solution look like?'}
             ]
         },
         {
@@ -133,7 +140,8 @@ export class MarketingComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private settingsService: SettingsService,
-                private modalService: NgbModal) {
+                private modalService: NgbModal,
+                private cdr: ChangeDetectorRef) {
     }
 
     get helpProduct() {
@@ -262,6 +270,46 @@ export class MarketingComponent implements OnInit {
 
         });
     }
+    selectRadio(selectedResponse : any, inputType : string) {
 
+        this.products = this.products.map((item : any)=> {
+            if (item?.control === selectedResponse?.control ) {
+                 item.kinds.forEach((kind: any) => {
+                    debugger;
+                    if (kind?.title === selectedResponse.title) {
+                        kind.checked = !kind?.checked;
+                    } else if (inputType === 'radio' && kind?.title !== selectedResponse.title){
+                        kind.checked = false;  
+                    }
+                    return {...kind};
+                });
+            }
+            return {...item}
+        })
+
+        console.log('products-->', this.products);
+        this.cdr.detectChanges();
+        if(inputType === 'radio') {
+            this.productForm.controls[selectedResponse.control].patchValue(selectedResponse?.title)
+        }
+
+        if(inputType === 'checkbox') {
+            let pushedValue = []
+            const array = this.products.filter((product: any)=> {
+                return product.control === selectedResponse?.control
+            });
+            if (array?.length > 0 ) {
+                array[0]
+                .kinds
+                .filter((kind: any)=> {
+                    return kind.checked
+                }).forEach((checkedValue: any)=> {
+                    pushedValue.push(checkedValue?.title) 
+                })
+            }
+           
+            this.productForm.controls[selectedResponse.control].patchValue([... new Set(pushedValue)])  
+        }
+    }
 
 }

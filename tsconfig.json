@@ -21,6 +21,7 @@
       "@lib/*": [
         "src/lib/v2/*"
       ]
-    }
+    },
+    "downlevelIteration": true,
   }
 }

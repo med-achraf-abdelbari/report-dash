@@ -12,15 +12,16 @@
                 <span class="fs-24 fw-600">What is the key nature of your USP (Unique Selling Proposition)?</span>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[0].kinds; index as i" class="question-answer d-flex w-50 my-3">
+            <form [formGroup]="productForm"  *ngFor="let product of products[0].kinds; index as i" class="question-answer d-flex w-50 my-3">
                 <div class="d-flex justify-content-start align-items-center">
                     <div class="input-feild">
                         <div class="d-flex justify-content-start align-items-center">
                             <div class="input-feild d-flex align-items-center">
                                 <div
                                         class="custom-control custom-checkbox circle mr-3 w-auto">
-                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
-                                    <label class="custom-control-label" [for]="product.title"></label>
+                                    <input [checked]="product?.checked" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <label class="custom-control-label" [for]="product.title" 
+                                    (click)="selectRadio(product,  products[0]?.type)"></label>
                                 </div>
                             </div>
                             <div class="input-label d-flex flex-wrap">
@@ -35,14 +36,16 @@
                 <span class="fs-24 fw-600">Customer interactions (Select the appropriate choices) </span>
             </div>
             <!--        ACCOUNTING METHOD-->
-            <form [formGroup]="marketingGroup.get('product')"  *ngFor="let product of products[1].kinds; index as i" class="question-answer d-flex w-50 my-3">
+            <form [formGroup]="productForm"  *ngFor="let product of products[1].kinds; index as i" class="question-answer d-flex w-50 my-3">
                 <div class="d-flex justify-content-start align-items-center">
                     <div class="input-feild">
                         <div class="d-flex justify-content-start align-items-center">
                             <div class="input-feild d-flex align-items-center   ">
                                 <div
                                         class="custom-control custom-checkbox  w-auto">
-                                    <input checked="" class="custom-control-input"  [id]="product.title" type="checkbox">
+                                    <input [checked]="false" class="custom-control-input"  [id]="product.title" type="checkbox"
+                                    (click)="selectRadio(product,products[1]?.type)"
+                                    >
                                     <label class="custom-control-label" [for]="product.title"></label>
                                 </div>
                             </div>
