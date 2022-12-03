@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ApiIntegrationService} from '../shared/services/api-integration/api-integration.service';
+import {SettingsService} from '../shared/services/settings/settings.service';
 
 @Component({
     selector: 'app-manual-data-input', templateUrl: './manual-data-input.component.html', styleUrls: ['./manual-data-input.component.scss']
@@ -9,19 +11,47 @@ export class ManualDataInputComponent implements OnInit {
 
     activeSection: 'FIANANCE' | 'MARKETING' | 'INNOVATION' = 'FIANANCE';
     report = {};
+    dealReport;
+    deepReport: any = {};
+    params: any;
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private apiIntegrationService: ApiIntegrationService,
+                private settingsService: SettingsService) {
     }
 
     ngOnInit() {
         this.route.queryParams.subscribe((params: any) => {
-            console.log(params);
-            this.getMetrics(params);
+            this.params = params;
+            if (params.gm || params.code) {
+                this.getMetrics(params);
+            }
+        });
+        this.getCompanyCurrency();
+    }
+
+    getCompanyCurrency() {
+        this.settingsService.getCompanyCurrency(this.params.cid).subscribe(companyReport => {
+            this.dealReport = companyReport;
         });
     }
 
     getMetrics(parms) {
-
+        const requestParams = {
+            integrationName: localStorage.getItem('selectedProvider'),
+            companyName: this.params.permalink,
+        };
+        if (!!parms.code) {
+            requestParams['options'] = {
+                callbackUrl: this.router.url
+            };
+        }
+        this.apiIntegrationService.calculateMatrics(requestParams).subscribe((result: any) => {
+            if (result.type === 'auth-url') {
+                window.location.href = result.data.url;
+            }
+        });
     }
 
     updateFinance(data: any) {
@@ -46,7 +76,17 @@ export class ManualDataInputComponent implements OnInit {
     }
 
     submitReport() {
+        this.settingsService.submitDeepReport(this.params.cid, this.deepReport).then(result => {
+            console.log(result);
+        });
+    }
 
+    setFinancialReportData(data) {
+        this.deepReport.financials = {...this.deepReport.financials, ...data};
+    }
+
+    setInnovationReportData(data) {
+        this.deepReport.innovation = {...this.deepReport.innovation, ...data};
     }
 
     showConfirmModal() {

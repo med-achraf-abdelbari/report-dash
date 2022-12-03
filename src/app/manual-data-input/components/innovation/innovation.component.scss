@@ -59,8 +59,7 @@ input[type="radio"]:checked + label::after
 
     .custom-control{
       text-align: left;
-      padding: 6px;
-      width: 100%;
+      width: 25%;
     }
   }
 }
@@ -72,4 +71,22 @@ input[type="radio"]:checked + label::after
   &:after{
     border-radius: 100% !important;
   }
+}
+@media screen and (min-width: 991px) {
+    .commercial-form {
+      width: 50%;
+      &:nth-child(odd){
+        .commercial-form-child{
+          padding-right: 0.8rem;
+        }
+        }
+      &:nth-child(even){
+        .commercial-form-child{
+          padding-left: 0.8rem;
+        }
+      }
+    }
+  }
+.custom-control-label{
+  text-transform: capitalize;
 }

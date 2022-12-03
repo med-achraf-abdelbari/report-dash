@@ -1,9 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DomSanitizer} from '@angular/platform-browser';
 import {getCurrencySymbol} from '@angular/common';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {merge} from 'rxjs/internal/operators/merge';
+import {log} from 'util';
 
 @Component({
     selector: 'app-modal-content', template: `
@@ -27,43 +30,62 @@ export class NgbdModalContent {
 @Component({
     selector: 'app-financial', templateUrl: './financial.component.html', styleUrls: ['./financial.component.scss']
 })
-export class FinancialComponent implements OnInit {
+export class FinancialComponent implements OnInit , OnDestroy , OnChanges {
 
+    @Input() dealReport;
     // tslint:disable-next-line:no-output-rename
     @Output('value') value = new EventEmitter<any>();
 
-    shareHolders: FormGroup[] = [this.formBuilder.group({
+    /*shareHolders: FormGroup[] = [this.formBuilder.group({
         name: [], stake: [], shares: [], shareClass: [], voting: [], antiDilution: [], allocationDate: [],
     })];
     previousCash: FormGroup[] = [this.formBuilder.group({
         type: [], cap: [], discount: [], source: [], date: [], amount: [], equityGiven: [], charges: []
-    })];
+    })];*/
     financialGroup: any;
     salesFG: any;
     helpDeepDive = {};
+    financeModules;
+    formGroupsSubscriptions = new Subscription();
 
     getCurrencySymbol = getCurrencySymbol;
-    companyCurrency = 'GBP'; // todo update this value from api
-
+    companyCurrency: string;
     revenueRetentionFG: FormGroup;
     financialPerformanceFG: FormGroup;
     businessPerformanceFG: FormGroup;
     marketGrowthFG: FormGroup;
     marketSizeFG: FormGroup;
     cashOperationFG: FormGroup;
+    companyReportingFG: FormGroup;
 
     constructor(private formBuilder: FormBuilder, private settingsService: SettingsService, private modalService: NgbModal, ) {
     }
 
     ngOnInit() {
         this.initForms();
-        this.financialGroup = this.createFinancialControlGorup();
-        this.salesFG = (this.financialGroup.get('financial').get('sales') as FormGroup);
-        this.financialGroup.valueChanges.subscribe(() => {
-            console.log(this.financialGroup.value);
-            this.value.emit(this.financialGroup.value);
-        });
         this.getHelpDeepDive();
+    }
+
+    getHelpDeepDive() {
+        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
+            this.helpDeepDive = data?.attributes?.moduleFinancials;
+        });
+    }
+
+    openHintModal(hintType: string) {
+        const modalRef = this.modalService.open(NgbdModalContent, {
+            centered: true, backdrop: true, size: 'xl'
+        });
+        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (!this.companyCurrency) {
+            this.companyCurrency = this.dealReport?.report?.currency;
+            this.financeModules = this.dealReport?.report?.metadata?.modules?.finance?.elements?.financials?.elements;
+            console.log('COMPANY CURRENCY ==>', this.companyCurrency);
+            console.log('MODULES ==>', this.financeModules);
+        }
     }
 
     initForms() {
@@ -73,11 +95,30 @@ export class FinancialComponent implements OnInit {
         this.initMarketGrowthFG();
         this.initMarketSizeFG();
         this.initCashOperationFG();
+        this.initCompanyReportingFG();
+        new Observable(observer => {
+                this.formGroupsSubscriptions.add(this.revenueRetentionFG.valueChanges.subscribe(revenueRetentionFG => observer.next(revenueRetentionFG))),
+                this.formGroupsSubscriptions.add(this.financialPerformanceFG.valueChanges.subscribe(financialPerformanceFG => observer.next(financialPerformanceFG))),
+                this.formGroupsSubscriptions.add(this.businessPerformanceFG.valueChanges.subscribe(businessPerformanceFG => observer.next(businessPerformanceFG))),
+                this.formGroupsSubscriptions.add(this.marketGrowthFG.valueChanges.subscribe(marketGrowthFG => observer.next(marketGrowthFG))),
+                this.formGroupsSubscriptions.add(this.marketSizeFG.valueChanges.subscribe(marketSizeFG => observer.next(marketSizeFG))),
+                this.formGroupsSubscriptions.add(this.cashOperationFG.valueChanges.subscribe(cashOperationFG => observer.next(cashOperationFG))),
+                this.formGroupsSubscriptions.add(this.companyReportingFG.valueChanges.subscribe(companyReportingFG => observer.next(companyReportingFG)));
+        }).subscribe((data) => {
+            this.value.emit(data);
+        });
     }
 
     initRevenueRetentionFG() {
         this.revenueRetentionFG = this.formBuilder.group({
-            newRevenue: new FormControl(), retainedRevenue: new FormControl()
+            newRevenue: new FormGroup({
+                salesGrowthDifference : new FormControl(),
+                totalSales : new FormControl()
+            }),
+            retainedRevenue: new FormGroup({
+                retainedRevenueLastFY : new FormControl(),
+                totalRevenuePreviousFY : new FormControl()
+            })
         });
     }
 
@@ -178,7 +219,11 @@ export class FinancialComponent implements OnInit {
 
     initMarketSizeFG() {
         this.marketSizeFG = this.formBuilder.group({
-            marketSize: new FormControl(),
+            marketSize: new FormGroup({
+                TAM : new FormControl(),
+                SAM : new FormControl(),
+                SOM : new FormControl(),
+            }),
         });
     }
 
@@ -212,42 +257,68 @@ export class FinancialComponent implements OnInit {
         });
     }
 
-
-    getHelpDeepDive() {
-        this.settingsService.getHelpDeepDive().subscribe((data: any) => {
-            this.helpDeepDive = data?.attributes?.moduleFinancials;
+    initCompanyReportingFG() {
+        this.companyReportingFG = this.formBuilder.group({
+            accountingMethod: new FormControl(),
+            companyShares: new FormControl(),
+            shareHolders: new FormArray([
+                new FormGroup({
+                    name : new FormControl(),
+                    stake : new FormControl(),
+                    shares : new FormControl(),
+                    shareClass : new FormControl(),
+                    voting : new FormControl(),
+                    antiDilution : new FormControl(),
+                    date : new FormControl(),
+                })
+            ]),
+            previousFinanceInjection: new FormArray([
+                new FormGroup({
+                    injectionType : new FormControl(),
+                    cap : new FormControl(),
+                    discount : new FormControl(),
+                    fundSource : new FormControl(),
+                    date : new FormControl(),
+                    amount : new FormControl(),
+                    equityGiven : new FormControl(),
+                    charges : new FormControl(),
+                })
+            ]),
         });
-    }
 
-    openHintModal(hintType: string) {
-        const modalRef = this.modalService.open(NgbdModalContent, {
-            centered: true, backdrop: true, size: 'xl'
-        });
-        modalRef.componentInstance.innerHtml = this.helpDeepDive[hintType];
+        this.companyReportingFG.valueChanges.subscribe(data => console.log(data));
     }
 
     addShareHolder() {
-        (this.financialGroup.get('shareholders') as FormArray).controls.push(this.createShareholder());
-    }
-
-    createShareholder(): FormGroup {
-        return this.formBuilder.group({
-            type: new FormControl('', []),
-            name: new FormControl('', []),
-            stake: new FormControl('', []),
-            shares: new FormControl('', []),
-            shareClass: new FormControl('', []),
-            voting: new FormControl('', []),
-            antiDilution: new FormControl('', []),
-            allocationDate: new FormControl('', [])
-        });
+        (this.companyReportingFG.get('shareHolders') as FormArray).controls.push(
+            new FormGroup({
+                name : new FormControl(),
+                stake : new FormControl(),
+                shares : new FormControl(),
+                shareClass : new FormControl(),
+                voting : new FormControl(),
+                antiDilution : new FormControl(),
+                date : new FormControl(),
+            })
+        );
     }
 
     createPreviousCash() {
-        (this.financialGroup.get('previousCash') as FormArray).controls.push(this.createShareholder());
+        (this.companyReportingFG.get('previousFinanceInjection') as FormArray).controls.push(
+            new FormGroup({
+                injectionType : new FormControl(),
+                cap : new FormControl(),
+                discount : new FormControl(),
+                fundSource : new FormControl(),
+                date : new FormControl(),
+                amount : new FormControl(),
+                equityGiven : new FormControl(),
+                charges : new FormControl(),
+            })
+        );
     }
 
-    createFinancialControlGorup(): FormGroup {
+    /*createFinancialControlGorup(): FormGroup {
 
         return this.formBuilder.group({
 
@@ -276,7 +347,9 @@ export class FinancialComponent implements OnInit {
             notes: new FormControl(), employeeShares: new FormControl('', []), accountingMethod: new FormControl('', []),
 
         });
-    }
+    }*/
 
+    ngOnDestroy() {
+    }
 
 }

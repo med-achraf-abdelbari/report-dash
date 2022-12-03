@@ -1,40 +1,70 @@
-
-<div class="report-wrapper container">
+<div *ngIf="report" class="report-wrapper container font-regular">
     <div class="report-header">
-        <div class="row align-items-center">
-            <div class="col-6 company-name">
-                <h1>Performance</h1>
-                <h1>Report</h1>
+        <div class="row">
+            <div class="col-5 d-flex pt-3">
+             <div class="company-name pr-2">
+                 <h1 class="font-semiBold">Performance <br> Report</h1>
+             </div>
+            <div>
+                <img src="assets/img/brand/d-riskit-logo.png" class="w-100 h-100" alt="logo">
             </div>
-            <div class="col-6 date-and-extras d-flex flex-column align-items-end justify-content-center">
-                <span class="detail w-100 text-right">
-                    Report Date : 26 June 2022
-                </span>
-                <span class="detail w-100 text-right">
-                    Currency : 26 June 2022
-                </span>
-                <span class="detail w-100 text-right">
-                    Location : 26 June 2022
-                </span>
+            </div>
+            <div class="col-7 d-flex justify-content-between">
+                <div class="text-blue d-flex flex-column">
+                    <p class="font-semiBold fs-33 mb-0">{{report.companyInfo.contact.companyName}}</p>
+                    <span class="font-regular fs-20 mb-0">{{report.companyInfo.contact.name}}</span>
+                    <span class="font-regular fs-20 mb-0">{{report.companyInfo.contact.email}}</span>
+                </div>
+                <div class="date-and-extras d-flex flex-column align-items-end pt-3">
+                    <span class="detail w-100 text-right font-regular">
+                        Report Date : {{report.updatedAt.split('T')[0]}}
+                    </span>
+                    <span class="detail w-100 text-right font-regular">
+                        Currency : {{report.currency}}
+                    </span>
+                    <span class="detail w-100 text-right font-regular">
+                        Location : {{report.companyInfo.country}}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
-    <h2>Company Details</h2>
-    <div class="company-details-data d-flex flex-column">
-        <div class="detail w-100">Sector <span>aa</span> </div>
-        <div class="detail w-100">Sub-sector <span>aa</span></div>
-        <div class="detail w-100">Development phase <span>aa</span></div>
-        <div class="detail w-100">HQ <span>aa</span></div>
-        <div class="detail w-100">Founded in 20xx <span>aa</span></div>
+    <h2 class="font-semiBold font-semiBold pt-3 pb-2 fs-25 mb-0">Company Details</h2>
+    <div class="company-details-data d-flex">
+        <div class="w-70">
+                <div>
+                    <span class="font-bold fs-15">Sector:</span>
+                    <span class="font-regular pl-1">{{report.companyInfo.sector}}</span>
+                </div>
+                <div>
+                    <span class="font-bold">Sub-sector:</span>
+                    <span class="font-regular pl-1">{{report.companyInfo.subsector}}</span>
+                </div>
+                <div>
+                    <span class="font-bold">Development phase :</span>
+                    <span class="font-regular pl-1">{{report.companyInfo.businessPhase}}</span>
+                </div>
+                <div><span class="font-bold">HQ:</span>
+                    <span class="font-regular pl-1">{{report.companyInfo.sector}}</span>
+                </div>
+                 <div>
+                     <span class="font-bold">Founded in:</span>
+                     <span class="font-regular pl-1">{{report.companyInfo.year}}</span>
+                 </div>
+        </div>
+        <div class="w-30 d-flex justify-content-end align-items-center">
+            <img src="assets/img/brand/d-riskit-logo.png" width="150" alt="logo">
+        </div>
     </div>
-    <h2>Financial report</h2>
+    <h2 class="font-semiBold font-semiBold pt-3 pb-2 fs-25 mb-0">Financial report</h2>
     <div class="report-line row">
-        <div *ngFor="let metric of metrics" class="metric col-6">
+        <div *ngFor="let metric of metrics; index as i " class="metric col-6">
             <div class="metric-title">
-                <span>
-                    {{metric.metricTitle}}
-                    <hr class="divider my-1">
+                <div class="border-bottom border-white w-100 pb-2">
+                 <span>
+                    {{i}} - {{metric.metricTitle}}
                 </span>
+                </div>
             </div>
             <div *ngIf="metric.type.includes('chart')" class="chart">
                 <div style="text-align:center">
@@ -65,10 +95,10 @@
         </div>
 
     </div>
-
-    <h2>Marketing report</h2>
+    <div class="page-break"></div>
+    <h2 class="font-semiBold font-semiBold pt-3 pb-2 fs-25">Marketing report</h2>
     <app-marketing-report></app-marketing-report>
-
-    <h2>Innovation report</h2>
-    <app-innovation-report></app-innovation-report>
+    <div class="page-break"></div>
+    <h2 class="font-semiBold font-semiBold pt-3 pb-2 fs-25">Innovation report</h2>
+    <app-innovation-report [innovationMetrics]="report"></app-innovation-report>
 </div>

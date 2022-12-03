@@ -59,7 +59,7 @@
                     <!--                    <span class="badge badge-pill badge-primary">ng-bootstrap</span>-->
                     <!--                    <span class="badge badge-pill badge-primary">creative</span>-->
                     <!--                  </div>-->
-                    <a (click)="calculatewith('Xero')" class="btn btn-default mt-1 text-white">Connect with xero</a>
+                    <a (click)="connectWithProvider('Xero')" class="btn btn-default mt-1 text-white">Connect with xero</a>
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@
                     <!--                    <span class="badge badge-pill badge-success">vision</span>-->
                     <!--                    <span class="badge badge-pill badge-success">success</span>-->
                     <!--                  </div>-->
-                    <a  class="btn btn-default mt-1 text-white">Connect with wave</a>
+                    <a (click)="connectWithProvider('Wave')"  class="btn btn-default mt-1 text-white">Connect with wave</a>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                     <!--                    <span class="badge badge-pill badge-warning">product</span>-->
                     <!--                    <span class="badge badge-pill badge-warning">launch</span>-->
                     <!--                  </div>-->
-                    <a  class="btn btn-default mt-1 text-white">Connect with Quickbooks</a>
+                    <a (click)="connectWithProvider('QuickBooks')"  class="btn btn-default mt-1 text-white">Connect with Quickbooks</a>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@
                 </p>
               </div>
               <div class="col-lg-3 ml-lg-auto">
-                <a [routerLink]="'/user-manual-data-input'"  class="btn btn-default mt-1 text-white">Submit Manually</a>
+                <a [routerLink]="'/user-manual-data-input'" queryParamsHandling="merge" class="btn btn-default mt-1 text-white">Submit Manually</a>
               </div>
             </div>
           </div>
