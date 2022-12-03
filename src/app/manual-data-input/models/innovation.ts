@@ -129,7 +129,7 @@ export const designs = [
     {name: 'Brief', control: 'brief'},
     {name: 'Concept', control: 'concept'},
     {name: 'Design', control: 'design'},
-    {name: 'Production', control: 'product'},
+    {name: 'Production', control: 'production'},
     {name: 'Launch', control: 'launch'}
 ];
 

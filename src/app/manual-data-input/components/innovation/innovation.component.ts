@@ -114,7 +114,7 @@ export class InnovationComponent implements OnInit, OnChanges {
                 brief: [],
                 concept: [],
                 design: [],
-                product: [],
+                production: [],
                 launch: [],
             }),
 
