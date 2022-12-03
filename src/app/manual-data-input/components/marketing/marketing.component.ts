@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {NgbdModalContent} from '../financial/financial.component';
 import {SettingsService} from '../../../shared/services/settings/settings.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -15,8 +15,40 @@ export class MarketingComponent implements OnInit {
 
     productForm = new FormGroup({
         keyNature: new FormControl(''),
-        customerInteraction: new FormControl([]),
+        customerInteraction1: new FormControl([]),
+        sellType : new FormControl(''),
+        customerInteraction2: new FormControl([]),
+        businessModelDescription: new FormControl(''),
       });
+
+      marketingPreferenceForm = new FormGroup({ 
+            questions_answers : new FormArray([
+                new FormGroup({
+                    question : new FormControl(''),
+                    answer: new FormControl('')
+                })
+            ])
+            })
+
+       socialMediaAccountForm =   new FormGroup({ 
+        socialMediaAccounts : new FormArray([
+            new FormGroup({
+                socialMedia : new FormControl(''),
+                userId: new FormControl('')
+            })
+        ])
+        })    
+
+        customerMarketsForm = new FormGroup({
+            tam: new FormControl(''),
+            sam: new FormControl(''),
+            som : new FormControl(''),
+            primaryCustomer: new FormControl(''),
+          });
+
+        addtionalNotesForm = new FormGroup({
+            notes : new FormControl('')
+          })
 
     markets = [
         {
@@ -64,58 +96,59 @@ export class MarketingComponent implements OnInit {
         {
             name: 'Customer interactions',
             getHelp: () => 'this.helpProduct.customerInteractions',
-            control: 'customerInteraction',
+            control: 'customerInteraction1',
             type: 'checkbox',
             kinds: [
-                {control: 'customerInteraction',checked : false , title: 'What is the biggest pain you have now in your life/job/business?'},
-                {control: 'customerInteraction',checked : false , title: 'What features would you like to have?'},
-                {control: 'customerInteraction',checked : false , title: 'What do you think of our vision?'},
-                {control: 'customerInteraction',checked : false , title: 'Questions focused on building the relationship?'},
-                {control: 'customerInteraction',checked : false , title: 'Can you tell me about the last time that you experienced that particular problem?'},
-                {control: 'customerInteraction',checked : false , title: 'What\'s not good enough about the solution you\'re currently using?'},
-                {control: 'customerInteraction',checked : false , title: 'If you had a magic wand, what would the remedy or perfect solution look like?'}
+                {control: 'customerInteraction1',checked : false , title: 'What is the biggest pain you have now in your life/job/business?'},
+                {control: 'customerInteraction1',checked : false , title: 'What features would you like to have?'},
+                {control: 'customerInteraction1',checked : false , title: 'What do you think of our vision?'},
+                {control: 'customerInteraction1',checked : false , title: 'Questions focused on building the relationship?'},
+                {control: 'customerInteraction1',checked : false , title: 'Can you tell me about the last time that you experienced that particular problem?'},
+                {control: 'customerInteraction1',checked : false , title: 'What\'s not good enough about the solution you\'re currently using?'},
+                {control: 'customerInteraction1',checked : false , title: 'If you had a magic wand, what would the remedy or perfect solution look like?'}
             ]
         },
         {
             name: 'How do you sell?',
             getHelp: () => 'this.helpProduct.sales',
-            control: 'question3',
+            control: 'sellType',
             kinds: [
-                {title: 'B2B'},
-                {title: 'B2C'},
-                {title: 'B2B2C'},
-                {title: 'Other (put details)'}
+                {control: 'sellType',title: 'B2B'},
+                {control: 'sellType',title: 'B2C'},
+                {control: 'sellType',title: 'B2B2C'},
+                {control: 'sellType',title: 'Other (put details)'}
             ]
         },
         {
             name: 'How do you make money via any primary revenues?',
             instructions: 'Select any from the following to describe aspects of your business and/or revenue model.',
             getHelp: () => 'this.helpProduct.revenues',
-            control: 'question4',
+            control: 'customerInteraction2',
+            type: 'checkbox',
             kinds: [
-                {control: 'answer41', title: 'Advertising'},
-                {control: 'answer419', title: 'Bricks-&-mortar'},
-                {control: 'answer422', title: 'Bookings'},
-                {control: 'answer421', title: 'Content'},
-                {control: 'answer43', title: 'Direct product / service sales'},
-                {control: 'answer416', title: 'Distribution'},
-                {control: 'answer420', title: 'eCommerce'},
-                {control: 'answer44', title: 'Fee / Commission'},
-                {control: 'answer45', title: 'Freemium'},
-                {control: 'answer418', title: 'Franchise'},
-                {control: 'answer423', title: 'Lead Generation'},
-                {control: 'answer46', title: 'Licensing'},
-                {control: 'answer47', title: 'Mark-up (Wholessale /Retail)'},
-                {control: 'answer414', title: 'Marketplace'},
-                {control: 'answer48', title: 'Membership'},
-                {control: 'answer415', title: 'Manufactoring'},
-                {control: 'answer42', title: 'PAYG'},
-                {control: 'answer49', title: 'Renting / Leasing'},
-                {control: 'answer417', title: 'Retailing'},
-                {control: 'answer413', title: 'SaaS'},
-                {control: 'answer410', title: 'Subscription'},
-                {control: 'answer411', title: 'Sponsorship'},
-                {control: 'answer412', title: 'Third party channel sales (affiliates, partnerships, etc)'},
+                {control: 'customerInteraction2', title: 'Advertising'},
+                {control: 'customerInteraction2', title: 'Bricks-&-mortar'},
+                {control: 'customerInteraction2', title: 'Bookings'},
+                {control: 'customerInteraction2', title: 'Content'},
+                {control: 'customerInteraction2', title: 'Direct product / service sales'},
+                {control: 'customerInteraction2', title: 'Distribution'},
+                {control: 'customerInteraction2', title: 'eCommerce'},
+                {control: 'customerInteraction2', title: 'Fee / Commission'},
+                {control: 'customerInteraction2', title: 'Freemium'},
+                {control: 'customerInteraction2', title: 'Franchise'},
+                {control: 'customerInteraction2', title: 'Lead Generation'},
+                {control: 'customerInteraction2', title: 'Licensing'},
+                {control: 'customerInteraction2', title: 'Mark-up (Wholessale /Retail)'},
+                {control: 'customerInteraction2', title: 'Marketplace'},
+                {control: 'customerInteraction2', title: 'Membership'},
+                {control: 'customerInteraction2', title: 'Manufactoring'},
+                {control: 'customerInteraction2', title: 'PAYG'},
+                {control: 'customerInteraction2', title: 'Renting / Leasing'},
+                {control: 'customerInteraction2', title: 'Retailing'},
+                {control: 'customerInteraction2', title: 'SaaS'},
+                {control: 'customerInteraction2', title: 'Subscription'},
+                {control: 'customerInteraction2', title: 'Sponsorship'},
+                {control: 'customerInteraction2', title: 'Third party channel sales (affiliates, partnerships, etc)'},
             ]
         },
         {
@@ -140,26 +173,37 @@ export class MarketingComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private settingsService: SettingsService,
-                private modalService: NgbModal,
-                private cdr: ChangeDetectorRef) {
+                private modalService: NgbModal
+                ) {
     }
 
     get helpProduct() {
         return this.help?.moduleProduct && this.help?.moduleProduct?.product || {};
     }
 
+    get questionsAndAnswers() {
+        return this.marketingPreferenceForm.controls["questions_answers"] as FormArray;
+      }
+    get socialMediaAccounts() {
+        return this.socialMediaAccountForm.controls["socialMediaAccounts"] as FormArray;
+      }
     addMoreMarketingPrefrence() {
-        this.marketingGroup.get('performance').controls.push(this.formBuilder.group({
-            question: [],
-            answer: []
-        }));
+    const newControl = new FormGroup({
+        question: new FormControl,
+        answer: new FormControl
+      });
+
+      this.questionsAndAnswers.push(newControl)
+
     }
 
     addSocialPrefrence() {
-        this.marketingGroup.get('socialMedia').controls.push(this.formBuilder.group({
-            account: [],
-            id: []
-        }));
+        const newControl = new FormGroup({
+            socialMedia: new FormControl,
+            userId: new FormControl
+          });
+    
+          this.socialMediaAccounts.push(newControl)
     }
 
     ngOnInit(): void {
@@ -270,28 +314,20 @@ export class MarketingComponent implements OnInit {
 
         });
     }
-    selectRadio(selectedResponse : any, inputType : string) {
+    selectOption(selectedResponse : any, inputType : string) {
 
         this.products = this.products.map((item : any)=> {
             if (item?.control === selectedResponse?.control ) {
                  item.kinds.forEach((kind: any) => {
-                    debugger;
                     if (kind?.title === selectedResponse.title) {
                         kind.checked = !kind?.checked;
-                    } else if (inputType === 'radio' && kind?.title !== selectedResponse.title){
-                        kind.checked = false;  
                     }
                     return {...kind};
                 });
             }
             return {...item}
         })
-
-        console.log('products-->', this.products);
-        this.cdr.detectChanges();
-        if(inputType === 'radio') {
-            this.productForm.controls[selectedResponse.control].patchValue(selectedResponse?.title)
-        }
+        
 
         if(inputType === 'checkbox') {
             let pushedValue = []
@@ -308,7 +344,8 @@ export class MarketingComponent implements OnInit {
                 })
             }
            
-            this.productForm.controls[selectedResponse.control].patchValue([... new Set(pushedValue)])  
+            this.productForm.controls[selectedResponse.control].patchValue([... new Set(pushedValue)]) 
+            
         }
     }
 
